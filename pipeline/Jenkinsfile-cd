@@ -1,9 +1,6 @@
 pipeline 
 {
-    agent 
-    { 
-        label 'euls10094' 
-    }  
+    agent any
     environment 
     {
         git_dev_branch_name = 'master'
@@ -25,13 +22,8 @@ pipeline
             {
                 withCredentials([file(credentialsId: 'stg-kube-config', variable: 'KUBECONFIG')]) 
                 {
-                    sh "pipeline/common.lib/deploy/deploy-dcc-task.sh ${stg_env_name} ${stg_namespace}" 
-                    sh "pipeline/common.lib/deploy/deploy-mws-task.sh ${stg_env_name} ${stg_namespace}"  
-                    sh "pipeline/common.lib/deploy/deploy-um-task.sh ${stg_env_name} ${stg_namespace}"                
-                    sh "pipeline/common.lib/deploy/deploy-terracotta-task.sh ${stg_env_name} ${stg_namespace}"
-                    sh "pipeline/common.lib/deploy/deploy-technexus-task.sh ${stg_env_name} ${stg_namespace}"
-                    sh "pipeline/common.lib/deploy/deploy-tnasset-import-task.sh ${stg_env_name} ${stg_namespace}"
-                    sh "pipeline/common.lib/deploy/deploy-platinum-task.sh ${stg_env_name} ${stg_namespace}"
+                    sh "pipeline/common.lib/deploy/deploy-fitness-apigateway.sh ${stg_env_name} ${stg_namespace}" 
+                    sh "pipeline/common.lib/deploy/deploy-fitness-assessments.sh ${stg_env_name} ${stg_namespace}"  
                 }
             }
         } 

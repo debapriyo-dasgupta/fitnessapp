@@ -36,7 +36,7 @@ spec:
           done          
       containers:      
         - name: insurance-fitness-assessments-container   
-          image: fitness-assessments:v1.0
+          image: <IMAGE_NAME>-<TAG>
           lifecycle:
             preStop:
               exec:
