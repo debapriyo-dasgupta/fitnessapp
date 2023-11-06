@@ -2,7 +2,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: rewards
-  namespace: insurance
   labels:
     app: rewards
   annotations:
