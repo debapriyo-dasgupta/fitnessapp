@@ -35,7 +35,7 @@ spec:
           done        
       containers:
         - name: insurance-fitness-challenges-container       
-          image: fitness-challenges:v1.0
+          image: <IMAGE_NAME>-<TAG>
           imagePullPolicy: IfNotPresent        
         # Resources required for the apigateway to function. CPUs and Memory configurations.
           resources:
