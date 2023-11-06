@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: terracotta-management-console-svc
+  namespace: insurance
+  labels:
+    app: caching
+    app.kubernetes.io/name: terracotta-management-console-svc
+    app.kubernetes.io/component: terracotta-bigmemory
+    app.kubernetes.io/managed-by: integration-practice
+    app.kubernetes.io/part-of: insurance  
+  annotations:
+      prometheus.io/scrape: 'true'
+      prometheus.io/port: '9889'       
+      prometheus.io/path: '/tmc/api/prometheus'
+spec:
+  selector:
+    app: caching
+    app.kubernetes.io/name: terracotta-management-console
+    app.kubernetes.io/component: terracotta-bigmemory
+    app.kubernetes.io/managed-by: integration-practice
+    app.kubernetes.io/part-of: insurance  
+  ports:
+    - port: 9889
+      name: tcp-management
+      targetPort: 9889
+      nodePort: 30880       
+  type: NodePort

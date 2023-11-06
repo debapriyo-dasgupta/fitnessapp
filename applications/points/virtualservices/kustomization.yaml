@@ -1,0 +1,4 @@
+resources:
+# Configurations and workloads to be deployed for this application
+- destinations.yaml
+- virtual-service-weighted.yaml

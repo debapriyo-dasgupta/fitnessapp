@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: points-datastore
+  namespace: insurance
+  labels:
+    app: points
+    version: 4.4.0
+  annotations:
+      prometheus.io/scrape: 'false'    
+spec:
+  selector:
+    app: points
+    name: points-datastore
+    version: 4.4.0
+  clusterIP: None
+  ports:
+    - port: 9510
+      name: tcp-server     
+    - port: 9530
+      name: tcp-replication
+    - port: 9540
+      name: tcp-management
+      targetPort: 9540     
+  type: ClusterIP

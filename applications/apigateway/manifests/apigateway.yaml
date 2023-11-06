@@ -1,0 +1,136 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+  labels:
+    app: api-gateway
+    version: 10.15.0
+  namespace: insurance
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-gateway
+      version: 10.15.0
+  template:
+    metadata:
+      labels:
+        app: api-gateway
+        version: 10.15.0
+    spec:
+      initContainers:
+      - name: increase-vm-max-map
+        image: busybox
+        imagePullPolicy: IfNotPresent
+        command: ["sysctl", "-w", "vm.max_map_count=262144"]
+        securityContext:
+          privileged: true
+      - name: increase-fd-ulimit
+        image: busybox
+        command: ["sh", "-c", "ulimit -n 65536"]
+        securityContext:
+          privileged: true
+        imagePullPolicy: IfNotPresent
+      containers:
+      - name: api-gateway
+        # Please fill in the path to your api gateway image stored in a docker registry.
+        image: sagcr.azurecr.io/apigateway:10.15
+        # The default pull policy is IfNotPresent which causes the Kubelet to skip pulling an image if it already exists.
+        # If you would like to always force a pull use "Always"
+        imagePullPolicy: IfNotPresent 
+        # Ports used in the docker image, the default ports are 5555, 9072 and 9240
+        ports:
+        - containerPort: 5555
+          name: http-is
+          protocol: TCP
+        - containerPort: 9072
+          name: http-apigw
+          protocol: TCP
+        - containerPort: 9240
+          name: http-es
+          protocol: TCP
+        # Volume mount for internal data store and license key. This setup is for api hosted with internal datastore (Elastic search/Product builtin)
+        volumeMounts:
+          - mountPath: /opt/softwareag/InternalDataStore/data
+            name: apigw-storage
+          - mountPath: /opt/softwareag/IntegrationServer/instances/default/config/licenseKey.xml
+            subPath: apilicenseKey.xml
+            name: apilicensekey
+        # Resources required for the apigateway to function. CPUs and Memory configurations.
+        resources:
+          requests:
+            cpu: "2"
+            memory: "4Gi"
+          limits:
+            cpu: "3"
+            memory: "6Gi"
+        # Liveness probe to check whether container is active. Restart happens when liveness probe fails.
+        livenessProbe:
+          failureThreshold: 10
+          initialDelaySeconds: 60
+          periodSeconds: 30
+          successThreshold: 1
+          tcpSocket:
+            port: 5555
+          timeoutSeconds: 2
+        # Readiness probe to check whether pod is ready to serve the requests. Traffic will not be injected unless readiness probes passes.
+        readinessProbe:
+          failureThreshold: 10
+          httpGet:
+            path: /rest/apigateway/health
+            port: 5555
+            scheme: HTTP
+          initialDelaySeconds: 90
+          periodSeconds: 30
+          successThreshold: 1
+          timeoutSeconds: 2
+      imagePullSecrets:
+        - name: regcred
+        - name: sagregcred   
+      # Volume definitions referenced in volume mounts (above section)
+      volumes:
+        - name: apigw-storage
+          persistentVolumeClaim:
+            claimName: apigw-storage
+        - name: apilicensekey
+          configMap:
+              name: webmethodslicensekeys
+              defaultMode: 0777
+---
+# An example service for the deployment above.
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-gateway
+  labels:
+    app: api-gateway
+    version: 10.15.0
+  annotations:
+      prometheus.io/scrape: 'true'    
+      prometheus.io/port: '5555'
+  namespace: insurance      
+spec:
+  type: NodePort
+  ports:
+    - name: http-is
+      port: 5555
+      targetPort: 5555
+      nodePort: 31000
+      protocol: TCP
+    - name: https-is
+      port: 5543
+      targetPort: 5543
+      nodePort: 30999
+      protocol: TCP
+    - name: http-apigw
+      port: 9072
+      targetPort: 9072
+      nodePort: 31001
+      protocol: TCP
+    - name: http-es
+      port: 9240
+      nodePort: 31002
+      targetPort: 9240
+  selector:
+    app: api-gateway
+    version: 10.15.0

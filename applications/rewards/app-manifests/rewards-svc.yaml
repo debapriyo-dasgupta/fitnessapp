@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rewards
+  namespace: insurance
+  labels:
+    app: rewards
+  annotations:
+    prometheus.io/scrape: 'true'    
+    prometheus.io/port: '5555'
+spec:
+  selector:
+    app: rewards
+    component: msr
+  ports:
+    - port: 4485
+      name: http-microgateway
+      targetPort: 4485
+    - port: 5555
+      name: http-server
+      targetPort: 5555
+      nodePort: 30101
+  type: NodePort
+  sessionAffinity: ClientIP

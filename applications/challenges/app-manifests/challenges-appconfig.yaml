@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: challenges-appconfig
+  namespace: insurance
+  labels:
+    app: challenges
+    version: v1.0
+data:
+  application.properties: |
+    #Sample Generated Template
+    #Tue Dec 06 04:59:59 GMT 2022
+    cachemanager.ChallengesCM.urls=challenges-datastore-0.challenges-datastore.insurance.svc.cluster.local\:9510
+    globalvariable.mem_customer_url.value=http\://memberships\:4485/gateway/customers/1.0/customers
+    jms.DEFAULT_IS_JMS_CONNECTION.clientID=DEFAULT_IS_JMS_CLIENT
+    jms.PE_NONTRANSACTIONAL_ALIAS.clientID=ISb346b24e_edde_4299_a52f_245090fddff7
+    jndi.DEFAULT_IS_JNDI_PROVIDER.providerURL=nsp\://localhost\:9000
+    keystore.DEFAULT_IS_KEYSTORE.keyAlias.ssos.keyAliasPassword=manage
+    keystore.DEFAULT_IS_KEYSTORE.ksLocation=../common/conf/keystore.jks
+    keystore.DEFAULT_IS_KEYSTORE.ksPassword=manage
+    messaging.DefaultEndPoint.CLIENTPREFIX=J_jRQtEolDEurgAVIwwwADXaZQs_
+    messaging.DefaultEndPoint.brokerName=Broker \#1
+    messaging.DefaultEndPoint.clientGroupName=IntegrationServer
+    messaging.DefaultEndPoint.type=UM
+    messaging.DefaultEndPoint.useSourceBrokerKeystore=true
+    messaging.DefaultEndPoint.useSourceBrokerTruststore=true
+    messaging.IS_UM_CONNECTION.CLIENTPREFIX=J_jRQtEolDEurgAVIwwwADXaZQs_
+    messaging.IS_UM_CONNECTION.default=true
+    messaging.IS_UM_CONNECTION.type=UM
+    messaging.IS_UM_CONNECTION.url=nsp\://localhost\:9000
+    settings.watt.server.compile=/opt/softwareag/IntegrationServer/docker/../../jvm/jvm/bin/javac -classpath {0} -d {1} {2}
+    statisticsdatacollector.monitorConfig.enabled=true
+    statisticsdatacollector.monitorConfig.indexerThreadCount=8
+    statisticsdatacollector.monitorConfig.luceneMemorySize=256
+    statisticsdatacollector.monitorConfig.maxResults=1500000
+    statisticsdatacollector.monitorConfig.retentionDays=30
+    statisticsdatacollector.monitorConfig.searcherThreadCount=2
+    truststore.DEFAULT_IS_TRUSTSTORE.ksLocation=../common/conf/platform_truststore.jks
+    truststore.DEFAULT_IS_TRUSTSTORE.ksPassword=manage
+    user.Administrator.password=manage
+

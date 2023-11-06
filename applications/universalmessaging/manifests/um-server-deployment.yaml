@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: universal-messaging-server
+  namespace: insurance
+  labels:
+    app: messaging
+    version: "10.15"
+spec:
+  selector:
+    matchLabels:
+      app: messaging
+      version: "10.15"
+  replicas: 1
+  template:
+    metadata:
+      name: um-server
+      labels:
+        app: messaging
+        version: "10.15"   
+    spec:
+      containers:
+        - name: um-server
+          image: sagcr.azurecr.io/universalmessaging-server:10.15
+          imagePullPolicy: IfNotPresent
+          resources:
+            limits:
+              cpu: "1"
+              memory: "1Gi" 
+            requests:
+              cpu: "0.25"
+              memory: "500Mi"
+          env:
+          - name: REALM_NAME
+            value: um-server
+          - name: INIT_JAVA_MEM_SIZE 
+            value: "500"
+          - name: MAX_JAVA_MEM_SIZE 
+            value: "2048"               
+          livenessProbe:
+            failureThreshold: 10
+            initialDelaySeconds: 60
+            periodSeconds: 30
+            successThreshold: 1
+            tcpSocket:
+              port: 9000
+            timeoutSeconds: 10
+          readinessProbe:
+            failureThreshold: 10
+            tcpSocket:
+              port: 9000
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            successThreshold: 1
+            timeoutSeconds: 10
+          volumeMounts:
+           -  mountPath: /opt/softwareag/UniversalMessaging/server/umserver/data
+              name: um-data-directory
+           -  mountPath: /opt/softwareag/UniversalMessaging/server/umserver/licence/licence.xml
+              name: um-common-configurations
+              subPath: licence.xml
+          ports:
+            - name: tcp-nsp
+              containerPort: 9000            
+      imagePullSecrets:
+        - name: regcred
+        - name: sagregcred            
+      volumes:
+        - name: um-data-directory
+          persistentVolumeClaim:
+            claimName: universal-messaging-storage
+        - name: um-common-configurations
+          configMap:
+            name: webmethodslicensekeys

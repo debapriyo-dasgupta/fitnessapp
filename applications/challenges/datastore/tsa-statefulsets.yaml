@@ -1,0 +1,96 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata: 
+  name: challenges-datastore
+  namespace: insurance
+  labels:
+    app: challenges
+spec:
+  serviceName: challenges-datastore
+  replicas: 1
+  selector:
+    matchLabels:
+      app: challenges
+      component: bigmemory
+      version: 4.4.0
+  template:
+    metadata:
+      labels:
+        app: challenges
+        component: bigmemory
+        version: 4.4.0
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:    
+        - name: terracotta-bigmemory-server
+          image: sagcr.azurecr.io/bigmemorymax-server:4.4.0
+          imagePullPolicy: IfNotPresent
+          env:
+          - name: ACCEPT_EULA
+            value: "Y"
+          resources:
+            limits:
+              cpu: "2"
+              memory: "4Gi" 
+            requests:
+              cpu: "0.25"
+              memory: "2Gi"
+          readinessProbe:
+            tcpSocket:
+              port: 9510
+            timeoutSeconds: 5
+            initialDelaySeconds: 120
+            failureThreshold: 10
+            periodSeconds: 20
+            successThreshold: 1 
+          livenessProbe:
+            tcpSocket:
+              port: 9510
+            timeoutSeconds: 5
+            initialDelaySeconds: 120
+            failureThreshold: 10
+            periodSeconds: 20
+            successThreshold: 1 
+          ports:
+            - containerPort: 9510
+              name: server
+            - containerPort: 9530
+              name: replication
+            - containerPort: 9540
+              name: management
+          volumeMounts:
+            - name: challenges-datastore
+              mountPath: /data/diskstore
+            - name: challenges-datastore
+              mountPath: /data/backups
+            - name: challenges-datastore
+              mountPath: /data/logs
+            - name: challenges-datastore
+              mountPath: /data/logs/clients
+            - name: config-volume
+              mountPath: /configs/tc-config.xml
+              subPath: tc-config.xml
+            - name: license-volume
+              mountPath: /licenses/license.key
+              subPath: license.key
+      volumes:
+        - name: config-volume
+          configMap:
+            name: challenges-tc-bm-config
+        - name: license-volume
+          configMap:
+            name: webmethodslicensekeys
+      imagePullSecrets:
+        - name: sagregcred             
+  volumeClaimTemplates:
+  - metadata:
+      name: challenges-datastore
+      labels:
+        type: hostPath
+    spec:
+      accessModes: 
+      - ReadWriteOnce
+      storageClassName: local-path
+      resources:
+        requests:
+          storage: 2Gi

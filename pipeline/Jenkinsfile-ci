@@ -1,0 +1,36 @@
+pipeline 
+{
+    agent 
+    { 
+       any
+    }  
+    environment 
+    {
+        git_dev_branch_name = 'master'
+    }    
+    stages 
+    {
+        stage('BUILD') 
+        {         
+            steps 
+            {
+                sh "chmod +x -R ${env.WORKSPACE}"             
+                sh "pipeline/common.lib/build/build-image-task.sh"
+            }
+        }   
+        stage('TEST') 
+        {         
+            steps 
+            {       
+                sh "pipeline/common.lib/test/tests-task.sh"
+            }
+        }             
+    }                                   
+    post 
+    { 
+        always 
+        { 
+            cleanWs()
+        }
+    }       
+}

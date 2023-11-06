@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: challenges-tc-bm-config
+  namespace: insurance
+  labels:
+    app: challenges
+    version: 4.4.0
+data:
+  tc-config.xml: 
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!--
+    Copyright (c) 2015-2017 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their licensors.
+    Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG
+    -->
+
+    <tc:tc-config xmlns:tc="http://www.terracotta.org/config">
+
+      <servers>
+        <mirror-group>
+          <server host="challenges-datastore-0.challenges-datastore.insurance.svc.cluster.local" name="challenges-datastore-0.challenges-datastore.insurance.svc.cluster.local" >
+            <tsa-port>9510</tsa-port>
+            <management-port>9540</management-port>
+            <tsa-group-port>9530</tsa-group-port>
+            <dataStorage size="4g">
+              <offheap size="2g"/>
+              <hybrid/>
+            </dataStorage>
+            <data>/data/diskstore</data>
+            <data-backup>/data/backups</data-backup>
+            <logs>/data/logs</logs>
+          </server>
+        </mirror-group>
+        <restartable enabled="true"/>
+      </servers>
+      <clients>
+        <logs>/opt/softwareag/data/logs/clients</logs>
+      </clients>
+    </tc:tc-config>

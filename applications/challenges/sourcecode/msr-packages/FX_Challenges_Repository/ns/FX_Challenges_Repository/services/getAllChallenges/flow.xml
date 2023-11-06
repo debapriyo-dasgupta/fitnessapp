@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FLOW VERSION="3.0" CLEANUP="true">
+  <COMMENT>Initialize variables</COMMENT>
+
+  <!-- nodes -->
+
+<MAP TIMEOUT="" MODE="STANDALONE">
+  <COMMENT>Initialize variables</COMMENT>
+  <MAPTARGET>
+
+<Values version="2.0">
+  <record name="xml" javaclass="com.wm.util.Values">
+    <value name="node_type">record</value>
+    <value name="node_subtype">unknown</value>
+    <value name="is_public">false</value>
+    <value name="field_type">record</value>
+    <value name="field_dim">0</value>
+    <value name="nillable">true</value>
+    <value name="form_qualified">false</value>
+    <value name="is_global">false</value>
+    <array name="rec_fields" type="record" depth="1">
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">challenges</value>
+        <value name="field_type">recref</value>
+        <value name="field_dim">1</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+        <value name="is_soap_array_encoding_used">false</value>
+        <value name="modifiable">true</value>
+        <value name="rec_ref">FX_Challenges_Repository.documents:Challenges</value>
+      </record>
+    </array>
+    <value name="modifiable">true</value>
+  </record>
+</Values>
+</MAPTARGET>
+  <MAPSOURCE>
+
+<Values version="2.0">
+  <record name="xml" javaclass="com.wm.util.Values">
+    <value name="node_type">record</value>
+    <value name="node_subtype">unknown</value>
+    <value name="is_public">false</value>
+    <value name="field_type">record</value>
+    <value name="field_dim">0</value>
+    <value name="nillable">true</value>
+    <value name="form_qualified">false</value>
+    <value name="is_global">false</value>
+    <array name="rec_fields" type="record" depth="1">
+    </array>
+    <value name="modifiable">true</value>
+  </record>
+</Values>
+</MAPSOURCE>
+
+  <!-- nodes -->
+
+<MAPSET NAME="Setter" OVERWRITE="true" VARIABLES="false" GLOBALVARIABLES="false" FIELD="/challenges;4;1;FX_Challenges_Repository.documents:Challenges">
+  <DATA ENCODING="XMLValues" I18N="true">
+
+<Values version="2.0">
+  <array name="xml" type="record" depth="1">
+    <record javaclass="com.wm.util.Values">
+      <value name="challengeId">C001</value>
+      <value name="name">Yoga - Tadasana</value>
+      <value name="times">30</value>
+      <value name="durationMinutes">30</value>
+      <value name="description">Tadasana centers your body and mind, which helps create a calm sense of inner peace. Maintaining alignment and body awareness is a constant process. Standing strong, steady, and centered in Mountain Pose helps to improve posture, alignment, and balance.</value>
+      <value name="points">10</value>
+      <value name="availability">Yes</value>
+      <record name="criteria" javaclass="com.wm.util.Values">
+        <record name="age" javaclass="com.wm.util.Values">
+          <value name="min">10</value>
+          <value name="max">70</value>
+        </record>
+      </record>
+    </record>
+    <record javaclass="com.wm.util.Values">
+      <value name="challengeId">C002</value>
+      <value name="name">Yoga - Surya Namaskar</value>
+      <value name="times">15</value>
+      <value name="durationMinutes">40</value>
+      <value name="description">The Surya Namaskar tones the entire body, helps with weight loss, and strengthens muscles and joints. Practice this flow if you want to improve your complexion as it ensures a better functioning digestive system. Improve your sleep as it helps combat insomnia and reduces stress levels.</value>
+      <value name="points">50</value>
+      <value name="availability">Yes</value>
+      <record name="criteria" javaclass="com.wm.util.Values">
+        <record name="age" javaclass="com.wm.util.Values">
+          <value name="min">10</value>
+          <value name="max">60</value>
+        </record>
+      </record>
+    </record>
+    <record javaclass="com.wm.util.Values">
+      <value name="challengeId">C003</value>
+      <value name="name">Pushups</value>
+      <value name="times">25</value>
+      <value name="durationMinutes">10</value>
+      <value name="description">Doing daily pushups can help build muscle tone and strength in the upper body. Other potential benefits include improved cardiovascular health and better support around the shoulder joints. However, practicing pushups every day does come with some risks. These include lower back pain, wrist pain, and elbow injury.</value>
+      <value name="points">50</value>
+      <value name="availability">Yes</value>
+      <record name="criteria" javaclass="com.wm.util.Values">
+        <record name="age" javaclass="com.wm.util.Values">
+          <value name="min">15</value>
+          <value name="max">45</value>
+        </record>
+      </record>
+    </record>
+  </array>
+</Values>
+</DATA>
+</MAPSET>
+</MAP>
+</FLOW>

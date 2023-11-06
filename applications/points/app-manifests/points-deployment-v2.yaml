@@ -1,0 +1,140 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: points-v2
+  namespace: insurance
+spec:
+  selector:
+    matchLabels:
+      app: points
+      component: msr
+      version: v2.0
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: points
+        component: msr
+        version: v2.0
+    spec:
+      hostAliases:
+      - ip: "127.0.0.1"
+        hostnames:
+        - "points"      
+      initContainers:
+      - name: api-gateway-dependency-check
+        image: redhat/ubi8-minimal
+        args:
+        - /bin/sh
+        - -c
+        - >
+          set -x;
+          while [ $(curl -sw '%{http_code}' "http://api-gateway:5555/rest/apigateway/health" -o /dev/null) -ne 200 ]; do
+            sleep 15;
+          done        
+      containers:
+        - name: insurance-fitness-points-container       
+          image: fitness-points:v1.0
+          imagePullPolicy: IfNotPresent        
+        # Resources required for the apigateway to function. CPUs and Memory configurations.
+          resources:
+            limits:
+              cpu: "0.3"
+              memory: "1G" 
+            requests:
+              cpu: "0.25"
+              memory: "500M"  
+          env:
+          - name: JAVA_MIN_MEM
+            value: "256M"
+          - name: JAVA_MAX_MEM
+            value: "1024M"         
+          ports:
+            - containerPort: 5555
+        # Liveness probe to check whether container is active. Restart happens when liveness probe fails.
+          livenessProbe:
+            tcpSocket:
+              port: 5555
+            timeoutSeconds: 5
+            initialDelaySeconds: 120
+            failureThreshold: 10
+            periodSeconds: 20
+            successThreshold: 1
+        # Readiness probe to check whether pod is ready to serve the requests. Traffic will not be injected unless readiness probes passes.
+          readinessProbe:
+            tcpSocket:
+              port: 5555
+            timeoutSeconds: 5
+            initialDelaySeconds: 120
+            failureThreshold: 10
+            periodSeconds: 20
+            successThreshold: 1            
+        # Volume mount for Terracotta/Integration Server license key.
+          volumeMounts:
+            - mountPath: /opt/softwareag/IntegrationServer/bin/../config/licenseKey.xml
+              subPath: licenseKey.xml
+              name: licensekey
+            - mountPath: /opt/softwareag/common/conf/terracotta-license.key
+              subPath: terracotta-license.key
+              name: licensekey
+            - name: application-properties
+              mountPath: /opt/softwareag/IntegrationServer/application.properties
+              subPath: application.properties          
+        - name: microgateway
+          image: sagcr.azurecr.io/microgateway:10.15
+          imagePullPolicy: IfNotPresent
+          resources:
+            limits:
+              cpu: "0.5"
+              memory: "500Mi" 
+            requests:
+              cpu: "0.2"
+              memory: "250Mi"              
+          ports:
+            - containerPort: 4485
+          # Environment variables for microgateway to connect to Main API Gateway
+          env:
+          - name: mcgw_api_gateway_url
+            value: http://api-gateway:5555/rest/apigateway
+          - name: mcgw_api_gateway_user
+            value: Administrator
+          - name: mcgw_api_gateway_password
+            value: manage
+          - name: mcgw_downloads_apis
+            value: points  
+          # Liveness probe to check whether container is active. Restart happens when liveness probe fails.
+          livenessProbe:
+            exec:
+              command:
+              - /bin/sh
+              - -c
+              - /opt/softwareag/Microgateway/files/k8s-lifenesscheck.sh
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          # Readiness probe to check whether pod is ready to serve the requests. Traffic will not be injected unless readiness probes passes.
+          readinessProbe:
+            exec:
+              command:
+              - /bin/sh
+              - -c
+              - /opt/softwareag/Microgateway/files/k8s-readinesscheck.sh
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3    
+          volumeMounts:
+            - mountPath: /opt/softwareag/Microgateway/config/license.xml
+              subPath: microgateway-license.xml
+              name: licensekey                       
+      imagePullSecrets:
+        - name: regcred
+        - name: sagregcred             
+      volumes:
+        - name: licensekey
+          configMap:
+              name: webmethodslicensekeys
+        - name: application-properties
+          configMap:
+              name: points-appconfig

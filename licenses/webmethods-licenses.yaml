@@ -1,0 +1,278 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: webmethodslicensekeys
+data:
+  licenseKey.xml: |
+    <?xml version="1.0" encoding="US-ASCII"?>
+    <SoftwareAG_License>
+    <Component Id="SalesInfo">
+    <SerialNumber>0000763143</SerialNumber>
+    <LicenseKey>353444E7D4D9AC096D4B565926C851EB</LicenseKey>
+    <CustomerID>LK-Diverse-WM</CustomerID>
+    <CustomerName>Software AG Internal</CustomerName>
+    <ContractDetails>InternalNov302024</ContractDetails>
+    <ContractPosNumber>10</ContractPosNumber>
+    <LicenseTypeDetails>Internal</LicenseTypeDetails>
+    <AutoCallHome>
+          </AutoCallHome>
+    </Component>
+    <Component Id="ProductInfo">
+    <ExpirationDate>2024/11/30</ExpirationDate>
+    <OS>any</OS>
+    <ProductCode>MSC</ProductCode>
+    <ProductID/>
+    <ProductName>webMethods Microservices Runtime</ProductName>
+    <ProductVersion>10.0</ProductVersion>
+    <Usage>Internal2024</Usage>
+    <RenewalDate/>
+    <HigherLevPosNr>
+          </HigherLevPosNr>
+    <HigherLevProdCode>
+          </HigherLevProdCode>
+    <HigherLevProdName>
+          </HigherLevProdName>
+    </Component>
+    <Component Id="Integration Server">
+    <ProductCode>PIE</ProductCode>
+    <ProductVersion>10.0</ProductVersion>
+    <ConcurrentSessions>Unlimited</ConcurrentSessions>
+    <Clustering>yes</Clustering>
+    <PubSub>yes</PubSub>
+    <ART>yes</ART>
+    <RemoteInvoke>yes</RemoteInvoke>
+    <GuaranteedDelivery>yes</GuaranteedDelivery>
+    <SecurityAuditing>yes</SecurityAuditing>
+    <DistributedCache>yes</DistributedCache>
+    <EnterpriseGateway>no</EnterpriseGateway>
+    <Microservices>yes</Microservices>
+    <TxnTimer>3</TxnTimer>
+    </Component>
+    <Component Id="Trading Networks">
+    <ProductCode/>
+    <MaxPartners/>
+    </Component>
+    <Component Id="LicenseInfo">
+    <PriceUnit>CoreD</PriceUnit>
+    <PriceQuantity>16</PriceQuantity>
+    <TypeOfInstallation>Internal2024</TypeOfInstallation>
+    <LicenseType/>
+    <ExtendedRights>
+          </ExtendedRights>
+    <LicenseVersion>1.2</LicenseVersion>
+    <Metering>
+          </Metering>
+    </Component>
+    </SoftwareAG_License>
+  terracotta-license.key: |
+    # This software license, granted by Terracotta Inc. - a Software AG company, is valid for and may only be used
+    # by the licensee of this product ("Licensee").
+    # Descriptor version: 4
+    # ------------------------------------------------------------------------------------
+    Date of Issue: 2023-10-16
+    Expiration Date: 2024-11-30
+    License Type: Commercial
+    License Number: FOR INTERNAL USE ONLY
+    Licensee: SOFTWARE AG
+    Product: BigMemory Max
+    Edition: FX
+    Capabilities: TMC, WAN, authentication, ehcache, ehcache offheap, failover tuning, search, security, server array offheap, server striping
+    Max Client Count: 50
+    webMethods OEM: false
+    ehcache.maxOffHeap: 500G
+    terracotta.serverArray.maxDataStorage: 500G
+
+    Signature: MCwCFDRtGH3NqEPt6+UvLtPhqba9dN6TAhRfW2Y1JTsR5eSA35FMdaMfsVcGKQ== 
+  license.key: |
+    # This software license, granted by Terracotta Inc. - a Software AG company, is valid for and may only be used
+    # by the licensee of this product ("Licensee").
+    # Descriptor version: 4
+    # ------------------------------------------------------------------------------------
+    Date of Issue: 2023-10-16
+    Expiration Date: 2024-11-30
+    License Type: Commercial
+    License Number: FOR INTERNAL USE ONLY
+    Licensee: SOFTWARE AG
+    Product: BigMemory Max
+    Edition: FX
+    Capabilities: TMC, WAN, authentication, ehcache, ehcache offheap, failover tuning, search, security, server array offheap, server striping
+    Max Client Count: 50
+    webMethods OEM: false
+    ehcache.maxOffHeap: 500G
+    terracotta.serverArray.maxDataStorage: 500G
+
+    Signature: MCwCFDRtGH3NqEPt6+UvLtPhqba9dN6TAhRfW2Y1JTsR5eSA35FMdaMfsVcGKQ==
+  licence.xml: |
+    <?xml version="1.0" encoding="US-ASCII"?>
+    <SoftwareAG_License>
+    <Component Id="SalesInfo">
+    <SerialNumber>0000763145</SerialNumber>
+    <LicenseKey>2AF79CCC4A9AE27D01477354AA2B053C</LicenseKey>
+    <CustomerID>LK-Diverse-WM</CustomerID>
+    <CustomerName>Software AG Internal</CustomerName>
+    <ContractDetails>InternalNov302024</ContractDetails>
+    <ContractPosNumber>10</ContractPosNumber>
+    <LicenseTypeDetails>Internal</LicenseTypeDetails>
+    <AutoCallHome>
+          </AutoCallHome>
+    </Component>
+    <Component Id="ProductInfo">
+    <ExpirationDate>2024/11/30</ExpirationDate>
+    <OS>any</OS>
+    <ProductCode>NUMWF</ProductCode>
+    <ProductID/>
+    <ProductName>Universal Messaging Fully Featured</ProductName>
+    <ProductVersion>10.5</ProductVersion>
+    <Usage>Internal2024</Usage>
+    <RenewalDate/>
+    <HigherLevPosNr>
+          </HigherLevPosNr>
+    <HigherLevProdCode>
+          </HigherLevProdCode>
+    <HigherLevProdName>
+          </HigherLevProdName>
+    </Component>
+    <Component Id="Universal Messaging">
+    <ProductCode>NUM</ProductCode>
+    <ProductVersion>10.5</ProductVersion>
+    <MixedChannels>yes</MixedChannels>
+    <ReliableChannels>yes</ReliableChannels>
+    <PersistentChannels>yes</PersistentChannels>
+    <JMSClients>yes</JMSClients>
+    <WebClients>yes</WebClients>
+    <MobileClients>yes</MobileClients>
+    <EnterpriseClients>yes</EnterpriseClients>
+    <Plugins>yes</Plugins>
+    <DataGroups>yes</DataGroups>
+    <Joins>yes</Joins>
+    <Clustering>yes</Clustering>
+    <Scheduling>yes</Scheduling>
+    <MessagingPriority>yes</MessagingPriority>
+    <HTTPSupport>yes</HTTPSupport>
+    <SharedMemory>yes</SharedMemory>
+    <Multicast>yes</Multicast>
+    <MQTT>yes</MQTT>
+    <AMQP>yes</AMQP>
+    <JavaClients>yes</JavaClients>
+    <Queues>yes</Queues>
+    <DataStreams>yes</DataStreams>
+    <Zones>yes</Zones>
+    <HorizontalScaling>yes</HorizontalScaling>
+    </Component>
+    <Component Id="LicenseInfo">
+    <PriceUnit>CoreD</PriceUnit>
+    <PriceQuantity>16</PriceQuantity>
+    <TypeOfInstallation>Internal2024</TypeOfInstallation>
+    <LicenseType/>
+    <ExtendedRights>
+          </ExtendedRights>
+    <LicenseVersion>1.2</LicenseVersion>
+    <Metering>
+          </Metering>
+    </Component>
+    </SoftwareAG_License>
+  apilicenseKey.xml: |
+    <?xml version="1.0" encoding="US-ASCII"?>
+    <SoftwareAG_License>
+    <Component Id="SalesInfo">
+    <SerialNumber>0000763169</SerialNumber>
+    <LicenseKey>76F31302BC0B76181AC4D9A2830016D2</LicenseKey>
+    <CustomerID>LK-Diverse-WM</CustomerID>
+    <CustomerName>Software AG Internal</CustomerName>
+    <ContractDetails>InternalNov302024</ContractDetails>
+    <ContractPosNumber>10</ContractPosNumber>
+    <LicenseTypeDetails>Internal</LicenseTypeDetails>
+    <AutoCallHome>
+          </AutoCallHome>
+    </Component>
+    <Component Id="ProductInfo">
+    <ExpirationDate>2024/11/30</ExpirationDate>
+    <OS>any</OS>
+    <ProductCode>YAIAA</ProductCode>
+    <ProductID/>
+    <ProductName>API Gateway Advanced Edition</ProductName>
+    <ProductVersion>10.7</ProductVersion>
+    <Usage>Internal2024</Usage>
+    <RenewalDate/>
+    <HigherLevPosNr>
+          </HigherLevPosNr>
+    <HigherLevProdCode>
+          </HigherLevProdCode>
+    <HigherLevProdName>
+          </HigherLevProdName>
+    </Component>
+    <Component Id="Integration Server">
+    <ProductCode>YAI</ProductCode>
+    <ProductVersion>10.7</ProductVersion>
+    <ConcurrentSessions>Unlimited</ConcurrentSessions>
+    <Clustering>yes</Clustering>
+    <PubSub>no</PubSub>
+    <ART>no</ART>
+    <RemoteInvoke>yes</RemoteInvoke>
+    <GuaranteedDelivery>no</GuaranteedDelivery>
+    <SecurityAuditing>yes</SecurityAuditing>
+    <DistributedCache>yes</DistributedCache>
+    <EnterpriseGateway>yes</EnterpriseGateway>
+    <Microservices>yes</Microservices>
+    </Component>
+    <Component Id="APIGateway">
+    <PolicyManagementThreatProtection>yes</PolicyManagementThreatProtection>
+    <PolicyManagementGateway>yes</PolicyManagementGateway>
+    <ApplicationManagement>yes</ApplicationManagement>
+    <APIManagement>yes</APIManagement>
+    <AppMesh>yes</AppMesh>
+    </Component>
+    <Component Id="LicenseInfo">
+    <PriceUnit>CoreD</PriceUnit>
+    <PriceQuantity>16</PriceQuantity>
+    <TypeOfInstallation>Internal2024</TypeOfInstallation>
+    <LicenseType/>
+    <ExtendedRights>
+          </ExtendedRights>
+    <LicenseVersion>1.2</LicenseVersion>
+    <Metering>
+          </Metering>
+    </Component>
+    </SoftwareAG_License>
+  microgateway-license.xml: |
+    <?xml version="1.0" encoding="US-ASCII"?>
+    <SoftwareAG_License>
+    <Component Id="SalesInfo">
+    <SerialNumber>0000763172</SerialNumber>
+    <LicenseKey>C883D3A038FE5B4A5526538982592417</LicenseKey>
+    <CustomerID>LK-Diverse-WM</CustomerID>
+    <CustomerName>Software AG Internal</CustomerName>
+    <ContractDetails>InternalNov302024</ContractDetails>
+    <ContractPosNumber>10</ContractPosNumber>
+    <LicenseTypeDetails>Internal</LicenseTypeDetails>
+    <AutoCallHome>
+          </AutoCallHome>
+    </Component>
+    <Component Id="ProductInfo">
+    <ExpirationDate>2024/11/30</ExpirationDate>
+    <OS>any</OS>
+    <ProductCode>YAM</ProductCode>
+    <ProductID/>
+    <ProductName>webMethods Microgateway</ProductName>
+    <ProductVersion>10.3</ProductVersion>
+    <Usage>Internal2024</Usage>
+    <RenewalDate/>
+    <HigherLevPosNr>
+          </HigherLevPosNr>
+    <HigherLevProdCode>
+          </HigherLevProdCode>
+    <HigherLevProdName>
+          </HigherLevProdName>
+    </Component>
+    <Component Id="LicenseInfo">
+    <PriceUnit>ST</PriceUnit>
+    <PriceQuantity>16</PriceQuantity>
+    <TypeOfInstallation>Internal2024</TypeOfInstallation>
+    <LicenseType/>
+    <ExtendedRights>
+          </ExtendedRights>
+    <LicenseVersion>1.2</LicenseVersion>
+    <Metering>
+          </Metering>
+    </Component>
+    </SoftwareAG_License>
