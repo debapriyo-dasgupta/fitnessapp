@@ -5,7 +5,6 @@ metadata:
   labels:
     app: api-gateway
     version: 10.15.0
-  namespace: insurance
 spec:
   replicas: 1
   selector:
