@@ -19,10 +19,10 @@ docker build -t fitness-assessments:${VERSION} -f assessments/Dockerfile .
 # Improvise this section to read the image name from config----
 
 echo "Fitness Assessments -> Image tagging"
-docker image tag fitness-assessments:${VERSION} kplogesh/fitness-app/assessments:${VERSION}
+docker image tag fitness-assessments:${VERSION} kplogesh/fitness-app:assessments-${VERSION}
 
 echo "B2B Platinum Solution Image Push -> JFrog Image Repository"
-docker push kplogesh/fitness-app/assessments:${VERSION}
+docker push kplogesh/fitness-app:assessments-${VERSION}
 
 
 echo "Listing the images post the build process"
