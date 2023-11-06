@@ -5,7 +5,6 @@
 cd applications/
 # Create the image using the docker file defined
 echo "Listing existing images in the docker hosted machine"
-df -h
 docker image ls
 
 #Login to JFrog Repo / Docker
