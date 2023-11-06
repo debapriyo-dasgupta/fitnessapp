@@ -1,0 +1,10 @@
+curl -L https://istio.io/downloadIstio | sh -
+
+export PATH="$PATH:/opt/monitoring/scripts/Observability/Istio/istio-1.16.0/bin"
+
+istioctl install --set profile=demo -y
+
+kubectl label namespace insurance istio-injection=enabled
+
+
+kubectl label namespace employee istio-injection=enabled

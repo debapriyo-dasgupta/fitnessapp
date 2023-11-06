@@ -1,0 +1,230 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: monitoring
+  name: filebeat-config
+  labels:
+    app: filebeat
+data:
+  filebeat.yml: |-
+    filebeat.inputs:
+    - type: log
+      paths:
+        - /opt/local-path-provisioner/pvc-7b9530be-ca20-4d2b-89be-36aa128ae4d2_insurance_msr-log-storage/troubleshoot.log
+      enabled: true
+      fields:
+          filename: troubleshoot.log
+      fields_under_root: false     
+    - type: container
+      paths:
+        - /var/log/containers/*.log
+      processors:
+        - add_kubernetes_metadata:
+            host: ${NODE_NAME}
+            matchers:
+            - logs_path:
+                logs_path: "/var/log/containers/"           
+
+    filebeat.modules:
+      - module: system
+        syslog:
+          enabled: true
+        auth:
+          enabled: true
+
+    processors:
+      - add_docker_metadata:
+
+    output.logstash:
+      hosts: '${LOGSTASH_URL}'
+
+    #logging.level: debug
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: monitoring
+  name: filebeat-indice-lifecycle
+  labels:
+    app: filebeat
+data:
+  indice-lifecycle.json: |-
+    {
+      "policy": {
+        "phases": {
+          "hot": {
+            "actions": {
+              "rollover": {
+                "max_size": "5GB" ,
+                "max_age": "1d"
+              }
+            }
+          },
+          "delete": {
+            "min_age": "7d",
+            "actions": {
+              "delete": {}
+            }
+          }
+        }
+      }
+    }
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  namespace: monitoring
+  name: filebeat
+  labels:
+    app: filebeat
+spec:
+  selector:
+    matchLabels:
+      app: filebeat
+  template:
+    metadata:
+      labels:
+        app: filebeat
+    spec:
+      serviceAccountName: filebeat
+      terminationGracePeriodSeconds: 30
+      #hostNetwork: true
+      #dnsPolicy: ClusterFirstWithHostNet
+      containers:
+      - name: filebeat
+        image: docker.elastic.co/beats/filebeat:8.2.3
+        args: [
+          "-c", "/etc/filebeat.yml",
+          "-e",
+        ]
+        env:
+        - name: LOGSTASH_URL
+          value: "logstash-service.monitoring.svc.cluster.local:5044"
+        #- name: ELASTICSEARCH_HOST
+          #value: api-gateway-service.monitoring.svc.cluster.local
+        #- name: ELASTICSEARCH_PORT
+          #value: "9072"
+        #- name: ELASTICSEARCH_USERNAME
+          #value: elastic
+        #- name: ELASTICSEARCH_PASSWORD
+          #valueFrom:
+            #secretKeyRef:
+              #name: elasticsearch-pw-elastic
+              #key: password
+        #- name: KIBANA_HOST
+          #value: kibana.monitoring.svc.cluster.local
+        #- name: KIBANA_PORT
+          #value: "5601"
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        securityContext:
+          runAsUser: 0
+        resources:
+          limits:
+            memory: 400Mi
+          requests:
+            cpu: 200m
+            memory: 200Mi
+        volumeMounts:
+        - name: config
+          mountPath: /etc/filebeat.yml
+          readOnly: true
+          subPath: filebeat.yml
+        - name: filebeat-indice-lifecycle
+          mountPath: /etc/indice-lifecycle.json
+          readOnly: true
+          subPath: indice-lifecycle.json
+        - name: data
+          mountPath: /usr/share/filebeat/data
+        - name: varlogpods
+          mountPath: /var/log/pods
+        - name: varlog
+          mountPath: /var/log
+#          readOnly: true
+        - name: varlibdockercontainers
+          mountPath: /var/lib/docker/containers
+#          readOnly: true
+        - name: optdockercontainers
+          mountPath: /opt/docker/containers
+        - name: dockersock
+          mountPath: /var/run/docker.sock
+        - name: trxaudit
+          mountPath: /opt/local-path-provisioner/pvc-7b9530be-ca20-4d2b-89be-36aa128ae4d2_insurance_msr-log-storage/troubleshoot.log       
+      volumes:
+      - name: config
+        configMap:
+          defaultMode: 0600
+          name: filebeat-config
+      - name: filebeat-indice-lifecycle
+        configMap:
+          defaultMode: 0600
+          name: filebeat-indice-lifecycle
+      - name: varlogpods
+        hostPath:
+          path: /var/log/pods
+      - name: optdockercontainers
+        hostPath:
+          path: /opt/docker/containers
+      - name: varlog
+        hostPath:
+          path: /var/log
+      - name: varlibdockercontainers
+        hostPath:
+          path: /var/lib/docker/containers
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock
+      # data folder stores a registry of read status for all files, so we don't send everything again on a Filebeat pod restart
+      - name: data
+        hostPath:
+          # When filebeat runs as non-root user, this directory needs to be writable by group (g+w).
+          path: /var/lib/filebeat-data
+          type: DirectoryOrCreate
+      - name: trxaudit
+        hostPath:
+          path: /opt/local-path-provisioner/pvc-7b9530be-ca20-4d2b-89be-36aa128ae4d2_insurance_msr-log-storage/troubleshoot.log
+          type: DirectoryOrCreate          
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  namespace: monitoring
+  name: filebeat
+subjects:
+- kind: ServiceAccount
+  name: filebeat
+  namespace: monitoring
+roleRef:
+  kind: ClusterRole
+  name: filebeat
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  namespace: monitoring
+  name: filebeat
+  labels:
+    app: filebeat
+rules:
+- apiGroups: [""]
+  resources:
+  - namespaces
+  - pods
+  - nodes
+  verbs:
+  - get
+  - watch
+  - list
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  namespace: monitoring
+  name: filebeat
+  labels:
+    app: filebeat
+---

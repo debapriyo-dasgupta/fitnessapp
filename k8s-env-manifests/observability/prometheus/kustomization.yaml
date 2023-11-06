@@ -1,0 +1,6 @@
+resources: 
+- clusterRole.yaml
+- prometheus-cm.yaml
+- prometheus-pvc.yaml
+- prometheus-svc.yaml
+- prometheus-deployment.yaml

@@ -1,0 +1,137 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: logstash-configmap
+  namespace: monitoring
+data:
+  logstash.yml: |
+    http.host: "0.0.0.0"
+    path.config: /usr/share/logstash/pipeline
+    xpack.monitoring.enabled: false
+    pipeline.ecs_compatibility: disabled
+  logstash.conf: |
+    # all input will come from filebeat, no local logs
+    input 
+    {
+      beats {
+        port => 5044
+      }
+    }
+
+    filter 
+    {
+      if [log][file][path] == "/opt/local-path-provisioner/pvc-7b9530be-ca20-4d2b-89be-36aa128ae4d2_insurance_msr-log-storage/troubleshoot.log" 
+      {            
+        grok
+        {
+          match => { "message" => "\[%{TIMESTAMP_ISO8601:timestamp}\] %{GREEDYDATA:messagelogs}" }
+        }
+        grok 
+        {
+          break_on_match => "false"
+          match => { "messagelogs" => "\[ECID: %{DATA:ecid}\]" }
+          match => { "messagelogs" => "\[APIINFO: %{DATA:apiInfo}\]" }
+          match => { "messagelogs" => "\[LOGLEVEL: %{DATA:logLevel}\]" }
+          match => { "messagelogs" => "\[HOST: %{DATA:hostPort}\]" }
+          match => { "messagelogs" => "\[USERID: %{DATA:userId}\]" }
+          match => { "messagelogs" => "\[SERVICENAME: %{DATA:serviceName}\]" }
+          match => { "messagelogs" => "\[ENDPOINTURI: %{DATA:endpointURI}\]" }
+          match => { "messagelogs" => "\[REQUESTTYPE: %{DATA:requestType}\]" }
+          match => { "messagelogs" => "\[HTTPVERSION: %{DATA:httpVersion}\]" }
+          match => { "messagelogs" => "\[RESPONSETIME: %{DATA:responseTime}\]" }
+          match => { "messagelogs" => "\[RESPONSECODE: %{DATA:responseCode}\]" }
+          match => { "messagelogs" => "\[PAYLOADSIZE: %{DATA:payloadSize}\]" }
+          match => { "messagelogs" => "\[HEADERS: %{DATA:headers}\]" }
+          match => { "messagelogs" => "\[RESPONSEMESSAGE: %{DATA:responseMessage}\]" }
+          match => { "messagelogs" => "REQUEST RECEIVED IN ESB WITH PAYLOAD: %{DATA:request_payload}\]\]" }
+          match => { "messagelogs" => "RESPONSE RECEIVED IN ESB WITH PAYLOAD: %{DATA:response_payload}\]\]" }
+          match => { "messagelogs" => "REQUEST SENT TO REMOTE SERVICE WITH PAYLOAD: %{DATA:remote_request_payload}\]\]" }
+          match => { "messagelogs" => "RESPONSE RECEIVED FROM REMOTE SERVICE WITH PAYLOAD: %{DATA:remote_response_payload}\]\]" }
+          tag_on_failure => [Failure]	
+        }       
+        mutate
+        {
+             remove_field => [ "ecs","tags","agent","input","host","@version","fields","@timestamp","message","messagelogs"]
+        }
+      }     
+    }
+   
+    output 
+    {
+        if [log][file][path] == "/opt/local-path-provisioner/pvc-7b9530be-ca20-4d2b-89be-36aa128ae4d2_insurance_msr-log-storage/troubleshoot.log"
+        {
+                elasticsearch  
+                {
+                      hosts => [ "${ELASTICSEARCH_HOSTS}" ]
+                      user => "${ELASTICSEARCH_USER}"
+                      password => "${ELASTICSEARCH_PASSWORD}"
+                      index => "http_customlogger_transactionalevents"
+                }
+             stdout { codec => rubydebug }
+        }        
+        else 
+        {
+                elasticsearch  
+                {
+                      hosts => [ "${ELASTICSEARCH_HOSTS}" ]
+                      user => "${ELASTICSEARCH_USER}"
+                      password => "${ELASTICSEARCH_PASSWORD}"
+                      index => "logs-%{[@metadata][beat]}"
+                }
+        }      
+    }
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: logstash
+  name: logstash
+  namespace: monitoring
+spec:
+  containers:
+  - image: docker.elastic.co/logstash/logstash:8.2.3
+    name: logstash
+    ports:
+    - containerPort: 5044
+    env:
+    - name: ELASTICSEARCH_HOSTS
+      value: "http://api-gateway.insurance.svc.cluster.local:9240"
+    - name: ELASTICSEARCH_USER
+      value: "elastic"
+    - name: ELASTICSEARCH_PASSWORD
+      value: "changeme"
+    resources: {}
+    volumeMounts:
+    - name: config-volume
+      mountPath: /usr/share/logstash/config
+    - name: logstash-pipeline-volume
+      mountPath: /usr/share/logstash/pipeline
+  restartPolicy: OnFailure
+  volumes:
+  - name: config-volume
+    configMap:
+      name: logstash-configmap
+      items:
+        - key: logstash.yml
+          path: logstash.yml
+  - name: logstash-pipeline-volume
+    configMap:
+      name: logstash-configmap
+      items:
+        - key: logstash.conf
+          path: logstash.conf
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: logstash-service
+  namespace: monitoring
+spec:
+  selector:
+    app: logstash
+  ports:
+  - protocol: TCP
+    port: 5044
+    targetPort: 5044
+  type: ClusterIP

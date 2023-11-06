@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    component: "alertmanager"
+    app: prometheus
+  name: prometheus-alertmanager
+  namespace: monitoring
+spec:
+  selector:
+    matchLabels:
+      component: "alertmanager"
+      app: prometheus
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        component: "alertmanager"
+        app: prometheus
+    spec:
+      containers:
+        - name: prometheus-alertmanager
+          image: prom/alertmanager:latest
+          imagePullPolicy: "IfNotPresent"
+          args:
+            - --config.file=/etc/config/alertmanager.yml
+            - --storage.path=/data
+            - --cluster.listen-address=
+            - --web.external-url=http://vadigcs03540.eur.ad.sag:31999
+          ports:
+            - containerPort: 9093
+          readinessProbe:
+            httpGet:
+              path: /-/ready
+              port: 9093
+            initialDelaySeconds: 30
+            timeoutSeconds: 30
+          resources:
+            limits:
+              cpu: "1"
+              memory: "1Gi" 
+            requests:
+              cpu: "0.25"
+              memory: "500Mi"  
+          volumeMounts:
+            - name: config-volume
+              mountPath: /etc/config
+            - name: storage-volume
+              mountPath: "/data"
+              subPath: ""
+        - name: prometheus-alertmanager-configmap-reload
+          image: "jimmidyson/configmap-reload:latest"
+          imagePullPolicy: "IfNotPresent"
+          args:
+            - --volume-dir=/etc/config
+            - --webhook-url=http://127.0.0.1:9093/-/reload
+          resources:
+            limits:
+              cpu: "0.5"
+              memory: "0.5Gi" 
+            requests:
+              cpu: "0.1"
+              memory: "100Mi"  
+          volumeMounts:
+            - name: config-volume
+              mountPath: /etc/config
+              readOnly: true
+      securityContext:
+        fsGroup: 65534
+        runAsGroup: 65534
+        runAsNonRoot: true
+        runAsUser: 65534       
+      imagePullSecrets:
+        - name: regcred        
+      volumes:
+        - name: config-volume
+          configMap:
+            name: prometheus-alertmanager
+        - name: storage-volume
+          persistentVolumeClaim:
+            claimName: prometheus-alertmanager-storage

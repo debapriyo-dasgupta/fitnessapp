@@ -1,0 +1,5 @@
+resources: 
+- alertmanager-cm.yaml
+- alertmanager-pvc.yaml
+- alertmanager-svc.yaml
+- alertmanager-deployment.yaml

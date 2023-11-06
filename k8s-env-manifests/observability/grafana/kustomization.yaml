@@ -1,0 +1,6 @@
+resources: 
+- grafana-ini-cm.yaml
+- grafana-datasource-config.yaml
+- grafana-pvc.yaml
+- grafana-service.yaml
+- grafana-deployment.yaml
