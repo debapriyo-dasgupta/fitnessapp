@@ -15,11 +15,11 @@ docker login -u kplogesh -p Dexter@123
 echo "Image build process -> Fitness Assessments"
 read VERSION IMAGE_NAME < <(get-version "assessments/version.txt")
 
-docker build -t fitness-assessmens:${VERSION} -f assessments/Dockerfile .
+docker build -t fitness-assessments:${VERSION} -f assessments/Dockerfile .
 # Improvise this section to read the image name from config----
 
 echo "Fitness Assessments -> Image tagging"
-docker image tag fitness-app:${VERSION} kplogesh/fitness-app/assessments:${VERSION}
+docker image tag fitness-assessments:${VERSION} kplogesh/fitness-app/assessments:${VERSION}
 
 echo "B2B Platinum Solution Image Push -> JFrog Image Repository"
 docker push kplogesh/fitness-app/assessments:${VERSION}
