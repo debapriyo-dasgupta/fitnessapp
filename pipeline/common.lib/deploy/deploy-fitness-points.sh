@@ -12,8 +12,8 @@ read VERSION IMAGE_NAME < <(get-version "../version.txt")
 echo "IMAGE DETAILS - $IMAGE_NAME:$VERSION"
 
 # Deploy the target manifests to create the runtimes/pods
-sed -i "s/<TAG>/${VERSION}/g" memberships-points.yaml
-sed -i "s|<IMAGE_NAME>|${IMAGE_NAME}|g" memberships-points.yaml
+sed -i "s/<TAG>/${VERSION}/g" points-deployment.yaml
+sed -i "s|<IMAGE_NAME>|${IMAGE_NAME}|g" points-deployment.yaml
 
 kubectl apply -f ../datastore
 kubectl apply -f .
