@@ -22,8 +22,21 @@ data:
                 "editable": true,
                 "type": "elasticsearch",
                 "access": "proxy",
-                "database": "customlogger_transactionalevents",
-                "url": "http://api-gateway.insurance:9240",
+                "database": "gateway_default_analytics_transactionalevents_*",
+                "url": "http://api-gateway.staging:9240",
+                "jsonData":
+                {
+                  "timeField": "creationDate",
+                  "esVersion": "8.2.3"
+                }
+            },
+            {
+                "name": "Logs-Elasticsearch",
+                "editable": true,
+                "type": "elasticsearch",
+                "access": "proxy",
+                "database": "logs-filebeat",
+                "url": "http://api-gateway.staging:9240",
                 "jsonData":
                 {
                   "timeField": "creationDate",
