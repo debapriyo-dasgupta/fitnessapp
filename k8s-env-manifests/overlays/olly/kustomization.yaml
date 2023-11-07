@@ -11,3 +11,5 @@ bases:
 - ../../observability/jaeger
 - ../../observability/kiali
 - ../../observability/grafana
+- ../../observability/filebeat
+- ../../observability/logstash

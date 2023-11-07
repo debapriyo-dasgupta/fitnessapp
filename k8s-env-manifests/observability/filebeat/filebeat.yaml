@@ -8,14 +8,7 @@ metadata:
     app: filebeat
 data:
   filebeat.yml: |-
-    filebeat.inputs:
-    - type: log
-      paths:
-        - /opt/local-path-provisioner/pvc-7b9530be-ca20-4d2b-89be-36aa128ae4d2_insurance_msr-log-storage/troubleshoot.log
-      enabled: true
-      fields:
-          filename: troubleshoot.log
-      fields_under_root: false     
+    filebeat.inputs:  
     - type: container
       paths:
         - /var/log/containers/*.log
@@ -150,9 +143,7 @@ spec:
         - name: optdockercontainers
           mountPath: /opt/docker/containers
         - name: dockersock
-          mountPath: /var/run/docker.sock
-        - name: trxaudit
-          mountPath: /opt/local-path-provisioner/pvc-7b9530be-ca20-4d2b-89be-36aa128ae4d2_insurance_msr-log-storage/troubleshoot.log       
+          mountPath: /var/run/docker.sock      
       volumes:
       - name: config
         configMap:
@@ -182,11 +173,7 @@ spec:
         hostPath:
           # When filebeat runs as non-root user, this directory needs to be writable by group (g+w).
           path: /var/lib/filebeat-data
-          type: DirectoryOrCreate
-      - name: trxaudit
-        hostPath:
-          path: /opt/local-path-provisioner/pvc-7b9530be-ca20-4d2b-89be-36aa128ae4d2_insurance_msr-log-storage/troubleshoot.log
-          type: DirectoryOrCreate          
+          type: DirectoryOrCreate        
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
