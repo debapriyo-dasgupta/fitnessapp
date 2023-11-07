@@ -76,7 +76,7 @@ data:
                       hosts => [ "${ELASTICSEARCH_HOSTS}" ]
                       user => "${ELASTICSEARCH_USER}"
                       password => "${ELASTICSEARCH_PASSWORD}"
-                      index => "logs-%{[@metadata][beat]}"
+                      index => "logs-filebeat"
                 }
         }      
     }
