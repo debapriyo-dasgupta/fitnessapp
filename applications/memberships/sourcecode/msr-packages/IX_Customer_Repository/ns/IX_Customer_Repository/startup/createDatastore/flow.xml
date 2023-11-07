@@ -89,7 +89,7 @@
   <DATA ENCODING="XMLValues" I18N="true">
 
 <Values version="2.0">
-  <value name="xml">memberships-datastore-0.memberships-datastore.insurance.svc.cluster.local:9510</value>
+  <value name="xml">memberships-datastore-0.memberships-datastore:9510</value>
   <record name="type" javaclass="com.wm.util.Values">
     <value name="node_type">field</value>
     <value name="node_subtype">unknown</value>

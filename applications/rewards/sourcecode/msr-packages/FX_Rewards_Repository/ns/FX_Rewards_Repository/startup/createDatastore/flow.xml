@@ -110,7 +110,7 @@
   <DATA ENCODING="XMLValues" I18N="true">
 
 <Values version="2.0">
-  <value name="xml">rewards-datastore-0.rewards-datastore.insurance.svc.cluster.local:9510</value>
+  <value name="xml">rewards-datastore-0.rewards-datastore:9510</value>
   <record name="type" javaclass="com.wm.util.Values">
     <value name="node_type">field</value>
     <value name="node_subtype">unknown</value>
