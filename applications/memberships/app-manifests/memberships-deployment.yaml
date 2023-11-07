@@ -30,12 +30,7 @@ spec:
           set -x;
           while [ $(curl -sw '%{http_code}' "http://api-gateway:5555/rest/apigateway/health" -o /dev/null) -ne 200 ]; do
             sleep 15;
-          done
-          while [ $(timeout 1 sh -c "</dev/tcp/memberships-datastore-0.memberships-datastore/9510" && echo 0 || echo 1 ) -ne 0 ]; do
-            echo "Waiting for the memberships-datastore-0.memberships-datastore service availability..."
-            sleep 5;
-          done
-          echo "Connection to memberships-datastore-0.memberships-datastore service is available..."   
+          done 
       containers:
         - name: insurance-fitness-memberships-container       
           image: <IMAGE_NAME>-<TAG>
