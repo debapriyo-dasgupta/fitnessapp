@@ -39,7 +39,7 @@ data:
                 "url": "http://api-gateway.staging:9240",
                 "jsonData":
                 {
-                  "timeField": "creationDate",
+                  "timeField": "@timestamp",
                   "esVersion": "8.2.3"
                 }
             },
