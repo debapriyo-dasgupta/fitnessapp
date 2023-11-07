@@ -49,7 +49,7 @@ data:
                 "name": "Jaeger",
                 "orgId": 1,
                 "type": "jaeger",
-                "url": "http://tracing.monitoring:80",
+                "url": "http://tracing.monitoring:80/jaeger",
                 "version": 1
             },            
 
