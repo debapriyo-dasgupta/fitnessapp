@@ -21,6 +21,13 @@ pipeline
             {       
                 sh "pipeline/common.lib/test/tests-task.sh"
             }
+        }  
+        stage('IMAGE PUSH') 
+        {         
+            steps 
+            {      
+                sh "pipeline/common.lib/build/push-image-repo.sh"
+            }
         }             
     }                                   
     post 
