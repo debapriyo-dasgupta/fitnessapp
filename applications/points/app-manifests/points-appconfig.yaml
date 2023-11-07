@@ -9,7 +9,7 @@ data:
   application.properties: |
     #Sample Generated Template
     #Tue Dec 06 05:09:16 GMT 2022
-    cachemanager.PointsCM.urls=points-datastore-0.points-datastore.insurance.svc.cluster.local\:9510
+    cachemanager.PointsCM.urls=points-datastore-0.points-datastore:9510
     jms.DEFAULT_IS_JMS_CONNECTION.clientID=DEFAULT_IS_JMS_CLIENT
     jms.PE_NONTRANSACTIONAL_ALIAS.clientID=ISb346b24e_edde_4299_a52f_245090fddff7
     jndi.DEFAULT_IS_JNDI_PROVIDER.providerURL=nsp\://localhost\:9000

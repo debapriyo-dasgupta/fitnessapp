@@ -9,7 +9,7 @@ data:
   application.properties: |
     #Sample Generated Template
     #Tue Dec 06 04:53:59 GMT 2022
-    cachemanager.RewardsCM.urls=rewards-datastore-0.rewards-datastore.insurance.svc.cluster.local\:9510
+    cachemanager.RewardsCM.urls=rewards-datastore-0.rewards-datastore:9510
     globalvariable.points_customer_url.value=http\://points\:4485/gateway/points/1.0/customers
     jms.DEFAULT_IS_JMS_CONNECTION.clientID=DEFAULT_IS_JMS_CLIENT
     jms.PE_NONTRANSACTIONAL_ALIAS.clientID=ISb346b24e_edde_4299_a52f_245090fddff7
