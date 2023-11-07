@@ -7,8 +7,7 @@ kubectl config view --minify | grep namespace:
 cd applications/apigateway/manifests/
 
 kubectl apply -f .
-
-#kubectl apply -f ../demo-multi-versions/
+kubectl apply -f ../virtualservices/
 
 echo "Describing the configurations"
 kubectl describe deploy api-gateway
