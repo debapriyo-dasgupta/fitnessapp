@@ -9,7 +9,8 @@ docker image ls
 
 #Login to JFrog Repo / Docker
 echo "Login to docker repository -> Docker Inc."
-docker login -u kplogesh -p Dexter@123
+# Update this section
+docker login -u <user> -p <password>
 
 # Fitness-Assessments
 echo "Image build process -> Fitness Assessments"
