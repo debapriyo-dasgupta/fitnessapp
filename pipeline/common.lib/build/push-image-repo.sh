@@ -9,7 +9,7 @@ docker image ls
 
 #Login to JFrog Repo / Docker
 echo "Login to docker repository -> Docker Inc."
-docker login -u <username> -p <password>
+docker login -u kplogesh -p Dexter@123
 
 # Fitness-Assessments
 read VERSION IMAGE_NAME < <(get-version "assessments/version.txt")

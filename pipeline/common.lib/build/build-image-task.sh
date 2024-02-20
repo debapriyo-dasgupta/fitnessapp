@@ -26,6 +26,7 @@ read VERSION IMAGE_NAME < <(get-version "challenges/version.txt")
 docker build -t fitness-challenges:${VERSION} -f challenges/Dockerfile .
 # Improvise this section to read the image name from config----
 
+docker login -u kplogesh -p Dexter@123
 # Fitness-memberships
 echo "Image build process -> Fitness memberships"
 read VERSION IMAGE_NAME < <(get-version "memberships/version.txt")
