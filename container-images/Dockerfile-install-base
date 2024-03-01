@@ -1,0 +1,39 @@
+FROM redhat/ubi8
+
+ARG EMPOWER_USER
+ARG EMPOWER_PASSWORD
+ARG PROXY_HOST 
+ARG PROXY_PORT
+
+ENV _EMPOWER_USER $EMPOWER_USER
+ENV _EMPOWER_PASSWORD $EMPOWER_PASSWORD
+ENV _PROXY_HOST ${PROXY_HOST}
+ENV _PROXY_PORT ${PROXY_PORT}
+
+COPY installer.script /tmp
+COPY licenseKey.xml /tmp
+COPY support-patches /tmp
+COPY install-sag.sh /tmp
+
+WORKDIR /tmp
+
+RUN chmod +x install-sag.sh
+
+# install product, fixes and support patches
+RUN ./install-sag.sh
+
+# install JDBC driver for MS SQL Server
+COPY resources/jdbcAdapter/sqlserver/* /opt/softwareag/IntegrationServer/packages/WmJDBCAdapter/code/jars
+
+# install JDBC driver for DB2
+COPY resources/jdbcAdapter/db2/* /opt/softwareag/IntegrationServer/packages/WmJDBCAdapter/code/jars
+
+# install SAP libraries
+COPY resources/sapAdapter/*.jar /opt/softwareag/IntegrationServer/packages/WmSAP/code/jars/static
+COPY resources/sapAdapter/*.so /opt/softwareag/IntegrationServer/lib
+
+# install EntireX licenseKey
+COPY resources/entirexAdapter/license.entirex.xml /opt/softwareag/IntegrationServer/config
+
+##todo: Install and configure MQ Adapter
+

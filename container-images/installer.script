@@ -1,0 +1,40 @@
+###
+# Products selected to install:
+#   *webMethods Adapter 10.3 for JDBC
+#   *webMethods Adapter 10.1 for SAP
+#   *webMethods EntireX Adapter 10.9
+#   *webMethods MQ Adapter
+#   *Microservices Runtime
+# 
+# Fixes selected to install:
+#   *all available at 2024-02-08
+##
+IntegrationServerDBblock=0
+selectedFixes=wMFix.Broker.SharedBundles_10.15.0.0004-0445,wMFix.EntireXAdapter_10.9.0.0013-1030,wMFix.SCGCommon.Core_10.15.0.0002-0355,wMFix.NUMClient.CommonLibraries_10.15.0.0015-0881,wMFix.integrationServer.EmbeddedDB_10.15.0.0002-0007,wMFix.TPP.ApacheCommons_10.15.0.0003-0005,wMFix.webspheremq65_6.5.0.0051-0003,wMFix.WmSAP_10.1.0.0012-0010,wMFix.SJP.Java64.LNXAMD64_10.15.0.0152-0018,wMFix.InstallerClientLibrary_10.15.0.0002-0372,wMFix.TPP.Ant_10.15.0.0001-0009,wMFix.TPP.Swagger_10.15.0.0004-0024,wMFix.integrationServer.WmCloud_10.15.0.0004-0005,wMFix.integrationServer.Core_10.15.0.0008-0010,wMFix.MeteringAgent_10.15.0.0006-0560,wMFix.integrationServer.WmConsul_10.15.0.0002-0002,wMFix.WSSCore_10.15.0.0010-0859,wMFix.TPP.DBMS_10.15.0.0001-0159,wMFix.integrationServer.ART_10.15.0.0002-0006,wMFix.TPP.SpringFramework_10.15.0.0001-0004,wMFix.TPP.Servlet_10.15.0.0001-0013,wMFix.SCGCommon.Audit_10.15.0.0001-0350,wMFix.WGL.osgi_10.15.0.0001-0256,wMFix.integrationServer.WmAdmin_10.15.0.0005-0004,wMFix.WGL.designer_10.15.0.0001-0256,wMFix.FlatFile_10.7.0.0013-0003,wMFix.TPP.DataModelling.LNXAMD64_10.15.0.0002-0005,wMFix.TPP.Misc_10.15.0.0001-0004,wMFix.TPP.Parsers_10.15.0.0008-0002,wMFix.SCGCommon.Broker.JavaApi_10.15.0.0004-0445,wMFix.PLSCore_10.15.0.0001-0346,wMFix.TPP.DataModelling_10.15.0.0003-0004,wMFix.SCGCommon.IS_10.15.0.0008-0010,wMFix.WISSharedResources_10.15.0.0001-0440,wMFix.SCGCommon.DatabaseComponentConfigurator_10.15.0.0001-0018,wMFix.InstallerServerLibrary_10.15.0.0002-0372,wMFix.WGL.commonlib_10.15.0.0001-0256,wMFix.GWMIS_10.15.0.0003-0022,wMFix.jdbcAdapter_10.3.0.0020-0001
+IntegrationServersecurePort=__VERSION1__,5543
+IntegrationServerDBUser.Name=__VERSION1__,
+IntegrationServerdiagnosticPort=__VERSION1__,9999
+com.wm.distman.utils_panel1=0
+ISExtOrInt=__VERSION1__,2,0,1_,External+RDBMS,Embedded+database
+InstallLocProducts=
+integrationServer.LicenseFile.text=__VERSION1__,%2Ftmp%2FlicenseKey.xml
+IntegrationServerNetworkInterface=__VERSION1__,
+IntegrationServerDBURL.Name=__VERSION1__,
+IntegrationServerPool.Name=__VERSION1__,
+HostName=
+Password=XXXreplaceitXXXX
+adminPassword=manage
+ServerURL=https\://sdc-hq.softwareag.com/cgi-bin/dataservewebM1015.cgi
+IntegrationServerDBPass.Name=__VERSION1__,
+IntegrationServerNetworkInterfaceBlock=0
+IntegrationServerPort=__VERSION1__,5555
+IntegrationServerDBMsgblock=1
+IntegrationServer.RDBMS.Type=__VERSION1__,6,0_,1,2,3,4,5,Oracle,SQL+Server,DB2+for+Linux%2C+UNIX%2C+Windows,MySQL+Community+Edition,MySQL+Enterprise+Edition,PostgreSQL
+IntegrationServerTitleBlock=0
+InstallDir=/opt/softwareag
+IntegrationServerNetworkInterfaceBodyBlock=0
+changeAdminPasswordAtFirstLogin=false
+IntegrationServerSampleURLBlock=1
+Username=XXXreplaceitXXXX
+com.wm.distman.utils_panel0=0
+InstallProducts=e2ei/11/TPS_10.15.0.0.145/SCG/tppWS,e2ei/11/TPS_10.15.0.0.145/SCG/tppGfJaxb,e2ei/11/WSS_10.15.0.0.619/SCG/WSSCore,e2ei/11/TPS_10.15.0.0.145/SCG/tppModelling,e2ei/11/IS_10.15.0.0.674/integrationServer/PIECore,e2ei/11/BR_10.15.0.0.130/Broker/PIFSharedBundles,e2ei/11/TPL_10.15.0.0.25/License/license,e2ei/11/INMJ_10.11.0.0.2468/INMJ/INMSharedLibs,e2ei/11/NUM_10.15.0.0.496/UniversalMessaging/NUMSharedLibs,e2ei/11/GWM_10.15.0.0.19/IS/GWM_IS,e2ei/11/SJP_11.0.16.0.79/Infrastructure/sjp,e2ei/11/TPS_10.15.0.0.145/SCG/tppParsers,e2ei/11/IS_10.15.0.0.674/integrationServer/integrationServerMigrationFrameworkLib,e2ei/11/WSC_10.15.0.0.346/SCG/SCGCommon,e2ei/11/TPS_10.15.0.0.145/SCG/tppSpring,e2ei/11/TES_4.4.0.0.109/TES/TESCommon,e2ei/11/LIC_5.7.4.0.75/LICSharedLibsJava/LICSharedLibsJava,e2ei/11/WFF_10.7.0.0.28/IntegrationServer/WFF,e2ei/11/TPS_10.15.0.0.145/SCG/tppDB,e2ei/11/IS_10.15.0.0.674/integrationServer/MSC,e2ei/11/TPS_10.15.0.0.145/SCG/tppAnt,e2ei/11/TPS_10.15.0.0.145/SCG/tppGf,e2ei/11/BR_10.15.0.0.130/Broker/BrokerJMSShared,e2ei/11/JDBCAdapter_10.3.0.0.32/Adapters/jdbcAdapter,e2ei/11/DCC_10.15.0.0.7/CDC/DatabaseComponentConfiguratorCore,e2ei/11/ACDL_10.15.0.0.630/ACDL/ACDLDeployerSharedBundle,e2ei/11/BPM_10.15.0.0.834/DES/DesignerSharedLib,e2ei/11/EXXAdapter_10.9.0.5.807/Adapters/EntireXAdapter,e2ei/11/TPS_10.15.0.0.145/SCG/loggers,e2ei/11/MTA_10.15.0.0.477/Metering/MTAAgent,e2ei/11/TPS_10.15.0.0.145/SCG/tppMisc,e2ei/11/WAR_10.15.0.0.110/IntegrationServer/WAR,e2ei/11/TPS_10.15.0.0.145/SCG/tppServlet,e2ei/11/TPS_10.15.0.0.145/SCG/tppSwagger,e2ei/11/IS_10.15.0.0.674/CDC/PIEEmbeddedCdc,e2ei/11/WIS_10.15.0.0.360/Infrastructure/WISSharedLibs,e2ei/11/WmSAP_10.1.0.0.1011/Adapters/WmSAP,e2ei/11/TPS_10.15.0.0.145/SCG/tppCommons,e2ei/11/MQAdapter_6.5.0.0/Adapters/webspheremq65,e2ei/11/TPS_10.15.0.0.145/SCG/tppSEC

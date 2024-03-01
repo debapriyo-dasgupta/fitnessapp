@@ -1,0 +1,67 @@
+FROM kplogesh/msr:10.15 as install
+FROM redhat/ubi8 as base
+MAINTAINER Software AG
+ENV SAG_HOME /opt/softwareag
+ENV LANG C.utf8
+#RUN yum install -y wget && yum clean all
+ENV JAVA_HOME ${SAG_HOME}/jvm/jvm/
+ENV JRE_HOME ${SAG_HOME}/jvm/jvm/
+COPY --from=install ${SAG_HOME}/jvm/jvm/ ${SAG_HOME}/jvm/jvm/
+COPY --from=install ${SAG_HOME}/install/products/ ${SAG_HOME}/install/products/
+COPY --from=install ${SAG_HOME}/Licenses/ ${SAG_HOME}/Licenses/
+
+COPY --from=install ${SAG_HOME}/common/bin/ ${SAG_HOME}/common/bin/
+COPY --from=install ${SAG_HOME}/common/conf/ ${SAG_HOME}/common/conf/
+COPY --from=install ${SAG_HOME}/common/db/ ${SAG_HOME}/common/db/
+COPY --from=install ${SAG_HOME}/common/metering/ ${SAG_HOME}/common/metering/
+COPY --from=install ${SAG_HOME}/common/lib/ ${SAG_HOME}/common/lib/
+# excludeComponents input param = [${exclude.components}]
+COPY --from=install ${SAG_HOME}/WS-Stack/ ${SAG_HOME}/WS-Stack/
+COPY --from=install ${SAG_HOME}/IntegrationServer/bin/ ${SAG_HOME}/IntegrationServer/bin/
+COPY --from=install ${SAG_HOME}/IntegrationServer/lib/ ${SAG_HOME}/IntegrationServer/lib/
+COPY --from=install ${SAG_HOME}/IntegrationServer/updates/ ${SAG_HOME}/IntegrationServer/updates/
+COPY --from=install ${SAG_HOME}/IntegrationServer/web/ ${SAG_HOME}/IntegrationServer/web/
+COPY --from=install ${SAG_HOME}/IntegrationServer/docker/ ${SAG_HOME}/IntegrationServer/docker/
+COPY --from=install ${SAG_HOME}/IntegrationServer/replicate/ ${SAG_HOME}/IntegrationServer/replicate/
+COPY --from=install ${SAG_HOME}/IntegrationServer/.tc.custom.log4j2.properties ${SAG_HOME}/IntegrationServer/.tc.custom.log4j2.properties
+COPY --from=install ${SAG_HOME}/IntegrationServer/config/ ${SAG_HOME}/IntegrationServer/config/
+COPY --from=install ${SAG_HOME}/IntegrationServer/packages/Default/ ${SAG_HOME}/IntegrationServer/packages/Default/
+COPY --from=install ${SAG_HOME}/IntegrationServer/packages/WmJDBCAdapter/ ${SAG_HOME}/IntegrationServer/packages/WmJDBCAdapter/
+COPY --from=install ${SAG_HOME}/IntegrationServer/packages/WmSAP/ ${SAG_HOME}/IntegrationServer/packages/WmSAP/
+# COPY --from=install ${SAG_HOME}/IntegrationServer/packages/WmMQAdapter/ ${SAG_HOME}/IntegrationServer/packages/WmMQAdapter/
+COPY --from=install ${SAG_HOME}/IntegrationServer/packages/WmEntireX/ ${SAG_HOME}/IntegrationServer/packages/WmEntireX/
+COPY --from=install ${SAG_HOME}/IntegrationServer/packages/WmConsul/ ${SAG_HOME}/IntegrationServer/packages/WmConsul/
+COPY --from=install ${SAG_HOME}/IntegrationServer/packages/WmXSLT/ ${SAG_HOME}/IntegrationServer/packages/WmXSLT/
+COPY --from=install ${SAG_HOME}/IntegrationServer/packages/WmISExtDC/ ${SAG_HOME}/IntegrationServer/packages/WmISExtDC/
+COPY --from=install ${SAG_HOME}/IntegrationServer/packages/WmAdmin/ ${SAG_HOME}/IntegrationServer/packages/WmAdmin/
+COPY --from=install ${SAG_HOME}/IntegrationServer/packages/WmRoot/ ${SAG_HOME}/IntegrationServer/packages/WmRoot/
+COPY --from=install ${SAG_HOME}/IntegrationServer/packages/WmWin32/ ${SAG_HOME}/IntegrationServer/packages/WmWin32/
+COPY --from=install ${SAG_HOME}/IntegrationServer/packages/WmJSONAPI/ ${SAG_HOME}/IntegrationServer/packages/WmJSONAPI/
+COPY --from=install ${SAG_HOME}/IntegrationServer/packages/WmFlatFile/ ${SAG_HOME}/IntegrationServer/packages/WmFlatFile/
+COPY --from=install ${SAG_HOME}/IntegrationServer/packages/WmPublic/ ${SAG_HOME}/IntegrationServer/packages/WmPublic/
+COPY --from=install ${SAG_HOME}/IntegrationServer/packages/WmCloud/ ${SAG_HOME}/IntegrationServer/packages/WmCloud/
+COPY --from=install ${SAG_HOME}/IntegrationServer/packages/WmARTExtDC/ ${SAG_HOME}/IntegrationServer/packages/WmARTExtDC/
+COPY --from=install ${SAG_HOME}/IntegrationServer/packages/WmART/ ${SAG_HOME}/IntegrationServer/packages/WmART/
+#RUN mkdir -p ${SAG_HOME}/IntegrationServer/wpm/ &&\
+#        wget -q -O - https://techcommunity.softwareag.com/wpm/download/wpm.tar | tar -xzf - -C /opt/softwareag/IntegrationServer/wpm/ &&\
+#        chmod +x /opt/softwareag/IntegrationServer/wpm/bin/wpm.sh &&\
+#        /opt/softwareag/IntegrationServer/wpm/bin/wpm.sh install YOUR_PACKAGE_NAME -u YOUR_GITHUB_USERNAME -p CREDENTIAL -r REPO_URL &&\
+#        rm -rf ${SAG_HOME}/IntegrationServer/wpm/; rm -f ${SAG_HOME}/wpm.tar
+RUN cd /opt/softwareag/IntegrationServer/docker; ./is_container.sh updateDockerConfigFiles -Ddocker.isHomeDir=${SAG_HOME}/IntegrationServer -Ddocker.rootDir=${SAG_HOME};
+RUN chgrp -R 0 ${SAG_HOME} && chmod -R g=u ${SAG_HOME}
+LABEL com.softwareag.product=IntegrationServerOpenShiftBase
+
+FROM redhat/ubi8
+MAINTAINER Software AG
+ENV SAG_HOME /opt/softwareag
+ENV JAVA_HOME ${SAG_HOME}/jvm/jvm/
+ENV JRE_HOME ${SAG_HOME}/jvm/jvm/
+COPY --from=base ${SAG_HOME} ${SAG_HOME}
+RUN chgrp 0 ${SAG_HOME} && chmod g=u ${SAG_HOME}
+
+RUN yum install zip unzip -y
+
+EXPOSE 5555
+EXPOSE 9999
+EXPOSE 5543
+ENTRYPOINT ["/opt/softwareag/IntegrationServer/bin/startContainer.sh"]
