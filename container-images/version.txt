@@ -1,0 +1,5 @@
+MAJOR=10
+MINOR=15
+PATCH=0
+IMAGE_NAME=kplogesh/msr
+INSTALL_BASE_NAME=kplogesh/install-base
