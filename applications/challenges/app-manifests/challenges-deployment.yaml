@@ -51,18 +51,18 @@ spec:
             tcpSocket:
               port: 5555
             timeoutSeconds: 5
-            initialDelaySeconds: 30
+            initialDelaySeconds: 60
             failureThreshold: 10
-            periodSeconds: 10
+            periodSeconds: 20
             successThreshold: 1
         # Readiness probe to check whether pod is ready to serve the requests. Traffic will not be injected unless readiness probes passes.
           readinessProbe:
             tcpSocket:
               port: 5555
             timeoutSeconds: 5
-            initialDelaySeconds: 30
+            initialDelaySeconds: 60
             failureThreshold: 10
-            periodSeconds: 10
+            periodSeconds: 20
             successThreshold: 1     
         # Volume mount for Terracotta/Integration Server license key.
           volumeMounts:
