@@ -70,7 +70,7 @@
       <value name="name">Yoga - Tadasana</value>
       <value name="times">30</value>
       <value name="durationMinutes">30</value>
-      <value name="description">I am changed!-----Tadasana centers your body and mind, which helps create a calm sense of inner peace. Maintaining alignment and body awareness is a constant process. Standing strong, steady, and centered in Mountain Pose helps to improve posture, alignment, and balance.</value>
+      <value name="description">Tadasana centers your body and mind, which helps create a calm sense of inner peace. Maintaining alignment and body awareness is a constant process. Standing strong, steady, and centered in Mountain Pose helps to improve posture, alignment, and balance.</value>
       <value name="points">10</value>
       <value name="availability">Yes</value>
       <record name="criteria" javaclass="com.wm.util.Values">
