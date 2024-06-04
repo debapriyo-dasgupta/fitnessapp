@@ -1,0 +1,17 @@
+{
+  "id" : "b421c15d-67cc-45a6-9e6c-0c4aa34f2660",
+  "names" : [ {
+    "value" : "Straight Through Routing",
+    "locale" : "en"
+  } ],
+  "descriptions" : [ {
+    "value" : "",
+    "locale" : "English"
+  } ],
+  "templateKey" : "straightThroughRouting",
+  "parameters" : [ {
+    "templateKey" : "endpointUri",
+    "values" : [ "https://petstore.swagger.io/v2/${sys:resource_path}" ]
+  } ],
+  "active" : false
+}

@@ -9,7 +9,18 @@ docker image ls
 
 #Login to JFrog Repo / Docker
 echo "Login to docker repository -> Docker Inc."
+
 docker login -u kplogesh -p Dexter@123
+
+# APIGateway
+read VERSION IMAGE_NAME < <(get-version "apigateway/version.txt")
+
+echo "APIGateway -> Image tagging"
+docker image tag fitness-apigateway:${VERSION} kplogesh/fitness-app:apigateway-${VERSION}
+
+echo "Fitness Apigateway Image Push -> Docker Repository"
+docker push kplogesh/fitness-app:apigateway-${VERSION}
+# End apigw image creation
 
 # Fitness-Assessments
 read VERSION IMAGE_NAME < <(get-version "assessments/version.txt")

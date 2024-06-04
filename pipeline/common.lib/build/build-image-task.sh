@@ -9,6 +9,17 @@ docker image ls
 
 #Login to JFrog Repo / Docker
 echo "Login to docker repository -> Docker Inc."
+
+# Create APIGW image
+docker login -u Logeshwaran-KannanPonnurangam-softwareag-com -p 7c+bAyjLvT+rY6pHSsZZvkH1opNMBGWKw6+RoLUx1X+ACRAyhh5s sagcr.azurecr.io
+# Fitness-Assessments
+echo "Image build process -> APIGateway"
+read VERSION IMAGE_NAME < <(get-version "apigateawy/version.txt")
+
+docker build -t fitness-apigateway:${VERSION} -f apigateway/Dockerfile .
+docker logout
+# End apigw image creation
+
 # Update this section
 docker login -u kplogesh -p Dexter@123
 

@@ -1,0 +1,26 @@
+{
+  "id" : "da732092-d68e-436b-8976-350d119138fc",
+  "names" : [ {
+    "value" : "Default Policy for API Petstore",
+    "locale" : "English"
+  } ],
+  "descriptions" : [ {
+    "value" : "",
+    "locale" : "English"
+  } ],
+  "policyEnforcements" : [ {
+    "enforcements" : [ {
+      "enforcementObjectId" : "6eeee24d-c525-4e55-aa78-49f1d7334474"
+    } ],
+    "stageKey" : "transport"
+  }, {
+    "enforcements" : [ {
+      "enforcementObjectId" : "b421c15d-67cc-45a6-9e6c-0c4aa34f2660"
+    } ],
+    "stageKey" : "routing"
+  } ],
+  "policyScope" : "SERVICE",
+  "global" : false,
+  "active" : false,
+  "systemPolicy" : false
+}

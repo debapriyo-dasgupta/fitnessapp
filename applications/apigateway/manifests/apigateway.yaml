@@ -55,6 +55,10 @@ spec:
           - mountPath: /opt/softwareag/IntegrationServer/instances/default/config/licenseKey.xml
             subPath: apilicenseKey.xml
             name: apilicensekey
+          - mountPath: /scripts
+            name: create-scripts-dir
+          - mountPath: /tmp
+            name: apigw-scripts-utils
         # Resources required for the apigateway to function. CPUs and Memory configurations.
         resources:
           requests:
@@ -95,6 +99,11 @@ spec:
           configMap:
               name: webmethodslicensekeys
               defaultMode: 0777
+        - name: create-scripts-dir
+          emptyDir: {}
+        - name: apigw-scripts-utils
+          configMap:
+              name: apigw-script-configmap
 ---
 # An example service for the deployment above.
 apiVersion: v1
