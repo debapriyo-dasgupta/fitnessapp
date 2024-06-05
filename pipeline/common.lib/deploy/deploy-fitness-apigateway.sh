@@ -1,4 +1,6 @@
 #!/bin/bash
+# Load the utility functions
+. pipeline/common.lib/utils/get-version.sh
 
 echo "Configurations will be applied in the below namespace-----"
 kubectl config view --minify | grep namespace:
