@@ -57,8 +57,6 @@ spec:
           protocol: TCP
         # Volume mount for internal data store and license key. This setup is for api hosted with internal datastore (Elastic search/Product builtin)
         volumeMounts:
-          - mountPath: /opt/softwareag/InternalDataStore/data
-            name: apigw-storage
           - mountPath: /opt/softwareag/IntegrationServer/instances/default/config/licenseKey.xml
             subPath: apilicenseKey.xml
             name: apilicensekey
@@ -95,9 +93,6 @@ spec:
         - name: sagregcred   
       # Volume definitions referenced in volume mounts (above section)
       volumes:
-        - name: apigw-storage
-          persistentVolumeClaim:
-            claimName: apigw-storage
         - name: apilicensekey
           configMap:
               name: webmethodslicensekeys
