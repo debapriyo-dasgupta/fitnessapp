@@ -1,9 +1,6 @@
 #!/bin/bash
 set -e
 set -x
-# Initiate APIGateway Startup 
-echo -e "Starting APIGateway...\n"
-/opt/softwareag/IntegrationServer/bin/startContainer.sh
 
 # Wait for APIGateway to complete the startup
 while [ $(curl -sw '%{http_code}' "http://localhost:5555/rest/apigateway/health" -o /dev/null) -ne 200 ]; do

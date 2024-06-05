@@ -39,8 +39,8 @@ spec:
         - "-c"
         - |
           cd /opt/softwareag/apigwassets
-          chmod +x asset-import.sh
-          ./asset-import.sh
+          chmod +x asset-import.sh entrypoint.sh
+          ./entrypoint.sh
         # The default pull policy is IfNotPresent which causes the Kubelet to skip pulling an image if it already exists.
         # If you would like to always force a pull use "Always"
         imagePullPolicy: IfNotPresent 
