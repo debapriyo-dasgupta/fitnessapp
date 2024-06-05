@@ -30,17 +30,17 @@ for SUBDIR in "$BASE_DIR"/*; do
         RESPONSE=$(mktemp)
         STATUS_CODE=$(curl --write-out "%{http_code}" --silent \
         --location 'http://localhost:5555/rest/apigateway/archive?apis=*&overwrite=true&preserveAssetState=true' \
-        --header 'Content-Type: application/zip' \
+        --header 'Content-Type: multipart/form-data' \
         --header 'Accept: application/json' \
         --header 'Authorization: Basic QWRtaW5pc3RyYXRvcjptYW5hZ2U=' \
-        --data-binary "@$ZIP_FILE" \
+        --form "zipFile=@$ZIP_FILE" \
         --output "$RESPONSE")
         
         # Output the response body
         cat "$RESPONSE"
         
         # Check if curl command was successful
-        if [ "$STATUS_CODE" -ne 200 ]; then
+        if [ "$STATUS_CODE" -ne 200 ] && [ "$STATUS_CODE" -ne 201 ]; then
             echo "Upload failed for $ZIP_FILE with status code $STATUS_CODE"
             rm "$RESPONSE"
             exit 1
