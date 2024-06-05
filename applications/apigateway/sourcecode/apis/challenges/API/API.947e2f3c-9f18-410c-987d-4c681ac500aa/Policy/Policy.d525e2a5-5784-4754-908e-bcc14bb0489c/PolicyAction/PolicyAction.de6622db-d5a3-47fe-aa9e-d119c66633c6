@@ -1,0 +1,25 @@
+{
+  "id" : "de6622db-d5a3-47fe-aa9e-d119c66633c6",
+  "names" : [ {
+    "value" : "Conditional Error Processing",
+    "locale" : "en"
+  } ],
+  "templateKey" : "conditionalErrorProcessing",
+  "parameters" : [ {
+    "templateKey" : "transformationConditions",
+    "parameters" : [ {
+      "templateKey" : "logicalConnector",
+      "values" : [ "OR" ]
+    } ]
+  }, {
+    "templateKey" : "errorTransformationConfiguration",
+    "parameters" : [ {
+      "templateKey" : "customFailureMessages",
+      "parameters" : [ {
+        "templateKey" : "sendNativeProviderFault",
+        "values" : [ "true" ]
+      } ]
+    } ]
+  } ],
+  "active" : false
+}

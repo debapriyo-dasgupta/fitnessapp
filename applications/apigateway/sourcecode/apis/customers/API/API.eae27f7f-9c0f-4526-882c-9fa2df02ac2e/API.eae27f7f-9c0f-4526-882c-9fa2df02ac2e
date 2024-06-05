@@ -1,0 +1,321 @@
+{
+  "apiDefinition" : {
+    "info" : {
+      "version" : "1.0",
+      "title" : "customers"
+    },
+    "basePath" : "",
+    "serviceRegistryDisplayName" : "customers_1.0",
+    "schemes" : [ ],
+    "consumes" : [ "application/json" ],
+    "produces" : [ "application/json" ],
+    "security" : [ ],
+    "paths" : {
+      "/customers/{customerId}" : {
+        "get" : {
+          "operationId" : "customerscustomerId_GET_3",
+          "parameters" : [ {
+            "name" : "customerId",
+            "in" : "path",
+            "required" : true,
+            "type" : "string",
+            "parameterSchema" : {
+              "type" : "string",
+              "readOnly" : false
+            }
+          } ],
+          "responses" : {
+            "200" : {
+              "description" : "OK",
+              "headersV3" : { },
+              "content" : {
+                "application/json" : {
+                  "schema" : {
+                    "$ref" : "#/components/schemas/customerscustomerId_GET_response"
+                  },
+                  "examples" : { }
+                }
+              },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            },
+            "401" : {
+              "description" : "Access Denied",
+              "headersV3" : { },
+              "content" : { },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            }
+          },
+          "mockedResponses" : { },
+          "mockedConditionsBasedCustomResponsesList" : [ ],
+          "enabled" : true,
+          "scopes" : [ ],
+          "requestBody" : {
+            "content" : { },
+            "name" : "customerscustomerId_GET_3"
+          }
+        },
+        "parameters" : [ ],
+        "scopes" : [ ],
+        "displayName" : "/customers/{customerId}",
+        "enabled" : true
+      },
+      "/customers/{customerId}/fitness" : {
+        "post" : {
+          "operationId" : "customerscustomerIdfitness_POST_4",
+          "consumes" : [ "application/x-www-form-urlencoded" ],
+          "parameters" : [ {
+            "name" : "customerId",
+            "in" : "path",
+            "required" : true,
+            "type" : "string",
+            "parameterSchema" : {
+              "type" : "string",
+              "readOnly" : false
+            }
+          } ],
+          "responses" : {
+            "200" : {
+              "description" : "OK",
+              "headersV3" : { },
+              "content" : {
+                "application/json" : {
+                  "schema" : {
+                    "$ref" : "#/components/schemas/customerscustomerIdfitness_POST_response"
+                  },
+                  "examples" : { }
+                }
+              },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            },
+            "401" : {
+              "description" : "Access Denied",
+              "headersV3" : { },
+              "content" : { },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            }
+          },
+          "mockedResponses" : { },
+          "mockedConditionsBasedCustomResponsesList" : [ ],
+          "enabled" : true,
+          "scopes" : [ ],
+          "requestBody" : {
+            "content" : {
+              "application/x-www-form-urlencoded" : {
+                "schema" : {
+                  "type" : "gateway",
+                  "schema" : "{\"type\":\"object\",\"properties\":{\"enrollmentFlag\":{\"type\":\"string\",\"readOnly\":false}}}"
+                },
+                "examples" : { }
+              }
+            },
+            "name" : "customerscustomerIdfitness_POST_4"
+          }
+        },
+        "parameters" : [ ],
+        "scopes" : [ ],
+        "displayName" : "/customers/{customerId}/fitness",
+        "enabled" : true
+      },
+      "/customers/{customerId}/policies" : {
+        "get" : {
+          "operationId" : "customerscustomerIdpolicies_GET_2",
+          "parameters" : [ {
+            "name" : "customerId",
+            "in" : "path",
+            "required" : true,
+            "type" : "string",
+            "parameterSchema" : {
+              "type" : "string",
+              "readOnly" : false
+            }
+          } ],
+          "responses" : {
+            "200" : {
+              "description" : "OK",
+              "headersV3" : { },
+              "content" : {
+                "application/json" : {
+                  "schema" : {
+                    "$ref" : "#/components/schemas/customerscustomerIdpolicies_GET_response"
+                  },
+                  "examples" : { }
+                }
+              },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            },
+            "401" : {
+              "description" : "Access Denied",
+              "headersV3" : { },
+              "content" : { },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            }
+          },
+          "mockedResponses" : { },
+          "mockedConditionsBasedCustomResponsesList" : [ ],
+          "enabled" : true,
+          "scopes" : [ ],
+          "requestBody" : {
+            "content" : { },
+            "name" : "customerscustomerIdpolicies_GET_2"
+          }
+        },
+        "parameters" : [ ],
+        "scopes" : [ ],
+        "displayName" : "/customers/{customerId}/policies",
+        "enabled" : true
+      },
+      "/customers" : {
+        "get" : {
+          "operationId" : "customers_GET_1",
+          "parameters" : [ ],
+          "responses" : {
+            "200" : {
+              "description" : "OK",
+              "headersV3" : { },
+              "content" : {
+                "application/json" : {
+                  "schema" : {
+                    "$ref" : "#/components/schemas/customers_GET_response"
+                  },
+                  "examples" : { }
+                }
+              },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            },
+            "401" : {
+              "description" : "Access Denied",
+              "headersV3" : { },
+              "content" : { },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            }
+          },
+          "mockedResponses" : { },
+          "mockedConditionsBasedCustomResponsesList" : [ ],
+          "enabled" : true,
+          "scopes" : [ ],
+          "requestBody" : {
+            "content" : { },
+            "name" : "customers_GET_1"
+          }
+        },
+        "parameters" : [ ],
+        "scopes" : [ ],
+        "displayName" : "/customers",
+        "enabled" : true
+      }
+    },
+    "securityDefinitions" : { },
+    "definitions" : { },
+    "parameters" : { },
+    "baseUriParameters" : [ ],
+    "externalDocs" : [ ],
+    "servers" : [ {
+      "url" : "http://memberships-7db75cfdf7-qqssl:5555/rad/FX_Memberships_API.swagger:customers",
+      "variables" : { }
+    }, {
+      "url" : "https://memberships-7db75cfdf7-qqssl:5555/rad/FX_Memberships_API.swagger:customers",
+      "variables" : { }
+    } ],
+    "components" : {
+      "schemas" : {
+        "customerscustomerId_GET_response" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"customer\"],\"type\":\"object\",\"properties\":{\"customer\":{\"$ref\":\"#/components/schemas/Customer\"}}}"
+        },
+        "Address" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"country\",\"streetName\",\"city\",\"houseNumber\",\"state\"],\"type\":\"object\",\"properties\":{\"city\":{\"type\":\"string\"},\"country\":{\"type\":\"string\"},\"houseNumber\":{\"type\":\"string\"},\"state\":{\"type\":\"string\"},\"streetName\":{\"type\":\"string\"}}}"
+        },
+        "Customer" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"mobileNumber\",\"customerId\",\"personalDetails\",\"emailId\"],\"type\":\"object\",\"properties\":{\"customerId\":{\"type\":\"string\"},\"emailId\":{\"type\":\"string\"},\"mobileNumber\":{\"type\":\"string\"},\"personalDetails\":{\"$ref\":\"#/components/schemas/PersonalDetails\"}}}"
+        },
+        "customers_GET_response" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"customers\"],\"type\":\"object\",\"properties\":{\"customers\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/components/schemas/Customer\"}}}}"
+        },
+        "Enrollment" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"customerId\",\"fitnessId\",\"status\"],\"type\":\"object\",\"properties\":{\"customerId\":{\"type\":\"string\"},\"fitnessId\":{\"type\":\"string\"},\"status\":{\"type\":\"string\"}}}"
+        },
+        "PolicyDetails" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"commencementDate\",\"premiumAmount\",\"policyId\",\"endDate\",\"name\",\"nominee\",\"assuredAmount\",\"policyPeriod\"],\"type\":\"object\",\"properties\":{\"assuredAmount\":{\"type\":\"string\"},\"commencementDate\":{\"type\":\"string\"},\"endDate\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"nominee\":{\"type\":\"string\"},\"policyId\":{\"type\":\"string\"},\"policyPeriod\":{\"type\":\"string\"},\"premiumAmount\":{\"type\":\"string\"}}}"
+        },
+        "customerscustomerIdfitness_POST_response" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"enrollment\"],\"type\":\"object\",\"properties\":{\"enrollment\":{\"$ref\":\"#/components/schemas/Enrollment\"}}}"
+        },
+        "PersonalDetails" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"firstName\",\"lastName\",\"communicationAddress\",\"dateOfBirth\",\"permanentAddress\"],\"type\":\"object\",\"properties\":{\"communicationAddress\":{\"$ref\":\"#/components/schemas/Address\"},\"dateOfBirth\":{\"type\":\"string\"},\"firstName\":{\"type\":\"string\"},\"lastName\":{\"type\":\"string\"},\"permanentAddress\":{\"$ref\":\"#/components/schemas/Address\"}}}"
+        },
+        "customerscustomerIdpolicies_GET_response" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"policyDetails\"],\"type\":\"object\",\"properties\":{\"policyDetails\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/components/schemas/PolicyDetails\"}}}}"
+        }
+      },
+      "responses" : { },
+      "parameters" : { },
+      "examples" : { },
+      "requestBodies" : { },
+      "headers" : { },
+      "links" : { },
+      "callbacks" : { }
+    },
+    "type" : "rest"
+  },
+  "nativeEndpoint" : [ {
+    "passSecurityHeaders" : true,
+    "uri" : "http://memberships-7db75cfdf7-qqssl:5555/rad/FX_Memberships_API.swagger:customers",
+    "connectionTimeoutDuration" : 0,
+    "alias" : false
+  }, {
+    "passSecurityHeaders" : true,
+    "uri" : "https://memberships-7db75cfdf7-qqssl:5555/rad/FX_Memberships_API.swagger:customers",
+    "connectionTimeoutDuration" : 0,
+    "alias" : false
+  } ],
+  "apiName" : "customers",
+  "apiVersion" : "1.0",
+  "maturityState" : "Beta",
+  "isActive" : true,
+  "type" : "REST",
+  "owner" : "Administrator",
+  "policies" : [ "cfb3385a-8b2c-42b5-b24e-17bbfb954784" ],
+  "referencedFiles" : {
+    "swagger.json" : "---\nswagger: \"2.0\"\ninfo:\n  version: \"1.0\"\n  title: \"customers\"\nhost: \"memberships-7db75cfdf7-qqssl:5555\"\nbasePath: \"/rad/FX_Memberships_API.swagger:customers\"\nschemes:\n- \"http\"\n- \"https\"\nconsumes:\n- \"application/json\"\nproduces:\n- \"application/json\"\npaths:\n  /customers:\n    get:\n      operationId: \"customers_GET_1\"\n      parameters: []\n      responses:\n        \"200\":\n          description: \"OK\"\n          schema:\n            $ref: \"#/definitions/customers_GET_response\"\n        \"401\":\n          description: \"Access Denied\"\n  /customers/{customerId}/policies:\n    get:\n      operationId: \"customerscustomerIdpolicies_GET_2\"\n      parameters:\n      - name: \"customerId\"\n        in: \"path\"\n        required: true\n        type: \"string\"\n      responses:\n        \"200\":\n          description: \"OK\"\n          schema:\n            $ref: \"#/definitions/customerscustomerIdpolicies_GET_response\"\n        \"401\":\n          description: \"Access Denied\"\n  /customers/{customerId}:\n    get:\n      operationId: \"customerscustomerId_GET_3\"\n      parameters:\n      - name: \"customerId\"\n        in: \"path\"\n        required: true\n        type: \"string\"\n      responses:\n        \"200\":\n          description: \"OK\"\n          schema:\n            $ref: \"#/definitions/customerscustomerId_GET_response\"\n        \"401\":\n          description: \"Access Denied\"\n  /customers/{customerId}/fitness:\n    post:\n      operationId: \"customerscustomerIdfitness_POST_4\"\n      consumes:\n      - \"application/x-www-form-urlencoded\"\n      parameters:\n      - name: \"enrollmentFlag\"\n        in: \"formData\"\n        required: true\n        type: \"string\"\n      - name: \"customerId\"\n        in: \"path\"\n        required: true\n        type: \"string\"\n      responses:\n        \"200\":\n          description: \"OK\"\n          schema:\n            $ref: \"#/definitions/customerscustomerIdfitness_POST_response\"\n        \"401\":\n          description: \"Access Denied\"\ndefinitions:\n  Enrollment:\n    required:\n    - \"customerId\"\n    - \"fitnessId\"\n    - \"status\"\n    properties:\n      customerId:\n        type: \"string\"\n      fitnessId:\n        type: \"string\"\n      status:\n        type: \"string\"\n  Address:\n    required:\n    - \"city\"\n    - \"country\"\n    - \"houseNumber\"\n    - \"state\"\n    - \"streetName\"\n    properties:\n      houseNumber:\n        type: \"string\"\n      streetName:\n        type: \"string\"\n      city:\n        type: \"string\"\n      state:\n        type: \"string\"\n      country:\n        type: \"string\"\n  customers_GET_response:\n    required:\n    - \"customers\"\n    properties:\n      customers:\n        type: \"array\"\n        items:\n          $ref: \"#/definitions/Customer\"\n  customerscustomerId_GET_response:\n    required:\n    - \"customer\"\n    properties:\n      customer:\n        $ref: \"#/definitions/Customer\"\n  Customer:\n    required:\n    - \"customerId\"\n    - \"emailId\"\n    - \"mobileNumber\"\n    - \"personalDetails\"\n    properties:\n      customerId:\n        type: \"string\"\n      emailId:\n        type: \"string\"\n      mobileNumber:\n        type: \"string\"\n      personalDetails:\n        $ref: \"#/definitions/PersonalDetails\"\n  PolicyDetails:\n    required:\n    - \"assuredAmount\"\n    - \"commencementDate\"\n    - \"endDate\"\n    - \"name\"\n    - \"nominee\"\n    - \"policyId\"\n    - \"policyPeriod\"\n    - \"premiumAmount\"\n    properties:\n      policyId:\n        type: \"string\"\n      name:\n        type: \"string\"\n      assuredAmount:\n        type: \"string\"\n      premiumAmount:\n        type: \"string\"\n      policyPeriod:\n        type: \"string\"\n      commencementDate:\n        type: \"string\"\n      endDate:\n        type: \"string\"\n      nominee:\n        type: \"string\"\n  customerscustomerIdpolicies_GET_response:\n    required:\n    - \"policyDetails\"\n    properties:\n      policyDetails:\n        type: \"array\"\n        items:\n          $ref: \"#/definitions/PolicyDetails\"\n  customerscustomerIdfitness_POST_response:\n    required:\n    - \"enrollment\"\n    properties:\n      enrollment:\n        $ref: \"#/definitions/Enrollment\"\n  PersonalDetails:\n    required:\n    - \"communicationAddress\"\n    - \"dateOfBirth\"\n    - \"firstName\"\n    - \"lastName\"\n    - \"permanentAddress\"\n    properties:\n      firstName:\n        type: \"string\"\n      lastName:\n        type: \"string\"\n      dateOfBirth:\n        type: \"string\"\n      communicationAddress:\n        $ref: \"#/definitions/Address\"\n      permanentAddress:\n        $ref: \"#/definitions/Address\"\n"
+  },
+  "tracingEnabled" : false,
+  "scopes" : [ ],
+  "publishedPortals" : [ ],
+  "creationDate" : "2022-12-19 10:02:51 GMT",
+  "lastModified" : "2022-12-19 10:08:10 GMT",
+  "systemVersion" : 1,
+  "gatewayEndpoints" : { },
+  "id" : "eae27f7f-9c0f-4526-882c-9fa2df02ac2e"
+}

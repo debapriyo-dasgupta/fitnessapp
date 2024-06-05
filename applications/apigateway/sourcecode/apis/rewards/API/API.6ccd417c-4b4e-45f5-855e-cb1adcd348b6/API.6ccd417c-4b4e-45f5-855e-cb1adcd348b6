@@ -1,0 +1,234 @@
+{
+  "apiDefinition" : {
+    "info" : {
+      "version" : "1.0",
+      "title" : "rewards"
+    },
+    "basePath" : "",
+    "serviceRegistryDisplayName" : "rewards_1.0",
+    "schemes" : [ ],
+    "consumes" : [ "application/json" ],
+    "produces" : [ "application/json" ],
+    "security" : [ ],
+    "paths" : {
+      "/customers/{customerId}/fitness/rewards" : {
+        "get" : {
+          "operationId" : "customerscustomerIdfitnessrewards_GET_2",
+          "parameters" : [ {
+            "name" : "customerId",
+            "in" : "path",
+            "required" : true,
+            "type" : "string",
+            "parameterSchema" : {
+              "type" : "string",
+              "readOnly" : false
+            }
+          } ],
+          "responses" : {
+            "200" : {
+              "description" : "OK",
+              "headersV3" : { },
+              "content" : { },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            },
+            "401" : {
+              "description" : "Access Denied",
+              "headersV3" : { },
+              "content" : { },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            }
+          },
+          "mockedResponses" : { },
+          "mockedConditionsBasedCustomResponsesList" : [ ],
+          "enabled" : true,
+          "scopes" : [ ],
+          "requestBody" : {
+            "content" : { },
+            "name" : "customerscustomerIdfitnessrewards_GET_2"
+          }
+        },
+        "post" : {
+          "operationId" : "customerscustomerIdfitnessrewards_POST_2",
+          "consumes" : [ "application/x-www-form-urlencoded" ],
+          "parameters" : [ {
+            "name" : "customerId",
+            "in" : "path",
+            "required" : true,
+            "type" : "string",
+            "parameterSchema" : {
+              "type" : "string",
+              "readOnly" : false
+            }
+          } ],
+          "responses" : {
+            "200" : {
+              "description" : "OK",
+              "headersV3" : { },
+              "content" : {
+                "application/json" : {
+                  "schema" : {
+                    "$ref" : "#/components/schemas/customerscustomerIdfitnessrewards_POST_response"
+                  },
+                  "examples" : { }
+                }
+              },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            },
+            "401" : {
+              "description" : "Access Denied",
+              "headersV3" : { },
+              "content" : { },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            }
+          },
+          "mockedResponses" : { },
+          "mockedConditionsBasedCustomResponsesList" : [ ],
+          "enabled" : true,
+          "scopes" : [ ],
+          "requestBody" : {
+            "content" : {
+              "application/x-www-form-urlencoded" : {
+                "schema" : {
+                  "type" : "gateway",
+                  "schema" : "{\"type\":\"object\",\"properties\":{\"rewardsId\":{\"type\":\"string\",\"readOnly\":false}}}"
+                },
+                "examples" : { }
+              }
+            },
+            "name" : "customerscustomerIdfitnessrewards_POST_2"
+          }
+        },
+        "parameters" : [ ],
+        "scopes" : [ ],
+        "displayName" : "/customers/{customerId}/fitness/rewards",
+        "enabled" : true
+      },
+      "/customers/fitness/rewards" : {
+        "get" : {
+          "operationId" : "customersfitnessrewards_GET_1",
+          "parameters" : [ ],
+          "responses" : {
+            "200" : {
+              "description" : "OK",
+              "headersV3" : { },
+              "content" : {
+                "application/json" : {
+                  "schema" : {
+                    "$ref" : "#/components/schemas/customersfitnessrewards_GET_response"
+                  },
+                  "examples" : { }
+                }
+              },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            },
+            "401" : {
+              "description" : "Access Denied",
+              "headersV3" : { },
+              "content" : { },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            }
+          },
+          "mockedResponses" : { },
+          "mockedConditionsBasedCustomResponsesList" : [ ],
+          "enabled" : true,
+          "scopes" : [ ],
+          "requestBody" : {
+            "content" : { },
+            "name" : "customersfitnessrewards_GET_1"
+          }
+        },
+        "parameters" : [ ],
+        "scopes" : [ ],
+        "displayName" : "/customers/fitness/rewards",
+        "enabled" : true
+      }
+    },
+    "securityDefinitions" : { },
+    "definitions" : { },
+    "parameters" : { },
+    "baseUriParameters" : [ ],
+    "externalDocs" : [ ],
+    "servers" : [ {
+      "url" : "http://rewards-578785f8f8-vf9sq:5555/rad/FX_Rewards_API.swagger:rewardsapi",
+      "variables" : { }
+    }, {
+      "url" : "https://rewards-578785f8f8-vf9sq:5555/rad/FX_Rewards_API.swagger:rewardsapi",
+      "variables" : { }
+    } ],
+    "components" : {
+      "schemas" : {
+        "Customer" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"customerId\",\"eligibility\",\"rewards\"],\"type\":\"object\",\"properties\":{\"customerId\":{\"type\":\"string\"},\"eligibility\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/components/schemas/Rewards\"}},\"rewards\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/components/schemas/Rewards\"}}}}"
+        },
+        "Rewards" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"executionTime\",\"rewardsName\",\"rewardsId\",\"points\"],\"type\":\"object\",\"properties\":{\"executionTime\":{\"type\":\"string\"},\"points\":{\"type\":\"string\"},\"rewardsId\":{\"type\":\"string\"},\"rewardsName\":{\"type\":\"string\"}}}"
+        },
+        "customerscustomerIdfitnessrewards_POST_response" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"customer\"],\"type\":\"object\",\"properties\":{\"customer\":{\"$ref\":\"#/components/schemas/Customer\"}}}"
+        },
+        "customersfitnessrewards_GET_response" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"rewards\"],\"type\":\"object\",\"properties\":{\"rewards\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/components/schemas/Rewards\"}}}}"
+        }
+      },
+      "responses" : { },
+      "parameters" : { },
+      "examples" : { },
+      "requestBodies" : { },
+      "headers" : { },
+      "links" : { },
+      "callbacks" : { }
+    },
+    "type" : "rest"
+  },
+  "nativeEndpoint" : [ {
+    "passSecurityHeaders" : true,
+    "uri" : "https://rewards-578785f8f8-vf9sq:5555/rad/FX_Rewards_API.swagger:rewardsapi",
+    "connectionTimeoutDuration" : 0,
+    "alias" : false
+  }, {
+    "passSecurityHeaders" : true,
+    "uri" : "http://rewards-578785f8f8-vf9sq:5555/rad/FX_Rewards_API.swagger:rewardsapi",
+    "connectionTimeoutDuration" : 0,
+    "alias" : false
+  } ],
+  "apiName" : "rewards",
+  "apiVersion" : "1.0",
+  "maturityState" : "Beta",
+  "isActive" : true,
+  "type" : "REST",
+  "owner" : "Administrator",
+  "policies" : [ "a6b23c3b-4ba6-4215-9d22-e46c90a44d81" ],
+  "referencedFiles" : {
+    "swagger.json" : "---\nswagger: \"2.0\"\ninfo:\n  version: \"1.0\"\n  title: \"rewards\"\nhost: \"rewards-578785f8f8-vf9sq:5555\"\nbasePath: \"/rad/FX_Rewards_API.swagger:rewardsapi\"\nschemes:\n- \"http\"\n- \"https\"\nconsumes:\n- \"application/json\"\nproduces:\n- \"application/json\"\npaths:\n  /customers/fitness/rewards:\n    get:\n      operationId: \"customersfitnessrewards_GET_1\"\n      parameters: []\n      responses:\n        \"200\":\n          description: \"OK\"\n          schema:\n            $ref: \"#/definitions/customersfitnessrewards_GET_response\"\n        \"401\":\n          description: \"Access Denied\"\n  /customers/{customerId}/fitness/rewards:\n    get:\n      operationId: \"customerscustomerIdfitnessrewards_GET_2\"\n      parameters:\n      - name: \"customerId\"\n        in: \"path\"\n        required: true\n        type: \"string\"\n      responses:\n        \"200\":\n          description: \"OK\"\n        \"401\":\n          description: \"Access Denied\"\n    post:\n      operationId: \"customerscustomerIdfitnessrewards_POST_2\"\n      consumes:\n      - \"application/x-www-form-urlencoded\"\n      parameters:\n      - name: \"customerId\"\n        in: \"path\"\n        required: true\n        type: \"string\"\n      - name: \"rewardsId\"\n        in: \"formData\"\n        required: true\n        type: \"string\"\n      responses:\n        \"200\":\n          description: \"OK\"\n          schema:\n            $ref: \"#/definitions/customerscustomerIdfitnessrewards_POST_response\"\n        \"401\":\n          description: \"Access Denied\"\ndefinitions:\n  Rewards:\n    required:\n    - \"executionTime\"\n    - \"points\"\n    - \"rewardsId\"\n    - \"rewardsName\"\n    properties:\n      rewardsId:\n        type: \"string\"\n      rewardsName:\n        type: \"string\"\n      executionTime:\n        type: \"string\"\n      points:\n        type: \"string\"\n  customersfitnessrewards_GET_response:\n    required:\n    - \"rewards\"\n    properties:\n      rewards:\n        type: \"array\"\n        items:\n          $ref: \"#/definitions/Rewards\"\n  Customer:\n    required:\n    - \"customerId\"\n    - \"eligibility\"\n    - \"rewards\"\n    properties:\n      customerId:\n        type: \"string\"\n      eligibility:\n        type: \"array\"\n        items:\n          $ref: \"#/definitions/Rewards\"\n      rewards:\n        type: \"array\"\n        items:\n          $ref: \"#/definitions/Rewards\"\n  customerscustomerIdfitnessrewards_POST_response:\n    required:\n    - \"customer\"\n    properties:\n      customer:\n        $ref: \"#/definitions/Customer\"\n"
+  },
+  "tracingEnabled" : false,
+  "scopes" : [ ],
+  "publishedPortals" : [ ],
+  "creationDate" : "2022-12-19 10:03:35 GMT",
+  "lastModified" : "2022-12-19 10:07:26 GMT",
+  "systemVersion" : 1,
+  "gatewayEndpoints" : { },
+  "id" : "6ccd417c-4b4e-45f5-855e-cb1adcd348b6"
+}

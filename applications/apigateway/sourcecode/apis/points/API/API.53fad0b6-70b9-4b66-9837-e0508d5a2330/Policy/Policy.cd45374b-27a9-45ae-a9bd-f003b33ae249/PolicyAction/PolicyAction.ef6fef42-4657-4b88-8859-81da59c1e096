@@ -1,0 +1,16 @@
+{
+  "id" : "ef6fef42-4657-4b88-8859-81da59c1e096",
+  "names" : [ {
+    "value" : "Straight Through Routing",
+    "locale" : "en"
+  } ],
+  "templateKey" : "straightThroughRouting",
+  "parameters" : [ {
+    "templateKey" : "endpointUri",
+    "values" : [ "http://points:5555/rad/FX_Points_API.swagger:pointsapi/${sys:resource_path}" ]
+  }, {
+    "templateKey" : "method",
+    "values" : [ "CUSTOM" ]
+  } ],
+  "active" : false
+}

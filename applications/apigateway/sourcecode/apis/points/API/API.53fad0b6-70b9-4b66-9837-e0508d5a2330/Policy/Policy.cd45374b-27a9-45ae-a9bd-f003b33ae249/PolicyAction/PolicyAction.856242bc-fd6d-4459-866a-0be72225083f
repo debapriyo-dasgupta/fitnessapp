@@ -1,0 +1,25 @@
+{
+  "id" : "856242bc-fd6d-4459-866a-0be72225083f",
+  "names" : [ {
+    "value" : "Conditional Error Processing",
+    "locale" : "en"
+  } ],
+  "templateKey" : "conditionalErrorProcessing",
+  "parameters" : [ {
+    "templateKey" : "transformationConditions",
+    "parameters" : [ {
+      "templateKey" : "logicalConnector",
+      "values" : [ "OR" ]
+    } ]
+  }, {
+    "templateKey" : "errorTransformationConfiguration",
+    "parameters" : [ {
+      "templateKey" : "customFailureMessages",
+      "parameters" : [ {
+        "templateKey" : "sendNativeProviderFault",
+        "values" : [ "true" ]
+      } ]
+    } ]
+  } ],
+  "active" : false
+}

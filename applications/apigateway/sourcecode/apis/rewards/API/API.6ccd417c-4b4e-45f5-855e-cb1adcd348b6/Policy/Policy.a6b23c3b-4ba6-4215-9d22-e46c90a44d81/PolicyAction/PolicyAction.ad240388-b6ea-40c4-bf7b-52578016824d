@@ -1,0 +1,16 @@
+{
+  "id" : "ad240388-b6ea-40c4-bf7b-52578016824d",
+  "names" : [ {
+    "value" : "Straight Through Routing",
+    "locale" : "en"
+  } ],
+  "templateKey" : "straightThroughRouting",
+  "parameters" : [ {
+    "templateKey" : "endpointUri",
+    "values" : [ "http://rewards:5555/rad/FX_Rewards_API.swagger:rewardsapi/${sys:resource_path}" ]
+  }, {
+    "templateKey" : "method",
+    "values" : [ "CUSTOM" ]
+  } ],
+  "active" : false
+}

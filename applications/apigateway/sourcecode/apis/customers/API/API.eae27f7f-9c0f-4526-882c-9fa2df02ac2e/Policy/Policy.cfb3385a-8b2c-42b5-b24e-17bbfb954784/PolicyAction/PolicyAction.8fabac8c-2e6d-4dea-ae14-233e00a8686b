@@ -1,0 +1,16 @@
+{
+  "id" : "8fabac8c-2e6d-4dea-ae14-233e00a8686b",
+  "names" : [ {
+    "value" : "Straight Through Routing",
+    "locale" : "en"
+  } ],
+  "templateKey" : "straightThroughRouting",
+  "parameters" : [ {
+    "templateKey" : "endpointUri",
+    "values" : [ "http://memberships:5555/rad/FX_Memberships_API.swagger:customers/${sys:resource_path}" ]
+  }, {
+    "templateKey" : "method",
+    "values" : [ "CUSTOM" ]
+  } ],
+  "active" : false
+}

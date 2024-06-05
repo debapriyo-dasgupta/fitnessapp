@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<asset_composite name="APIGatewayAssets" displayName="Assets for API Gateway" runtimeVersion="10.15" targetNamespace="http://namespaces.softwareag.com/webMethods/APIGateway" xmlns="http://namespaces.softwareag.com/acdl/1.0" xmlns:EDA="http://namespaces.softwareag.com/webMethods/EDA" xmlns:MWS="http://namespaces.softwareag.com/webMethods/MWS" xmlns:IS="http://namespaces.softwareag.com/webMethods/IS" xmlns:APIPORTAL="http://namespaces.softwareag.com/webMethods/APIPORTAL" xmlns:AgileApps="http://namespaces.softwareag.com/webMethods/AgileApps" xmlns:BROKER="http://namespaces.softwareag.com/webMethods/BROKER" xmlns:implDetails="http://namespaces.softwareag.com/acdl/implDetails" xmlns:UniversalMessaging="http://namespaces.softwareag.com/webMethods/UniversalMessaging" xmlns:TN="http://namespaces.softwareag.com/webMethods/TN" xmlns:RULES="http://namespaces.softwareag.com/webMethods/RULES" xmlns:BPM="http://namespaces.softwareag.com/webMethods/BPM" xmlns:Optimize="http://namespaces.softwareag.com/webMethods/Optimize">
+    <buildInfo name="BuildTimestamp" value="2024-06-05T06:28:37"/>
+    <asset name="API.947e2f3c-9f18-410c-987d-4c681ac500aa" displayName="challenges[1.0]" isDeployable="true">
+        <implementation.generic type="API"/>
+        <dependsOn>APIGateway:Policy.d525e2a5-5784-4754-908e-bcc14bb0489c</dependsOn>
+    </asset>
+    <asset name="Policy.d525e2a5-5784-4754-908e-bcc14bb0489c" displayName="Policy For API challenges[1.0]" isDeployable="true">
+        <implementation.generic type="Policy"/>
+        <dependsOn>APIGateway:PolicyAction.04477462-9f14-4498-ab15-e69030f5afca</dependsOn>
+        <dependsOn>APIGateway:PolicyAction.9f4d1ced-e688-45ee-a0dc-1273e3f64cfe</dependsOn>
+        <dependsOn>APIGateway:PolicyAction.c87a38bd-761a-48eb-896a-eb848d702282</dependsOn>
+        <dependsOn>APIGateway:PolicyAction.de6622db-d5a3-47fe-aa9e-d119c66633c6</dependsOn>
+    </asset>
+    <asset name="PolicyAction.9f4d1ced-e688-45ee-a0dc-1273e3f64cfe" displayName="Policy Action [Straight Through Routing] -&gt; Policy For API challenges[1.0]" isDeployable="true">
+        <implementation.generic type="PolicyAction"/>
+    </asset>
+    <asset name="PolicyAction.04477462-9f14-4498-ab15-e69030f5afca" displayName="Policy Action [Outbound Auth - Transport] -&gt; Policy For API challenges[1.0]" isDeployable="true">
+        <implementation.generic type="PolicyAction"/>
+        <dependsOn>APIGateway:PassmanData.04477462-9f14-4498-ab15-e69030f5afcapassword</dependsOn>
+    </asset>
+    <asset name="PassmanData.04477462-9f14-4498-ab15-e69030f5afcapassword" displayName="04477462-9f14-4498-ab15-e69030f5afcapassword" isDeployable="true">
+        <implementation.generic type="PassmanData"/>
+    </asset>
+    <asset name="PolicyAction.de6622db-d5a3-47fe-aa9e-d119c66633c6" displayName="Policy Action [Conditional Error Processing] -&gt; Policy For API challenges[1.0]" isDeployable="true">
+        <implementation.generic type="PolicyAction"/>
+    </asset>
+    <asset name="PolicyAction.c87a38bd-761a-48eb-896a-eb848d702282" displayName="Policy Action [Enable HTTP / HTTPS] -&gt; Policy For API challenges[1.0]" isDeployable="true">
+        <implementation.generic type="PolicyAction"/>
+    </asset>
+</asset_composite>

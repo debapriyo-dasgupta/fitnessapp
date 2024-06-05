@@ -1,0 +1,16 @@
+{
+  "id" : "9f4d1ced-e688-45ee-a0dc-1273e3f64cfe",
+  "names" : [ {
+    "value" : "Straight Through Routing",
+    "locale" : "en"
+  } ],
+  "templateKey" : "straightThroughRouting",
+  "parameters" : [ {
+    "templateKey" : "endpointUri",
+    "values" : [ "http://challenges:5555/rad/FX_Challenges_API.swagger:challengesapi/${sys:resource_path}" ]
+  }, {
+    "templateKey" : "method",
+    "values" : [ "CUSTOM" ]
+  } ],
+  "active" : false
+}

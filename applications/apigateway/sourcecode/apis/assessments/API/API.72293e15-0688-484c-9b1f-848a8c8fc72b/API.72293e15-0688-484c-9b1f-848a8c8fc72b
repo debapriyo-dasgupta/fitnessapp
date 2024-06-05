@@ -1,0 +1,209 @@
+{
+  "apiDefinition" : {
+    "info" : {
+      "version" : "1.0",
+      "title" : "assessments"
+    },
+    "basePath" : "",
+    "serviceRegistryDisplayName" : "assessments_1.0",
+    "schemes" : [ ],
+    "consumes" : [ "application/json" ],
+    "produces" : [ "application/json" ],
+    "security" : [ ],
+    "paths" : {
+      "/customers/{customerId}/fitness/assessments" : {
+        "post" : {
+          "operationId" : "customerscustomerIdfitnessassessments_POST_1",
+          "consumes" : [ "application/x-www-form-urlencoded" ],
+          "parameters" : [ {
+            "name" : "customerId",
+            "in" : "path",
+            "required" : true,
+            "type" : "string",
+            "parameterSchema" : {
+              "type" : "string",
+              "readOnly" : false
+            }
+          } ],
+          "responses" : {
+            "200" : {
+              "description" : "OK",
+              "headersV3" : { },
+              "content" : {
+                "application/json" : {
+                  "schema" : {
+                    "$ref" : "#/components/schemas/customerscustomerIdfitnessassessments_POST_response"
+                  },
+                  "examples" : { }
+                }
+              },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            },
+            "401" : {
+              "description" : "Access Denied",
+              "headersV3" : { },
+              "content" : { },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            }
+          },
+          "mockedResponses" : { },
+          "mockedConditionsBasedCustomResponsesList" : [ ],
+          "enabled" : true,
+          "scopes" : [ ],
+          "requestBody" : {
+            "content" : {
+              "application/x-www-form-urlencoded" : {
+                "schema" : {
+                  "type" : "gateway",
+                  "schema" : "{\"type\":\"object\",\"properties\":{\"challengeId\":{\"type\":\"string\",\"readOnly\":false},\"isAccept\":{\"type\":\"string\",\"readOnly\":false}}}"
+                },
+                "examples" : { }
+              }
+            },
+            "name" : "customerscustomerIdfitnessassessments_POST_1"
+          }
+        },
+        "parameters" : [ ],
+        "scopes" : [ ],
+        "displayName" : "/customers/{customerId}/fitness/assessments",
+        "enabled" : true
+      },
+      "/customers/fitness/assessments" : {
+        "get" : {
+          "operationId" : "customersfitnessassessments_GET_2",
+          "parameters" : [ ],
+          "responses" : {
+            "200" : {
+              "description" : "OK",
+              "headersV3" : { },
+              "content" : {
+                "application/json" : {
+                  "schema" : {
+                    "$ref" : "#/components/schemas/customersfitnessassessments_GET_response"
+                  },
+                  "examples" : { }
+                }
+              },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            },
+            "401" : {
+              "description" : "Access Denied",
+              "headersV3" : { },
+              "content" : { },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            }
+          },
+          "mockedResponses" : { },
+          "mockedConditionsBasedCustomResponsesList" : [ ],
+          "enabled" : true,
+          "scopes" : [ ],
+          "requestBody" : {
+            "content" : { },
+            "name" : "customersfitnessassessments_GET_2"
+          }
+        },
+        "parameters" : [ ],
+        "scopes" : [ ],
+        "displayName" : "/customers/fitness/assessments",
+        "enabled" : true
+      }
+    },
+    "securityDefinitions" : { },
+    "definitions" : { },
+    "parameters" : { },
+    "baseUriParameters" : [ ],
+    "externalDocs" : [ ],
+    "servers" : [ {
+      "url" : "http://assessments-54cc85bd59-cwcwb:5555/rad/FX_Assessments_API.swagger:assessmentsapi",
+      "variables" : { }
+    }, {
+      "url" : "https://assessments-54cc85bd59-cwcwb:5555/rad/FX_Assessments_API.swagger:assessmentsapi",
+      "variables" : { }
+    } ],
+    "components" : {
+      "schemas" : {
+        "fulfillments" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"caloriesBurnt\",\"heartbeat\",\"uploadPictures\"],\"type\":\"object\",\"properties\":{\"caloriesBurnt\":{\"type\":\"string\"},\"heartbeat\":{\"type\":\"string\"},\"uploadPictures\":{\"type\":\"string\"}}}"
+        },
+        "customersfitnessassessments_GET_response" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"customers\"],\"type\":\"object\",\"properties\":{\"customers\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/components/schemas/Customer\"}}}}"
+        },
+        "Customer" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"challenges\",\"mobileNumber\",\"customerId\",\"emailId\"],\"type\":\"object\",\"properties\":{\"challenges\":{\"$ref\":\"#/components/schemas/challenges\"},\"customerId\":{\"type\":\"string\"},\"emailId\":{\"type\":\"string\"},\"mobileNumber\":{\"type\":\"string\"}}}"
+        },
+        "challenges" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"incomplete\",\"rejected\",\"eligibility\",\"complete\"],\"type\":\"object\",\"properties\":{\"complete\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/components/schemas/Challenges\"}},\"eligibility\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/components/schemas/Challenges\"}},\"incomplete\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/components/schemas/Challenges\"}},\"rejected\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/components/schemas/Challenges\"}}}}"
+        },
+        "Challenges" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"criteria\",\"customerCompletionStatus\",\"description\",\"availability\",\"completedDate\",\"points\",\"durationMinutes\",\"challengeId\",\"times\",\"inspectionStatus\",\"name\",\"customerCompletionDate\"],\"type\":\"object\",\"properties\":{\"availability\":{\"type\":\"string\"},\"challengeId\":{\"type\":\"string\"},\"completedDate\":{\"type\":\"string\"},\"criteria\":{\"$ref\":\"#/components/schemas/Criteria\"},\"customerCompletionDate\":{\"type\":\"string\"},\"customerCompletionStatus\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"durationMinutes\":{\"type\":\"string\"},\"inspectionStatus\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"points\":{\"type\":\"string\"},\"times\":{\"type\":\"string\"}}}"
+        },
+        "Criteria" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"fulfillments\",\"age\"],\"type\":\"object\",\"properties\":{\"age\":{\"$ref\":\"#/components/schemas/age\"},\"fulfillments\":{\"$ref\":\"#/components/schemas/fulfillments\"}}}"
+        },
+        "customerscustomerIdfitnessassessments_POST_response" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"customer\"],\"type\":\"object\",\"properties\":{\"customer\":{\"$ref\":\"#/components/schemas/Customer\"}}}"
+        },
+        "age" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"min\",\"max\"],\"type\":\"object\",\"properties\":{\"max\":{\"type\":\"string\"},\"min\":{\"type\":\"string\"}}}"
+        }
+      },
+      "responses" : { },
+      "parameters" : { },
+      "examples" : { },
+      "requestBodies" : { },
+      "headers" : { },
+      "links" : { },
+      "callbacks" : { }
+    },
+    "type" : "rest"
+  },
+  "nativeEndpoint" : [ {
+    "passSecurityHeaders" : true,
+    "uri" : "http://assessments-54cc85bd59-cwcwb:5555/rad/FX_Assessments_API.swagger:assessmentsapi",
+    "connectionTimeoutDuration" : 0,
+    "alias" : false
+  }, {
+    "passSecurityHeaders" : true,
+    "uri" : "https://assessments-54cc85bd59-cwcwb:5555/rad/FX_Assessments_API.swagger:assessmentsapi",
+    "connectionTimeoutDuration" : 0,
+    "alias" : false
+  } ],
+  "apiName" : "assessments",
+  "apiVersion" : "1.0",
+  "maturityState" : "Beta",
+  "isActive" : true,
+  "type" : "REST",
+  "owner" : "Administrator",
+  "policies" : [ "9086fb8e-572d-448c-8c51-a56f8a2542eb" ],
+  "referencedFiles" : {
+    "swagger.json" : "---\nswagger: \"2.0\"\ninfo:\n  version: \"1.0\"\n  title: \"assessments\"\nhost: \"assessments-54cc85bd59-cwcwb:5555\"\nbasePath: \"/rad/FX_Assessments_API.swagger:assessmentsapi\"\nschemes:\n- \"http\"\n- \"https\"\nconsumes:\n- \"application/json\"\nproduces:\n- \"application/json\"\npaths:\n  /customers/{customerId}/fitness/assessments:\n    post:\n      operationId: \"customerscustomerIdfitnessassessments_POST_1\"\n      consumes:\n      - \"application/x-www-form-urlencoded\"\n      parameters:\n      - name: \"customerId\"\n        in: \"path\"\n        required: true\n        type: \"string\"\n      - name: \"challengeId\"\n        in: \"formData\"\n        required: true\n        type: \"string\"\n      - name: \"isAccept\"\n        in: \"formData\"\n        required: true\n        type: \"string\"\n      responses:\n        \"200\":\n          description: \"OK\"\n          schema:\n            $ref: \"#/definitions/customerscustomerIdfitnessassessments_POST_response\"\n        \"401\":\n          description: \"Access Denied\"\n  /customers/fitness/assessments:\n    get:\n      operationId: \"customersfitnessassessments_GET_2\"\n      parameters: []\n      responses:\n        \"200\":\n          description: \"OK\"\n          schema:\n            $ref: \"#/definitions/customersfitnessassessments_GET_response\"\n        \"401\":\n          description: \"Access Denied\"\ndefinitions:\n  customerscustomerIdfitnessassessments_POST_response:\n    required:\n    - \"customer\"\n    properties:\n      customer:\n        $ref: \"#/definitions/Customer\"\n  Criteria:\n    required:\n    - \"age\"\n    - \"fulfillments\"\n    properties:\n      age:\n        $ref: \"#/definitions/age\"\n      fulfillments:\n        $ref: \"#/definitions/fulfillments\"\n  customersfitnessassessments_GET_response:\n    required:\n    - \"customers\"\n    properties:\n      customers:\n        type: \"array\"\n        items:\n          $ref: \"#/definitions/Customer\"\n  Challenges:\n    required:\n    - \"availability\"\n    - \"challengeId\"\n    - \"completedDate\"\n    - \"criteria\"\n    - \"customerCompletionDate\"\n    - \"customerCompletionStatus\"\n    - \"description\"\n    - \"durationMinutes\"\n    - \"inspectionStatus\"\n    - \"name\"\n    - \"points\"\n    - \"times\"\n    properties:\n      challengeId:\n        type: \"string\"\n      name:\n        type: \"string\"\n      times:\n        type: \"string\"\n      durationMinutes:\n        type: \"string\"\n      description:\n        type: \"string\"\n      points:\n        type: \"string\"\n      availability:\n        type: \"string\"\n      customerCompletionStatus:\n        type: \"string\"\n      customerCompletionDate:\n        type: \"string\"\n      inspectionStatus:\n        type: \"string\"\n      completedDate:\n        type: \"string\"\n      criteria:\n        $ref: \"#/definitions/Criteria\"\n  age:\n    required:\n    - \"max\"\n    - \"min\"\n    properties:\n      min:\n        type: \"string\"\n      max:\n        type: \"string\"\n  Customer:\n    required:\n    - \"challenges\"\n    - \"customerId\"\n    - \"emailId\"\n    - \"mobileNumber\"\n    properties:\n      customerId:\n        type: \"string\"\n      challenges:\n        $ref: \"#/definitions/challenges\"\n      emailId:\n        type: \"string\"\n      mobileNumber:\n        type: \"string\"\n  challenges:\n    required:\n    - \"complete\"\n    - \"eligibility\"\n    - \"incomplete\"\n    - \"rejected\"\n    properties:\n      complete:\n        type: \"array\"\n        items:\n          $ref: \"#/definitions/Challenges\"\n      incomplete:\n        type: \"array\"\n        items:\n          $ref: \"#/definitions/Challenges\"\n      eligibility:\n        type: \"array\"\n        items:\n          $ref: \"#/definitions/Challenges\"\n      rejected:\n        type: \"array\"\n        items:\n          $ref: \"#/definitions/Challenges\"\n  fulfillments:\n    required:\n    - \"caloriesBurnt\"\n    - \"heartbeat\"\n    - \"uploadPictures\"\n    properties:\n      uploadPictures:\n        type: \"string\"\n      heartbeat:\n        type: \"string\"\n      caloriesBurnt:\n        type: \"string\"\n"
+  },
+  "tracingEnabled" : false,
+  "scopes" : [ ],
+  "publishedPortals" : [ ],
+  "creationDate" : "2022-12-19 10:01:27 GMT",
+  "lastModified" : "2022-12-19 10:08:48 GMT",
+  "systemVersion" : 1,
+  "gatewayEndpoints" : { },
+  "id" : "72293e15-0688-484c-9b1f-848a8c8fc72b"
+}

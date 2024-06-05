@@ -1,0 +1,40 @@
+{
+  "id" : "a6b23c3b-4ba6-4215-9d22-e46c90a44d81",
+  "names" : [ {
+    "value" : "Default Policy for API rewards",
+    "locale" : "English"
+  } ],
+  "descriptions" : [ {
+    "value" : "",
+    "locale" : "English"
+  } ],
+  "scope" : {
+    "scopeConditions" : [ ]
+  },
+  "policyEnforcements" : [ {
+    "enforcements" : [ {
+      "enforcementObjectId" : "ad240388-b6ea-40c4-bf7b-52578016824d",
+      "order" : "0"
+    }, {
+      "enforcementObjectId" : "eb88d43c-5c4d-49f0-9ac3-fe6e2aff5c72",
+      "order" : "1"
+    } ],
+    "stageKey" : "routing"
+  }, {
+    "enforcements" : [ {
+      "enforcementObjectId" : "c3a600ce-8c31-4192-813b-c9df04c65594",
+      "order" : "0"
+    } ],
+    "stageKey" : "responseFaultProcessing"
+  }, {
+    "enforcements" : [ {
+      "enforcementObjectId" : "913ff3f8-b7dc-4763-b542-fc881ef85813",
+      "order" : "0"
+    } ],
+    "stageKey" : "transport"
+  } ],
+  "policyScope" : "SERVICE",
+  "global" : false,
+  "active" : false,
+  "systemPolicy" : false
+}

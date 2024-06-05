@@ -1,0 +1,273 @@
+{
+  "apiDefinition" : {
+    "info" : {
+      "version" : "1.0",
+      "title" : "points"
+    },
+    "basePath" : "",
+    "serviceRegistryDisplayName" : "points_1.0",
+    "schemes" : [ ],
+    "consumes" : [ "application/json" ],
+    "produces" : [ "application/json" ],
+    "security" : [ ],
+    "paths" : {
+      "/customers/{customerId}/fitness/points" : {
+        "get" : {
+          "operationId" : "customerscustomerIdfitnesspoints_GET_3",
+          "parameters" : [ {
+            "name" : "customerId",
+            "in" : "path",
+            "required" : true,
+            "type" : "string",
+            "parameterSchema" : {
+              "type" : "string",
+              "readOnly" : false
+            }
+          } ],
+          "responses" : {
+            "200" : {
+              "description" : "OK",
+              "headersV3" : { },
+              "content" : {
+                "application/json" : {
+                  "schema" : {
+                    "$ref" : "#/components/schemas/customerscustomerIdfitnesspoints_GET_response"
+                  },
+                  "examples" : { }
+                }
+              },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            },
+            "401" : {
+              "description" : "Access Denied",
+              "headersV3" : { },
+              "content" : { },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            }
+          },
+          "mockedResponses" : { },
+          "mockedConditionsBasedCustomResponsesList" : [ ],
+          "enabled" : true,
+          "scopes" : [ ],
+          "requestBody" : {
+            "content" : { },
+            "name" : "customerscustomerIdfitnesspoints_GET_3"
+          }
+        },
+        "parameters" : [ ],
+        "scopes" : [ ],
+        "displayName" : "/customers/{customerId}/fitness/points",
+        "enabled" : true
+      },
+      "/customers/{customerId}/fitness/points/deductions" : {
+        "post" : {
+          "operationId" : "customerscustomerIdfitnesspointsdeductions_POST_2",
+          "consumes" : [ "application/x-www-form-urlencoded" ],
+          "parameters" : [ {
+            "name" : "customerId",
+            "in" : "path",
+            "required" : true,
+            "type" : "string",
+            "parameterSchema" : {
+              "type" : "string",
+              "readOnly" : false
+            }
+          } ],
+          "responses" : {
+            "200" : {
+              "description" : "OK",
+              "headersV3" : { },
+              "content" : {
+                "application/json" : {
+                  "schema" : {
+                    "$ref" : "#/components/schemas/customerscustomerIdfitnesspointsdeductions_POST_response"
+                  },
+                  "examples" : { }
+                }
+              },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            },
+            "401" : {
+              "description" : "Access Denied",
+              "headersV3" : { },
+              "content" : { },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            }
+          },
+          "mockedResponses" : { },
+          "mockedConditionsBasedCustomResponsesList" : [ ],
+          "enabled" : true,
+          "scopes" : [ ],
+          "requestBody" : {
+            "content" : {
+              "application/x-www-form-urlencoded" : {
+                "schema" : {
+                  "type" : "gateway",
+                  "schema" : "{\"type\":\"object\",\"properties\":{\"points\":{\"type\":\"string\",\"readOnly\":false},\"rewardsId\":{\"type\":\"string\",\"readOnly\":false},\"rewardsName\":{\"type\":\"string\",\"readOnly\":false}}}"
+                },
+                "examples" : { }
+              }
+            },
+            "name" : "customerscustomerIdfitnesspointsdeductions_POST_2"
+          }
+        },
+        "parameters" : [ ],
+        "scopes" : [ ],
+        "displayName" : "/customers/{customerId}/fitness/points/deductions",
+        "enabled" : true
+      },
+      "/customers/{customerId}/fitness/points/accruals" : {
+        "post" : {
+          "operationId" : "customerscustomerIdfitnesspointsaccruals_POST_1",
+          "consumes" : [ "application/x-www-form-urlencoded" ],
+          "parameters" : [ {
+            "name" : "customerId",
+            "in" : "path",
+            "required" : true,
+            "type" : "string",
+            "parameterSchema" : {
+              "type" : "string",
+              "readOnly" : false
+            }
+          } ],
+          "responses" : {
+            "200" : {
+              "description" : "OK",
+              "headersV3" : { },
+              "content" : {
+                "application/json" : {
+                  "schema" : {
+                    "$ref" : "#/components/schemas/customerscustomerIdfitnesspointsaccruals_POST_response"
+                  },
+                  "examples" : { }
+                }
+              },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            },
+            "401" : {
+              "description" : "Access Denied",
+              "headersV3" : { },
+              "content" : { },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            }
+          },
+          "mockedResponses" : { },
+          "mockedConditionsBasedCustomResponsesList" : [ ],
+          "enabled" : true,
+          "scopes" : [ ],
+          "requestBody" : {
+            "content" : {
+              "application/x-www-form-urlencoded" : {
+                "schema" : {
+                  "type" : "gateway",
+                  "schema" : "{\"type\":\"object\",\"properties\":{\"challengeId\":{\"type\":\"string\",\"readOnly\":false},\"name\":{\"type\":\"string\",\"readOnly\":false},\"points\":{\"type\":\"string\",\"readOnly\":false}}}"
+                },
+                "examples" : { }
+              }
+            },
+            "name" : "customerscustomerIdfitnesspointsaccruals_POST_1"
+          }
+        },
+        "parameters" : [ ],
+        "scopes" : [ ],
+        "displayName" : "/customers/{customerId}/fitness/points/accruals",
+        "enabled" : true
+      }
+    },
+    "securityDefinitions" : { },
+    "definitions" : { },
+    "parameters" : { },
+    "baseUriParameters" : [ ],
+    "externalDocs" : [ ],
+    "servers" : [ {
+      "url" : "http://points-6cb4fcf5d9-w7xtb:5555/rad/FX_Points_API.swagger:pointsapi",
+      "variables" : { }
+    }, {
+      "url" : "https://points-6cb4fcf5d9-w7xtb:5555/rad/FX_Points_API.swagger:pointsapi",
+      "variables" : { }
+    } ],
+    "components" : {
+      "schemas" : {
+        "customerscustomerIdfitnesspoints_GET_response" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"customer\"],\"type\":\"object\",\"properties\":{\"customer\":{\"$ref\":\"#/components/schemas/Customer\"}}}"
+        },
+        "customerscustomerIdfitnesspointsdeductions_POST_response" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"customer\"],\"type\":\"object\",\"properties\":{\"customer\":{\"$ref\":\"#/components/schemas/Customer\"}}}"
+        },
+        "Customer" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"challenges\",\"customerId\",\"deductionsForRewards\",\"points\"],\"type\":\"object\",\"properties\":{\"challenges\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/components/schemas/challenges\"}},\"customerId\":{\"type\":\"string\"},\"deductionsForRewards\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/components/schemas/Rewards\"}},\"points\":{\"type\":\"string\"}}}"
+        },
+        "challenges" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"executionTime\",\"challengeId\",\"name\",\"points\"],\"type\":\"object\",\"properties\":{\"challengeId\":{\"type\":\"string\"},\"executionTime\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"points\":{\"type\":\"string\"}}}"
+        },
+        "Rewards" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"executionTime\",\"rewardsName\",\"rewardsId\",\"points\"],\"type\":\"object\",\"properties\":{\"executionTime\":{\"type\":\"string\"},\"points\":{\"type\":\"string\"},\"rewardsId\":{\"type\":\"string\"},\"rewardsName\":{\"type\":\"string\"}}}"
+        },
+        "customerscustomerIdfitnesspointsaccruals_POST_response" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"customer\"],\"type\":\"object\",\"properties\":{\"customer\":{\"$ref\":\"#/components/schemas/Customer\"}}}"
+        }
+      },
+      "responses" : { },
+      "parameters" : { },
+      "examples" : { },
+      "requestBodies" : { },
+      "headers" : { },
+      "links" : { },
+      "callbacks" : { }
+    },
+    "type" : "rest"
+  },
+  "nativeEndpoint" : [ {
+    "passSecurityHeaders" : true,
+    "uri" : "http://points-6cb4fcf5d9-w7xtb:5555/rad/FX_Points_API.swagger:pointsapi",
+    "connectionTimeoutDuration" : 0,
+    "alias" : false
+  }, {
+    "passSecurityHeaders" : true,
+    "uri" : "https://points-6cb4fcf5d9-w7xtb:5555/rad/FX_Points_API.swagger:pointsapi",
+    "connectionTimeoutDuration" : 0,
+    "alias" : false
+  } ],
+  "apiName" : "points",
+  "apiVersion" : "1.0",
+  "maturityState" : "Beta",
+  "isActive" : true,
+  "type" : "REST",
+  "owner" : "Administrator",
+  "policies" : [ "cd45374b-27a9-45ae-a9bd-f003b33ae249" ],
+  "referencedFiles" : {
+    "swagger.json" : "---\nswagger: \"2.0\"\ninfo:\n  version: \"1.0\"\n  title: \"points\"\nhost: \"points-6cb4fcf5d9-w7xtb:5555\"\nbasePath: \"/rad/FX_Points_API.swagger:pointsapi\"\nschemes:\n- \"http\"\n- \"https\"\nconsumes:\n- \"application/json\"\nproduces:\n- \"application/json\"\npaths:\n  /customers/{customerId}/fitness/points/accruals:\n    post:\n      operationId: \"customerscustomerIdfitnesspointsaccruals_POST_1\"\n      consumes:\n      - \"application/x-www-form-urlencoded\"\n      parameters:\n      - name: \"customerId\"\n        in: \"path\"\n        required: true\n        type: \"string\"\n      - name: \"challengeId\"\n        in: \"formData\"\n        required: true\n        type: \"string\"\n      - name: \"name\"\n        in: \"formData\"\n        required: true\n        type: \"string\"\n      - name: \"points\"\n        in: \"formData\"\n        required: true\n        type: \"string\"\n      responses:\n        \"200\":\n          description: \"OK\"\n          schema:\n            $ref: \"#/definitions/customerscustomerIdfitnesspointsaccruals_POST_response\"\n        \"401\":\n          description: \"Access Denied\"\n  /customers/{customerId}/fitness/points/deductions:\n    post:\n      operationId: \"customerscustomerIdfitnesspointsdeductions_POST_2\"\n      consumes:\n      - \"application/x-www-form-urlencoded\"\n      parameters:\n      - name: \"customerId\"\n        in: \"path\"\n        required: true\n        type: \"string\"\n      - name: \"rewardsId\"\n        in: \"formData\"\n        required: true\n        type: \"string\"\n      - name: \"rewardsName\"\n        in: \"formData\"\n        required: true\n        type: \"string\"\n      - name: \"points\"\n        in: \"formData\"\n        required: true\n        type: \"string\"\n      responses:\n        \"200\":\n          description: \"OK\"\n          schema:\n            $ref: \"#/definitions/customerscustomerIdfitnesspointsdeductions_POST_response\"\n        \"401\":\n          description: \"Access Denied\"\n  /customers/{customerId}/fitness/points:\n    get:\n      operationId: \"customerscustomerIdfitnesspoints_GET_3\"\n      parameters:\n      - name: \"customerId\"\n        in: \"path\"\n        required: true\n        type: \"string\"\n      responses:\n        \"200\":\n          description: \"OK\"\n          schema:\n            $ref: \"#/definitions/customerscustomerIdfitnesspoints_GET_response\"\n        \"401\":\n          description: \"Access Denied\"\ndefinitions:\n  customerscustomerIdfitnesspoints_GET_response:\n    required:\n    - \"customer\"\n    properties:\n      customer:\n        $ref: \"#/definitions/Customer\"\n  challenges:\n    required:\n    - \"challengeId\"\n    - \"executionTime\"\n    - \"name\"\n    - \"points\"\n    properties:\n      challengeId:\n        type: \"string\"\n      name:\n        type: \"string\"\n      executionTime:\n        type: \"string\"\n      points:\n        type: \"string\"\n  Customer:\n    required:\n    - \"challenges\"\n    - \"customerId\"\n    - \"deductionsForRewards\"\n    - \"points\"\n    properties:\n      customerId:\n        type: \"string\"\n      points:\n        type: \"string\"\n      challenges:\n        type: \"array\"\n        items:\n          $ref: \"#/definitions/challenges\"\n      deductionsForRewards:\n        type: \"array\"\n        items:\n          $ref: \"#/definitions/Rewards\"\n  Rewards:\n    required:\n    - \"executionTime\"\n    - \"points\"\n    - \"rewardsId\"\n    - \"rewardsName\"\n    properties:\n      rewardsId:\n        type: \"string\"\n      rewardsName:\n        type: \"string\"\n      points:\n        type: \"string\"\n      executionTime:\n        type: \"string\"\n  customerscustomerIdfitnesspointsdeductions_POST_response:\n    required:\n    - \"customer\"\n    properties:\n      customer:\n        $ref: \"#/definitions/Customer\"\n  customerscustomerIdfitnesspointsaccruals_POST_response:\n    required:\n    - \"customer\"\n    properties:\n      customer:\n        $ref: \"#/definitions/Customer\"\n"
+  },
+  "tracingEnabled" : false,
+  "scopes" : [ ],
+  "publishedPortals" : [ ],
+  "creationDate" : "2022-12-19 10:03:13 GMT",
+  "lastModified" : "2022-12-19 10:07:49 GMT",
+  "systemVersion" : 1,
+  "gatewayEndpoints" : { },
+  "id" : "53fad0b6-70b9-4b66-9837-e0508d5a2330"
+}

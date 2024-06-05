@@ -1,0 +1,382 @@
+{
+  "apiDefinition" : {
+    "info" : {
+      "version" : "1.0",
+      "title" : "challenges"
+    },
+    "basePath" : "",
+    "serviceRegistryDisplayName" : "challenges_1.0",
+    "schemes" : [ ],
+    "consumes" : [ "application/json" ],
+    "produces" : [ "application/json" ],
+    "security" : [ ],
+    "paths" : {
+      "/customers/{customerId}/fitness/challenges/eligibility" : {
+        "get" : {
+          "operationId" : "customerscustomerIdfitnesschallengeseligibility_GET_2",
+          "parameters" : [ {
+            "name" : "customerId",
+            "in" : "path",
+            "required" : true,
+            "type" : "string",
+            "parameterSchema" : {
+              "type" : "string",
+              "readOnly" : false
+            }
+          } ],
+          "responses" : {
+            "200" : {
+              "description" : "OK",
+              "headersV3" : { },
+              "content" : {
+                "application/json" : {
+                  "schema" : {
+                    "$ref" : "#/components/schemas/customerscustomerIdfitnesschallengeseligibility_GET_response"
+                  },
+                  "examples" : { }
+                }
+              },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            },
+            "401" : {
+              "description" : "Access Denied",
+              "headersV3" : { },
+              "content" : { },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            }
+          },
+          "mockedResponses" : { },
+          "mockedConditionsBasedCustomResponsesList" : [ ],
+          "enabled" : true,
+          "scopes" : [ ],
+          "requestBody" : {
+            "content" : { },
+            "name" : "customerscustomerIdfitnesschallengeseligibility_GET_2"
+          }
+        },
+        "parameters" : [ ],
+        "scopes" : [ ],
+        "displayName" : "/customers/{customerId}/fitness/challenges/eligibility",
+        "enabled" : true
+      },
+      "/customers/fitness/challenges" : {
+        "get" : {
+          "operationId" : "customersfitnesschallenges_GET_1",
+          "parameters" : [ ],
+          "responses" : {
+            "200" : {
+              "description" : "OK",
+              "headersV3" : { },
+              "content" : {
+                "application/json" : {
+                  "schema" : {
+                    "$ref" : "#/components/schemas/customersfitnesschallenges_GET_response"
+                  },
+                  "examples" : { }
+                }
+              },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            },
+            "401" : {
+              "description" : "Access Denied",
+              "headersV3" : { },
+              "content" : { },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            }
+          },
+          "mockedResponses" : { },
+          "mockedConditionsBasedCustomResponsesList" : [ ],
+          "enabled" : true,
+          "scopes" : [ ],
+          "requestBody" : {
+            "content" : { },
+            "name" : "customersfitnesschallenges_GET_1"
+          }
+        },
+        "parameters" : [ ],
+        "scopes" : [ ],
+        "displayName" : "/customers/fitness/challenges",
+        "enabled" : true
+      },
+      "/customers/{customerId}/fitness/challenges" : {
+        "get" : {
+          "operationId" : "customerscustomerIdfitnesschallenges_GET_3",
+          "parameters" : [ {
+            "name" : "customerId",
+            "in" : "path",
+            "required" : true,
+            "type" : "string",
+            "parameterSchema" : {
+              "type" : "string",
+              "readOnly" : false
+            }
+          } ],
+          "responses" : {
+            "200" : {
+              "description" : "OK",
+              "headersV3" : { },
+              "content" : {
+                "application/json" : {
+                  "schema" : {
+                    "$ref" : "#/components/schemas/customerscustomerIdfitnesschallenges_GET_response"
+                  },
+                  "examples" : { }
+                }
+              },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            },
+            "401" : {
+              "description" : "Access Denied",
+              "headersV3" : { },
+              "content" : { },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            }
+          },
+          "mockedResponses" : { },
+          "mockedConditionsBasedCustomResponsesList" : [ ],
+          "enabled" : true,
+          "scopes" : [ ],
+          "requestBody" : {
+            "content" : { },
+            "name" : "customerscustomerIdfitnesschallenges_GET_3"
+          }
+        },
+        "put" : {
+          "operationId" : "customerscustomerIdfitnesschallenges_PUT_3",
+          "parameters" : [ {
+            "name" : "customerId",
+            "in" : "path",
+            "required" : true,
+            "type" : "string",
+            "parameterSchema" : {
+              "type" : "string",
+              "readOnly" : false
+            }
+          } ],
+          "responses" : {
+            "200" : {
+              "description" : "OK",
+              "headersV3" : { },
+              "content" : {
+                "application/json" : {
+                  "schema" : {
+                    "$ref" : "#/components/schemas/customerscustomerIdfitnesschallenges_PUT_response"
+                  },
+                  "examples" : { }
+                }
+              },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            },
+            "401" : {
+              "description" : "Access Denied",
+              "headersV3" : { },
+              "content" : { },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            }
+          },
+          "mockedResponses" : { },
+          "mockedConditionsBasedCustomResponsesList" : [ ],
+          "enabled" : true,
+          "scopes" : [ ],
+          "requestBody" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/rootArray"
+                },
+                "examples" : { }
+              }
+            },
+            "name" : "customerscustomerIdfitnesschallenges_PUT_3"
+          }
+        },
+        "post" : {
+          "operationId" : "customerscustomerIdfitnesschallenges_POST_3",
+          "consumes" : [ "application/x-www-form-urlencoded" ],
+          "parameters" : [ {
+            "name" : "customerId",
+            "in" : "path",
+            "required" : true,
+            "type" : "string",
+            "parameterSchema" : {
+              "type" : "string",
+              "readOnly" : false
+            }
+          } ],
+          "responses" : {
+            "200" : {
+              "description" : "OK",
+              "headersV3" : { },
+              "content" : {
+                "application/json" : {
+                  "schema" : {
+                    "$ref" : "#/components/schemas/customerscustomerIdfitnesschallenges_POST_response"
+                  },
+                  "examples" : { }
+                }
+              },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            },
+            "401" : {
+              "description" : "Access Denied",
+              "headersV3" : { },
+              "content" : { },
+              "links" : { },
+              "schema" : { },
+              "examples" : { },
+              "headers" : { }
+            }
+          },
+          "mockedResponses" : { },
+          "mockedConditionsBasedCustomResponsesList" : [ ],
+          "enabled" : true,
+          "scopes" : [ ],
+          "requestBody" : {
+            "content" : {
+              "application/x-www-form-urlencoded" : {
+                "schema" : {
+                  "type" : "gateway",
+                  "schema" : "{\"type\":\"object\",\"properties\":{\"challengeId\":{\"type\":\"string\",\"readOnly\":false}}}"
+                },
+                "examples" : { }
+              }
+            },
+            "name" : "customerscustomerIdfitnesschallenges_POST_3"
+          }
+        },
+        "parameters" : [ ],
+        "scopes" : [ ],
+        "displayName" : "/customers/{customerId}/fitness/challenges",
+        "enabled" : true
+      }
+    },
+    "securityDefinitions" : { },
+    "definitions" : { },
+    "parameters" : { },
+    "baseUriParameters" : [ ],
+    "externalDocs" : [ ],
+    "servers" : [ {
+      "url" : "http://challenges-864685d675-7bnmh:5555/rad/FX_Challenges_API.swagger:challengesapi",
+      "variables" : { }
+    } ],
+    "components" : {
+      "schemas" : {
+        "customersfitnesschallenges_GET_response" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"challenges\"],\"type\":\"object\",\"properties\":{\"challenges\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/components/schemas/Challenges\"}}}}"
+        },
+        "Address" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"country\",\"streetName\",\"city\",\"houseNumber\",\"state\"],\"type\":\"object\",\"properties\":{\"city\":{\"type\":\"string\"},\"country\":{\"type\":\"string\"},\"houseNumber\":{\"type\":\"string\"},\"state\":{\"type\":\"string\"},\"streetName\":{\"type\":\"string\"}}}"
+        },
+        "Customer" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"challenges\",\"mobileNumber\",\"customerId\",\"personalDetails\",\"emailId\"],\"type\":\"object\",\"properties\":{\"challenges\":{\"$ref\":\"#/components/schemas/challenges\"},\"customerId\":{\"type\":\"string\"},\"emailId\":{\"type\":\"string\"},\"mobileNumber\":{\"type\":\"string\"},\"personalDetails\":{\"$ref\":\"#/components/schemas/PersonalDetails\"}}}"
+        },
+        "challenges" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"incomplete\",\"rejected\",\"eligibility\",\"complete\"],\"type\":\"object\",\"properties\":{\"complete\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/components/schemas/Challenges\"}},\"eligibility\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/components/schemas/Challenges\"}},\"incomplete\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/components/schemas/Challenges\"}},\"rejected\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/components/schemas/Challenges\"}}}}"
+        },
+        "customerscustomerIdfitnesschallengeseligibility_GET_response" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"customer\"],\"type\":\"object\",\"properties\":{\"customer\":{\"$ref\":\"#/components/schemas/Customer\"}}}"
+        },
+        "Criteria" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"fulfillments\",\"age\"],\"type\":\"object\",\"properties\":{\"age\":{\"$ref\":\"#/components/schemas/age\"},\"fulfillments\":{\"$ref\":\"#/components/schemas/fulfillments\"}}}"
+        },
+        "PersonalDetails" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"firstName\",\"lastName\",\"communicationAddress\",\"dateOfBirth\",\"permanentAddress\"],\"type\":\"object\",\"properties\":{\"communicationAddress\":{\"$ref\":\"#/components/schemas/Address\"},\"dateOfBirth\":{\"type\":\"string\"},\"firstName\":{\"type\":\"string\"},\"lastName\":{\"type\":\"string\"},\"permanentAddress\":{\"$ref\":\"#/components/schemas/Address\"}}}"
+        },
+        "customerscustomerIdfitnesschallenges_POST_response" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"customer\"],\"type\":\"object\",\"properties\":{\"customer\":{\"$ref\":\"#/components/schemas/Customer\"}}}"
+        },
+        "fulfillments" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"caloriesBurnt\",\"heartbeat\",\"uploadPictures\"],\"type\":\"object\",\"properties\":{\"caloriesBurnt\":{\"type\":\"string\"},\"heartbeat\":{\"type\":\"string\"},\"uploadPictures\":{\"type\":\"string\"}}}"
+        },
+        "Challenges" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"criteria\",\"customerCompletionStatus\",\"description\",\"availability\",\"completedDate\",\"points\",\"durationMinutes\",\"challengeId\",\"times\",\"inspectionStatus\",\"name\",\"customerCompletionDate\"],\"type\":\"object\",\"properties\":{\"availability\":{\"type\":\"string\"},\"challengeId\":{\"type\":\"string\"},\"completedDate\":{\"type\":\"string\"},\"criteria\":{\"$ref\":\"#/components/schemas/Criteria\"},\"customerCompletionDate\":{\"type\":\"string\"},\"customerCompletionStatus\":{\"type\":\"string\"},\"description\":{\"type\":\"string\"},\"durationMinutes\":{\"type\":\"string\"},\"inspectionStatus\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"points\":{\"type\":\"string\"},\"times\":{\"type\":\"string\"}}}"
+        },
+        "customerscustomerIdfitnesschallenges_PUT_response" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"customer\"],\"type\":\"object\",\"properties\":{\"customer\":{\"$ref\":\"#/components/schemas/Customer\"}}}"
+        },
+        "customerscustomerIdfitnesschallenges_GET_response" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"customer\"],\"type\":\"object\",\"properties\":{\"customer\":{\"$ref\":\"#/components/schemas/Customer\"}}}"
+        },
+        "rootArray" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"challengeId\",\"criteria\",\"isAccept\",\"customerId\",\"userType\"],\"type\":\"object\",\"properties\":{\"challengeId\":{\"type\":\"string\"},\"criteria\":{\"$ref\":\"#/components/schemas/Criteria\"},\"customerId\":{\"type\":\"string\"},\"isAccept\":{\"type\":\"string\"},\"userType\":{\"type\":\"string\"}}}"
+        },
+        "age" : {
+          "type" : "gateway",
+          "schema" : "{\"required\":[\"min\",\"max\"],\"type\":\"object\",\"properties\":{\"max\":{\"type\":\"string\"},\"min\":{\"type\":\"string\"}}}"
+        }
+      },
+      "responses" : { },
+      "parameters" : { },
+      "examples" : { },
+      "requestBodies" : { },
+      "headers" : { },
+      "links" : { },
+      "callbacks" : { }
+    },
+    "type" : "rest"
+  },
+  "nativeEndpoint" : [ {
+    "passSecurityHeaders" : true,
+    "uri" : "http://challenges-864685d675-7bnmh:5555/rad/FX_Challenges_API.swagger:challengesapi",
+    "connectionTimeoutDuration" : 0,
+    "alias" : false
+  } ],
+  "apiName" : "challenges",
+  "apiVersion" : "1.0",
+  "maturityState" : "Beta",
+  "isActive" : true,
+  "type" : "REST",
+  "owner" : "Administrator",
+  "policies" : [ "d525e2a5-5784-4754-908e-bcc14bb0489c" ],
+  "referencedFiles" : {
+    "swagger.json" : "---\nswagger: \"2.0\"\ninfo:\n  version: \"1.0\"\n  title: \"challenges\"\nhost: \"challenges-864685d675-7bnmh:5555\"\nbasePath: \"/rad/FX_Challenges_API.swagger:challengesapi\"\nschemes:\n- \"http\"\nconsumes:\n- \"application/json\"\nproduces:\n- \"application/json\"\npaths:\n  /customers/fitness/challenges:\n    get:\n      operationId: \"customersfitnesschallenges_GET_1\"\n      parameters: []\n      responses:\n        \"200\":\n          description: \"OK\"\n          schema:\n            $ref: \"#/definitions/customersfitnesschallenges_GET_response\"\n        \"401\":\n          description: \"Access Denied\"\n  /customers/{customerId}/fitness/challenges/eligibility:\n    get:\n      operationId: \"customerscustomerIdfitnesschallengeseligibility_GET_2\"\n      parameters:\n      - name: \"customerId\"\n        in: \"path\"\n        required: true\n        type: \"string\"\n      responses:\n        \"200\":\n          description: \"OK\"\n          schema:\n            $ref: \"#/definitions/customerscustomerIdfitnesschallengeseligibility_GET_response\"\n        \"401\":\n          description: \"Access Denied\"\n  /customers/{customerId}/fitness/challenges:\n    get:\n      operationId: \"customerscustomerIdfitnesschallenges_GET_3\"\n      parameters:\n      - name: \"customerId\"\n        in: \"path\"\n        required: true\n        type: \"string\"\n      responses:\n        \"200\":\n          description: \"OK\"\n          schema:\n            $ref: \"#/definitions/customerscustomerIdfitnesschallenges_GET_response\"\n        \"401\":\n          description: \"Access Denied\"\n    post:\n      operationId: \"customerscustomerIdfitnesschallenges_POST_3\"\n      consumes:\n      - \"application/x-www-form-urlencoded\"\n      parameters:\n      - name: \"customerId\"\n        in: \"path\"\n        required: true\n        type: \"string\"\n      - name: \"challengeId\"\n        in: \"formData\"\n        required: true\n        type: \"string\"\n      responses:\n        \"200\":\n          description: \"OK\"\n          schema:\n            $ref: \"#/definitions/customerscustomerIdfitnesschallenges_POST_response\"\n        \"401\":\n          description: \"Access Denied\"\n    put:\n      operationId: \"customerscustomerIdfitnesschallenges_PUT_3\"\n      parameters:\n      - in: \"body\"\n        name: \"$rootArray\"\n        required: true\n        schema:\n          $ref: \"#/definitions/rootArray\"\n      - name: \"customerId\"\n        in: \"path\"\n        required: true\n        type: \"string\"\n      responses:\n        \"200\":\n          description: \"OK\"\n          schema:\n            $ref: \"#/definitions/customerscustomerIdfitnesschallenges_PUT_response\"\n        \"401\":\n          description: \"Access Denied\"\ndefinitions:\n  challenges:\n    required:\n    - \"complete\"\n    - \"eligibility\"\n    - \"incomplete\"\n    - \"rejected\"\n    properties:\n      complete:\n        type: \"array\"\n        items:\n          $ref: \"#/definitions/Challenges\"\n      incomplete:\n        type: \"array\"\n        items:\n          $ref: \"#/definitions/Challenges\"\n      eligibility:\n        type: \"array\"\n        items:\n          $ref: \"#/definitions/Challenges\"\n      rejected:\n        type: \"array\"\n        items:\n          $ref: \"#/definitions/Challenges\"\n  customerscustomerIdfitnesschallengeseligibility_GET_response:\n    required:\n    - \"customer\"\n    properties:\n      customer:\n        $ref: \"#/definitions/Customer\"\n  PersonalDetails:\n    required:\n    - \"communicationAddress\"\n    - \"dateOfBirth\"\n    - \"firstName\"\n    - \"lastName\"\n    - \"permanentAddress\"\n    properties:\n      firstName:\n        type: \"string\"\n      lastName:\n        type: \"string\"\n      dateOfBirth:\n        type: \"string\"\n      communicationAddress:\n        $ref: \"#/definitions/Address\"\n      permanentAddress:\n        $ref: \"#/definitions/Address\"\n  Address:\n    required:\n    - \"city\"\n    - \"country\"\n    - \"houseNumber\"\n    - \"state\"\n    - \"streetName\"\n    properties:\n      houseNumber:\n        type: \"string\"\n      streetName:\n        type: \"string\"\n      city:\n        type: \"string\"\n      state:\n        type: \"string\"\n      country:\n        type: \"string\"\n  Criteria:\n    required:\n    - \"age\"\n    - \"fulfillments\"\n    properties:\n      age:\n        $ref: \"#/definitions/age\"\n      fulfillments:\n        $ref: \"#/definitions/fulfillments\"\n  customerscustomerIdfitnesschallenges_GET_response:\n    required:\n    - \"customer\"\n    properties:\n      customer:\n        $ref: \"#/definitions/Customer\"\n  Challenges:\n    required:\n    - \"availability\"\n    - \"challengeId\"\n    - \"completedDate\"\n    - \"criteria\"\n    - \"customerCompletionDate\"\n    - \"customerCompletionStatus\"\n    - \"description\"\n    - \"durationMinutes\"\n    - \"inspectionStatus\"\n    - \"name\"\n    - \"points\"\n    - \"times\"\n    properties:\n      challengeId:\n        type: \"string\"\n      name:\n        type: \"string\"\n      times:\n        type: \"string\"\n      durationMinutes:\n        type: \"string\"\n      description:\n        type: \"string\"\n      points:\n        type: \"string\"\n      availability:\n        type: \"string\"\n      customerCompletionStatus:\n        type: \"string\"\n      customerCompletionDate:\n        type: \"string\"\n      inspectionStatus:\n        type: \"string\"\n      completedDate:\n        type: \"string\"\n      criteria:\n        $ref: \"#/definitions/Criteria\"\n  Customer:\n    required:\n    - \"challenges\"\n    - \"customerId\"\n    - \"emailId\"\n    - \"mobileNumber\"\n    - \"personalDetails\"\n    properties:\n      customerId:\n        type: \"string\"\n      challenges:\n        $ref: \"#/definitions/challenges\"\n      personalDetails:\n        $ref: \"#/definitions/PersonalDetails\"\n      emailId:\n        type: \"string\"\n      mobileNumber:\n        type: \"string\"\n  customerscustomerIdfitnesschallenges_POST_response:\n    required:\n    - \"customer\"\n    properties:\n      customer:\n        $ref: \"#/definitions/Customer\"\n  rootArray:\n    required:\n    - \"challengeId\"\n    - \"criteria\"\n    - \"customerId\"\n    - \"isAccept\"\n    - \"userType\"\n    properties:\n      customerId:\n        type: \"string\"\n      challengeId:\n        type: \"string\"\n      isAccept:\n        type: \"string\"\n      userType:\n        type: \"string\"\n      criteria:\n        $ref: \"#/definitions/Criteria\"\n  age:\n    required:\n    - \"max\"\n    - \"min\"\n    properties:\n      min:\n        type: \"string\"\n      max:\n        type: \"string\"\n  fulfillments:\n    required:\n    - \"caloriesBurnt\"\n    - \"heartbeat\"\n    - \"uploadPictures\"\n    properties:\n      uploadPictures:\n        type: \"string\"\n      heartbeat:\n        type: \"string\"\n      caloriesBurnt:\n        type: \"string\"\n  customerscustomerIdfitnesschallenges_PUT_response:\n    required:\n    - \"customer\"\n    properties:\n      customer:\n        $ref: \"#/definitions/Customer\"\n  customersfitnesschallenges_GET_response:\n    required:\n    - \"challenges\"\n    properties:\n      challenges:\n        type: \"array\"\n        items:\n          $ref: \"#/definitions/Challenges\"\n"
+  },
+  "tracingEnabled" : false,
+  "scopes" : [ ],
+  "publishedPortals" : [ ],
+  "creationDate" : "2022-12-19 10:01:52 GMT",
+  "lastModified" : "2022-12-19 10:08:27 GMT",
+  "systemVersion" : 1,
+  "gatewayEndpoints" : { },
+  "id" : "947e2f3c-9f18-410c-987d-4c681ac500aa"
+}

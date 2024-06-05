@@ -1,0 +1,40 @@
+{
+  "id" : "cd45374b-27a9-45ae-a9bd-f003b33ae249",
+  "names" : [ {
+    "value" : "Default Policy for API points",
+    "locale" : "English"
+  } ],
+  "descriptions" : [ {
+    "value" : "",
+    "locale" : "English"
+  } ],
+  "scope" : {
+    "scopeConditions" : [ ]
+  },
+  "policyEnforcements" : [ {
+    "enforcements" : [ {
+      "enforcementObjectId" : "ef6fef42-4657-4b88-8859-81da59c1e096",
+      "order" : "0"
+    }, {
+      "enforcementObjectId" : "3ac546d0-54a6-4ac7-9f32-2283ad46ae5a",
+      "order" : "1"
+    } ],
+    "stageKey" : "routing"
+  }, {
+    "enforcements" : [ {
+      "enforcementObjectId" : "856242bc-fd6d-4459-866a-0be72225083f",
+      "order" : "0"
+    } ],
+    "stageKey" : "responseFaultProcessing"
+  }, {
+    "enforcements" : [ {
+      "enforcementObjectId" : "b9bc8d71-ba46-4eea-a250-023324456012",
+      "order" : "0"
+    } ],
+    "stageKey" : "transport"
+  } ],
+  "policyScope" : "SERVICE",
+  "global" : false,
+  "active" : false,
+  "systemPolicy" : false
+}

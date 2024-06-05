@@ -1,0 +1,16 @@
+{
+  "id" : "77034398-011f-49f7-bc73-f8b6a23c1a53",
+  "names" : [ {
+    "value" : "Straight Through Routing",
+    "locale" : "en"
+  } ],
+  "templateKey" : "straightThroughRouting",
+  "parameters" : [ {
+    "templateKey" : "endpointUri",
+    "values" : [ "http://assessments:5555/rad/FX_Assessments_API.swagger:assessmentsapi/${sys:resource_path}" ]
+  }, {
+    "templateKey" : "method",
+    "values" : [ "CUSTOM" ]
+  } ],
+  "active" : false
+}

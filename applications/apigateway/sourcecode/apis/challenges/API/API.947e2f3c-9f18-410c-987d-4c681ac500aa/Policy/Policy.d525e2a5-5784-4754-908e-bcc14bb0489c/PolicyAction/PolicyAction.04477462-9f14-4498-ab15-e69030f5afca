@@ -1,0 +1,28 @@
+{
+  "id" : "04477462-9f14-4498-ab15-e69030f5afca",
+  "names" : [ {
+    "value" : "Outbound Auth - Transport",
+    "locale" : "en"
+  } ],
+  "templateKey" : "outboundTransportAuthentication",
+  "parameters" : [ {
+    "templateKey" : "transportSecurity",
+    "parameters" : [ {
+      "templateKey" : "authType",
+      "values" : [ "HTTP_BASIC" ]
+    }, {
+      "templateKey" : "authMode",
+      "values" : [ "NEW" ]
+    }, {
+      "templateKey" : "httpAuthCredentials",
+      "parameters" : [ {
+        "templateKey" : "userName",
+        "values" : [ "Administrator" ]
+      }, {
+        "templateKey" : "password",
+        "values" : [ "********************************" ]
+      } ]
+    } ]
+  } ],
+  "active" : false
+}

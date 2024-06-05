@@ -1,0 +1,40 @@
+{
+  "id" : "d525e2a5-5784-4754-908e-bcc14bb0489c",
+  "names" : [ {
+    "value" : "Default Policy for API challenges",
+    "locale" : "English"
+  } ],
+  "descriptions" : [ {
+    "value" : "",
+    "locale" : "English"
+  } ],
+  "scope" : {
+    "scopeConditions" : [ ]
+  },
+  "policyEnforcements" : [ {
+    "enforcements" : [ {
+      "enforcementObjectId" : "9f4d1ced-e688-45ee-a0dc-1273e3f64cfe",
+      "order" : "0"
+    }, {
+      "enforcementObjectId" : "04477462-9f14-4498-ab15-e69030f5afca",
+      "order" : "1"
+    } ],
+    "stageKey" : "routing"
+  }, {
+    "enforcements" : [ {
+      "enforcementObjectId" : "de6622db-d5a3-47fe-aa9e-d119c66633c6",
+      "order" : "0"
+    } ],
+    "stageKey" : "responseFaultProcessing"
+  }, {
+    "enforcements" : [ {
+      "enforcementObjectId" : "c87a38bd-761a-48eb-896a-eb848d702282",
+      "order" : "0"
+    } ],
+    "stageKey" : "transport"
+  } ],
+  "policyScope" : "SERVICE",
+  "global" : false,
+  "active" : false,
+  "systemPolicy" : false
+}

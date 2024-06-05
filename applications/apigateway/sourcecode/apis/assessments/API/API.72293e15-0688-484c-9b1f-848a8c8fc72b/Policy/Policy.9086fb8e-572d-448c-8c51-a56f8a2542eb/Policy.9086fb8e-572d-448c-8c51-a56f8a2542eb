@@ -1,0 +1,40 @@
+{
+  "id" : "9086fb8e-572d-448c-8c51-a56f8a2542eb",
+  "names" : [ {
+    "value" : "Default Policy for API assessments",
+    "locale" : "English"
+  } ],
+  "descriptions" : [ {
+    "value" : "",
+    "locale" : "English"
+  } ],
+  "scope" : {
+    "scopeConditions" : [ ]
+  },
+  "policyEnforcements" : [ {
+    "enforcements" : [ {
+      "enforcementObjectId" : "77034398-011f-49f7-bc73-f8b6a23c1a53",
+      "order" : "0"
+    }, {
+      "enforcementObjectId" : "7b18cacd-952e-4742-bd9b-fec949963453",
+      "order" : "1"
+    } ],
+    "stageKey" : "routing"
+  }, {
+    "enforcements" : [ {
+      "enforcementObjectId" : "311cb162-ab83-4952-b53b-eb3df299ee2f",
+      "order" : "0"
+    } ],
+    "stageKey" : "responseFaultProcessing"
+  }, {
+    "enforcements" : [ {
+      "enforcementObjectId" : "ba5c50cf-f184-4442-978c-38ed38e7b740",
+      "order" : "0"
+    } ],
+    "stageKey" : "transport"
+  } ],
+  "policyScope" : "SERVICE",
+  "global" : false,
+  "active" : false,
+  "systemPolicy" : false
+}
