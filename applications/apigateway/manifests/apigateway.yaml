@@ -34,6 +34,13 @@ spec:
       - name: api-gateway
         # Please fill in the path to your api gateway image stored in a docker registry.
         image: <IMAGE_NAME>-<TAG>
+        command: 
+        - "sh"
+        - "-c"
+        - |
+          cd /opt/softwareag/apigwassets
+          chmod +x asset-import.sh
+          ./asset-import.sh
         # The default pull policy is IfNotPresent which causes the Kubelet to skip pulling an image if it already exists.
         # If you would like to always force a pull use "Always"
         imagePullPolicy: IfNotPresent 
