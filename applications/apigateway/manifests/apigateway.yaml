@@ -33,7 +33,7 @@ spec:
       containers:
       - name: api-gateway
         # Please fill in the path to your api gateway image stored in a docker registry.
-        image: sagcr.azurecr.io/apigateway:10.15
+        image: <IMAGE_NAME>-<TAG>
         # The default pull policy is IfNotPresent which causes the Kubelet to skip pulling an image if it already exists.
         # If you would like to always force a pull use "Always"
         imagePullPolicy: IfNotPresent 

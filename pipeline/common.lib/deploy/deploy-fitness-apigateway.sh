@@ -6,6 +6,13 @@ kubectl config view --minify | grep namespace:
 # Deploy the environment specific configurations
 cd applications/apigateway/manifests/
 
+read VERSION IMAGE_NAME < <(get-version "../version.txt")
+echo "IMAGE DETAILS - $IMAGE_NAME:$VERSION"
+
+# Deploy the target manifests to create the runtimes/pods
+sed -i "s/<TAG>/${VERSION}/g" apigateway.yaml
+sed -i "s|<IMAGE_NAME>|${IMAGE_NAME}|g" apigateway.yaml
+
 kubectl apply -f .
 kubectl apply -f ../virtualservices/
 
