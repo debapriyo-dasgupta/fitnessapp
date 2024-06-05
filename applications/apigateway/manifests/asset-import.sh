@@ -2,10 +2,12 @@
 set -e
 set -x
 # Initiate APIGateway Startup 
+echo -e "Starting APIGateway...\n"
 /opt/softwareag/IntegrationServer/bin/startContainer.sh
 
 # Wait for APIGateway to complete the startup
 while [ $(curl -sw '%{http_code}' "http://localhost:5555/rest/apigateway/health" -o /dev/null) -ne 200 ]; do
+    echo -e "Waiting for API Gateway to be up and running\n"
     sleep 2;
 done 
 
@@ -13,12 +15,14 @@ done
 # Base directory containing the APIs
 BASE_DIR="/opt/softwareag/apigwassets/apis"
 
+echo -e "Importing the APIGateway Assets...\n"
 # Loop through each subdirectory in the base directory
 for SUBDIR in "$BASE_DIR"/*; do
     if [ -d "$SUBDIR" ]; then
         # Get the subdirectory name
         SUBDIR_NAME=$(basename "$SUBDIR")
         
+        echo -e "Importing the APIGateway Asset - ${SUBDIR} ...\n"
         # Create the zip file path inside the subdirectory
         ZIP_FILE="${SUBDIR}/${SUBDIR_NAME}.zip"
         
