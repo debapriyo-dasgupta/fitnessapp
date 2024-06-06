@@ -6,6 +6,7 @@ pipeline
         git_dev_branch_name = 'master'
         stg_namespace= 'staging'
         stg_env_name = 'staging'   
+        stg_openshift_namespace= 'kplogesh-dev'
     }    
     stages 
     {       
@@ -31,7 +32,7 @@ pipeline
                     sh "pipeline/common.lib/deploy/deploy-fitness-rewards.sh ${stg_env_name} ${stg_namespace}" 
                 }
             }
-        } 
+        } /*
         stage('AKS FITNESS DEPLOY') 
         {         
             steps 
@@ -47,7 +48,23 @@ pipeline
                     sh "pipeline/common.lib/deploy/deploy-fitness-rewards.sh ${stg_env_name} ${stg_namespace}" 
                 }
             }
-        } 
+        } */
+        stage('OPENSHIFT FITNESS DEPLOY') 
+        {         
+            steps 
+            {
+                withCredentials([file(credentialsId: 'stg-demoopenshift-config', variable: 'KUBECONFIG')]) 
+                {
+                    sh "pipeline/common.lib/deploy/deploy-licenses.sh ${stg_env_name} ${stg_openshift_namespace}" 
+                    sh "pipeline/common.lib/deploy/deploy-fitness-apigateway.sh ${stg_env_name} ${stg_openshift_namespace}" 
+                    sh "pipeline/common.lib/deploy/deploy-fitness-assessments.sh ${stg_env_name} ${stg_openshift_namespace}"  
+                    sh "pipeline/common.lib/deploy/deploy-fitness-challenges.sh ${stg_env_name} ${stg_openshift_namespace}" 
+                    sh "pipeline/common.lib/deploy/deploy-fitness-memberships.sh ${stg_env_name} ${stg_openshift_namespace}" 
+                    sh "pipeline/common.lib/deploy/deploy-fitness-points.sh ${stg_env_name} ${stg_openshift_namespace}" 
+                    sh "pipeline/common.lib/deploy/deploy-fitness-rewards.sh ${stg_env_name} ${stg_openshift_namespace}" 
+                }
+            }
+        }
         stage('RANCHER OBSERVABILITY DEPLOY') 
         {         
             steps 
