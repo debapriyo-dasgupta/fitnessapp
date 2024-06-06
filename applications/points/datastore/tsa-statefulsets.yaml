@@ -58,14 +58,6 @@ spec:
             - containerPort: 9540
               name: management
           volumeMounts:
-            - name: diskstore
-              mountPath: /data/diskstore
-            - name: diskstore
-              mountPath: /data/backups
-            - name: diskstore
-              mountPath: /data/logs
-            - name: diskstore
-              mountPath: /data/logs/clients
             - name: config-volume
               mountPath: /configs/tc-config.xml
               subPath: tc-config.xml
@@ -81,15 +73,3 @@ spec:
             name: webmethodslicensekeys
       imagePullSecrets:
         - name: sagregcred               
-  volumeClaimTemplates:
-  - metadata:
-      name: diskstore
-      labels:
-        type: hostPath
-    spec:
-      accessModes: 
-      - ReadWriteOnce
-      storageClassName: local-path
-      resources:
-        requests:
-          storage: 2Gi
