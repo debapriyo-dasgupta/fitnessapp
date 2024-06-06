@@ -25,9 +25,9 @@ data:
               <offheap size="2g"/>
               <hybrid/>
             </dataStorage>
-            <data>/data/diskstore</data>
-            <data-backup>/data/backups</data-backup>
-            <logs>/data/logs</logs>
+            <data>/opt/softwareag/data/diskstore</data>
+            <data-backup>/opt/softwareag/data/backups</data-backup>
+            <logs>/opt/softwareag/data/logs</logs>
           </server>
         </mirror-group>
         <restartable enabled="true"/>
