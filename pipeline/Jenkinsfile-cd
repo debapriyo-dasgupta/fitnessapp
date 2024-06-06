@@ -48,12 +48,12 @@ pipeline
                     sh "pipeline/common.lib/deploy/deploy-fitness-rewards.sh ${stg_env_name} ${stg_namespace}" 
                 }
             }
-        } */
+        } */ /*
         stage('OPENSHIFT FITNESS DEPLOY') 
         {         
             steps 
             {
-                withCredentials([file(credentialsId: 'stg-demoaks-config', variable: 'KUBECONFIG')]) 
+                withCredentials([file(credentialsId: 'stg-demoopenshift-config', variable: 'KUBECONFIG')]) 
                 {
                     sh "pipeline/common.lib/deploy/deploy-licenses.sh ${stg_env_name} ${stg_openshift_namespace}" 
                     sh "pipeline/common.lib/deploy/deploy-fitness-apigateway.sh ${stg_env_name} ${stg_openshift_namespace}" 
@@ -64,7 +64,7 @@ pipeline
                     sh "pipeline/common.lib/deploy/deploy-fitness-rewards.sh ${stg_env_name} ${stg_openshift_namespace}" 
                 }
             }
-        }
+        } */
         stage('RANCHER OBSERVABILITY DEPLOY') 
         {         
             steps 
