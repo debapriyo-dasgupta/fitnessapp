@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <asset_composite name="APIGatewayAssets" displayName="Assets for API Gateway" runtimeVersion="10.15" targetNamespace="http://namespaces.softwareag.com/webMethods/APIGateway" xmlns="http://namespaces.softwareag.com/acdl/1.0" xmlns:EDA="http://namespaces.softwareag.com/webMethods/EDA" xmlns:MWS="http://namespaces.softwareag.com/webMethods/MWS" xmlns:IS="http://namespaces.softwareag.com/webMethods/IS" xmlns:APIPORTAL="http://namespaces.softwareag.com/webMethods/APIPORTAL" xmlns:AgileApps="http://namespaces.softwareag.com/webMethods/AgileApps" xmlns:BROKER="http://namespaces.softwareag.com/webMethods/BROKER" xmlns:implDetails="http://namespaces.softwareag.com/acdl/implDetails" xmlns:UniversalMessaging="http://namespaces.softwareag.com/webMethods/UniversalMessaging" xmlns:TN="http://namespaces.softwareag.com/webMethods/TN" xmlns:RULES="http://namespaces.softwareag.com/webMethods/RULES" xmlns:BPM="http://namespaces.softwareag.com/webMethods/BPM" xmlns:Optimize="http://namespaces.softwareag.com/webMethods/Optimize">
-    <buildInfo name="BuildTimestamp" value="2024-06-04T22:54:58"/>
-    <asset name="API.1444d65d-4035-4279-8d57-c8b9e59aef51" displayName="Petstore[1.0]" isDeployable="true">
+    <buildInfo name="BuildTimestamp" value="2024-06-06T10:21:25"/>
+    <asset name="API.78c563cf-6e3b-4ac0-b400-6e8aec8d991d" displayName="Petstore[1.0]" isDeployable="true">
         <implementation.generic type="API"/>
-        <dependsOn>APIGateway:Policy.da732092-d68e-436b-8976-350d119138fc</dependsOn>
+        <dependsOn>APIGateway:Policy.2552e584-0efc-4bd3-8792-087c2c1c6055</dependsOn>
     </asset>
-    <asset name="Policy.da732092-d68e-436b-8976-350d119138fc" displayName="Policy For API Petstore[1.0]" isDeployable="true">
+    <asset name="Policy.2552e584-0efc-4bd3-8792-087c2c1c6055" displayName="Policy For API Petstore[1.0]" isDeployable="true">
         <implementation.generic type="Policy"/>
-        <dependsOn>APIGateway:PolicyAction.6eeee24d-c525-4e55-aa78-49f1d7334474</dependsOn>
-        <dependsOn>APIGateway:PolicyAction.b421c15d-67cc-45a6-9e6c-0c4aa34f2660</dependsOn>
+        <dependsOn>APIGateway:PolicyAction.5ddd42af-88c2-4cd4-9bc4-3cee91503222</dependsOn>
+        <dependsOn>APIGateway:PolicyAction.bb887c2f-d02f-4f52-a8b4-d2a40c7823a2</dependsOn>
     </asset>
-    <asset name="PolicyAction.6eeee24d-c525-4e55-aa78-49f1d7334474" displayName="Policy Action [Enable HTTP / HTTPS] -&gt; Policy For API Petstore[1.0]" isDeployable="true">
+    <asset name="PolicyAction.5ddd42af-88c2-4cd4-9bc4-3cee91503222" displayName="Policy Action [Enable HTTP / HTTPS] -&gt; Policy For API Petstore[1.0]" isDeployable="true">
         <implementation.generic type="PolicyAction"/>
     </asset>
-    <asset name="PolicyAction.b421c15d-67cc-45a6-9e6c-0c4aa34f2660" displayName="Policy Action [Straight Through Routing] -&gt; Policy For API Petstore[1.0]" isDeployable="true">
+    <asset name="PolicyAction.bb887c2f-d02f-4f52-a8b4-d2a40c7823a2" displayName="Policy Action [Straight Through Routing] -&gt; Policy For API Petstore[1.0]" isDeployable="true">
         <implementation.generic type="PolicyAction"/>
     </asset>
 </asset_composite>
