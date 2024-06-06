@@ -32,55 +32,7 @@ spec:
           while [ $(curl -sw '%{http_code}' "http://api-gateway:5555/rest/apigateway/health" -o /dev/null) -ne 200 ]; do
             sleep 15;
           done           
-      containers:
-        - name: microgateway
-          image: sagcr.azurecr.io/microgateway:10.15
-          imagePullPolicy: IfNotPresent
-          resources:
-            limits:
-              cpu: "0.3"
-              memory: "500Mi" 
-            requests:
-              cpu: "0.2"
-              memory: "250Mi"              
-          ports:
-            - containerPort: 4485
-          # Environment variables for microgateway to connect to Main API Gateway
-          env:
-          - name: mcgw_api_gateway_url
-            value: http://api-gateway:5555/rest/apigateway
-          - name: mcgw_api_gateway_user
-            value: Administrator
-          - name: mcgw_api_gateway_password
-            value: manage
-          - name: mcgw_downloads_apis
-            value: points  
-          # Liveness probe to check whether container is active. Restart happens when liveness probe fails.
-          livenessProbe:
-            exec:
-              command:
-              - /bin/sh
-              - -c
-              - /opt/softwareag/Microgateway/files/k8s-lifenesscheck.sh
-            initialDelaySeconds: 10
-            periodSeconds: 10
-            timeoutSeconds: 5
-            failureThreshold: 3
-          # Readiness probe to check whether pod is ready to serve the requests. Traffic will not be injected unless readiness probes passes.
-          readinessProbe:
-            exec:
-              command:
-              - /bin/sh
-              - -c
-              - /opt/softwareag/Microgateway/files/k8s-readinesscheck.sh
-            initialDelaySeconds: 10
-            periodSeconds: 10
-            timeoutSeconds: 5
-            failureThreshold: 3    
-          volumeMounts:
-            - mountPath: /opt/softwareag/Microgateway/config/license.xml
-              subPath: microgateway-license.xml
-              name: licensekey          
+      containers:         
         - name: insurance-fitness-points-container       
           image: <IMAGE_NAME>-<TAG>
           imagePullPolicy: IfNotPresent        

@@ -10,7 +10,7 @@ data:
     #Sample Generated Template
     #Tue Dec 06 04:59:59 GMT 2022
     cachemanager.ChallengesCM.urls=challenges-datastore-0.challenges-datastore:9510
-    globalvariable.mem_customer_url.value=http\://memberships\:4485/gateway/customers/1.0/customers
+    globalvariable.mem_customer_url.value=http\://api-gateway\:5555/gateway/customers/1.0/customers
     jms.DEFAULT_IS_JMS_CONNECTION.clientID=DEFAULT_IS_JMS_CLIENT
     jms.PE_NONTRANSACTIONAL_ALIAS.clientID=ISb346b24e_edde_4299_a52f_245090fddff7
     jndi.DEFAULT_IS_JNDI_PROVIDER.providerURL=nsp\://localhost\:9000

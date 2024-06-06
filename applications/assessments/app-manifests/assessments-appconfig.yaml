@@ -9,11 +9,8 @@ data:
   application.properties: |
     #Sample Generated Template
     #Tue Dec 06 04:57:14 GMT 2022
-    settings.watt.server.autodeploy.enabled=true
-    settings.watt.server.autodeploy.alwaysUseHotDeployment=true
-    settings.watt.server.autodeploy.interval=3
-    globalvariable.challenges_url.value=http\://challenges\:4485/gateway/challenges/1.0/customers
-    globalvariable.points_url.value=http\://points\:4485/gateway/points/1.0/customers
+    globalvariable.challenges_url.value=http\://api-gateway\:5555/gateway/challenges/1.0/customers
+    globalvariable.points_url.value=http\://api-gateway\:5555/gateway/points/1.0/customers
     jms.DEFAULT_IS_JMS_CONNECTION.clientID=DEFAULT_IS_JMS_CLIENT
     jms.PE_NONTRANSACTIONAL_ALIAS.clientID=ISb346b24e_edde_4299_a52f_245090fddff7
     jndi.DEFAULT_IS_JNDI_PROVIDER.providerURL=nsp\://localhost\:9000
