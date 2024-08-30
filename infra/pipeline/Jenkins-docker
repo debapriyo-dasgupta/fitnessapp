@@ -25,7 +25,7 @@ pipeline
                     // Execute the script with Bash and capture its output
                     def versionInfo = sh(script: '''
                         #!/bin/bash
-                        source infra/pipeline/common.lib/utils/get-version.sh
+                        . infra/pipeline/common.lib/utils/get-version.sh
                         get-version "applications/apigateway/version.txt"
                     ''', returnStdout: true).trim()
 
@@ -45,6 +45,7 @@ pipeline
                 }
             }
         }
+
 
 
         stage('BASE IMAGE BUILD') 
