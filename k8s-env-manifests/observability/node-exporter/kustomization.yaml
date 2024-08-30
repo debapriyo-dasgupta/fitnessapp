@@ -1,3 +1,0 @@
-resources: 
-- nodeexporter-deamonset.yaml
-- nodeexporter-svc.yaml
