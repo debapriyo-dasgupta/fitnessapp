@@ -7,11 +7,17 @@ pipeline
     }    
     stages 
     {
-        stage('Initialize')
-        {
-                def dockerHome = tool 'docker'
-                env.PATH = "${dockerHome}/bin:${env.PATH}"
+        stage('Initialize') {
+            steps {
+                script {
+                    // Define the Docker tool's home directory
+                    def dockerHome = tool name: 'docker'
+
+                    // Update the PATH environment variable to include the Docker binary directory
+                    env.PATH = "${dockerHome}/bin:${env.PATH}"
+                }
             }
+        }
         stage('BASE IMAGE BUILD') 
         {         
             steps 

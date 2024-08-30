@@ -53,6 +53,11 @@ spec:
               mountPath: /var/jenkins_home
             - name: github
               mountPath: /GitHub
+            - name: dockersock
+              mountPath: /var/run/docker.sock
+              subPath: docker.sock
+            - name: dockerusr
+              mountPath: /usr/bin/docker
       volumes:
         - name: jenkins-data
           persistentVolumeClaim:
