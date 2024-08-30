@@ -1,0 +1,29 @@
+pipeline 
+{
+    agent any
+    environment 
+    {
+        git_dev_branch_name = 'master'
+    }    
+    stages 
+    {
+        stage('BASE IMAGE BUILD') 
+        {         
+            steps 
+            {
+                script
+                {
+                    img='httpd:2.4-alpine'
+                    docker.image("${img}").run('-d -p 80:80')
+                }
+            }
+        }            
+    }                                   
+    post 
+    { 
+        always 
+        { 
+            cleanWs()
+        }
+    }       
+}
