@@ -22,8 +22,13 @@ pipeline
         stage('Build APIGW Image') {
             steps {
                 script {
-                    // Source the shell script and read version and image name
-                    def versionInfo = sh(script: '. infra/pipeline/common.lib/utils/get-version.sh && get-version "applications/apigateway/version.txt"', returnStdout: true).trim()
+                    // Use Bash to source the script and call the get-version function
+                    def versionInfo = sh(script: '''
+                        #!/bin/bash
+                        . infra/pipeline/common.lib/utils/get-version.sh
+                        get-version "applications/apigateway/version.txt"
+                    ''', returnStdout: true).trim()
+
                     def (VERSION, IMAGE_NAME) = versionInfo.tokenize(' ')
 
                     // Use the Docker tool
@@ -34,6 +39,7 @@ pipeline
                 }
             }
         }
+
         stage('BASE IMAGE BUILD') 
         {         
             steps 
