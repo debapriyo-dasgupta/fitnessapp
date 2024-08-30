@@ -24,29 +24,41 @@ pipeline
                 script {
                     // Define the function to extract version details
                     def getVersion = { filePath ->
-                        def fileContents = readFile(filePath)
-                        def major = fileContents.find(/(?m)^MAJOR=(.*)$/) { match, group -> group }
-                        def minor = fileContents.find(/(?m)^MINOR=(.*)$/) { match, group -> group }
-                        def patch = fileContents.find(/(?m)^PATCH=(.*)$/) { match, group -> group }
-                        def imageName = fileContents.find(/(?m)^IMAGE_NAME=(.*)$/) { match, group -> group }
-                        def installBaseName = fileContents.find(/(?m)^INSTALL_BASE_NAME=(.*)$/) { match, group -> group }
+                        // Read and trim the file contents
+                        def fileContents = readFile(filePath).trim()
 
+                        // Debugging: print file contents
+                        echo "File Contents:\n${fileContents}"
+
+                        // Extract values using regular expressions
+                        def major = fileContents.find(/(?m)^MAJOR=(.*)$/) { match, group -> group?.trim() }
+                        def minor = fileContents.find(/(?m)^MINOR=(.*)$/) { match, group -> group?.trim() }
+                        def patch = fileContents.find(/(?m)^PATCH=(.*)$/) { match, group -> group?.trim() }
+                        def imageName = fileContents.find(/(?m)^IMAGE_NAME=(.*)$/) { match, group -> group?.trim() }
+
+                        // Default to empty string if values are null
+                        major = major ?: ''
+                        minor = minor ?: ''
+                        patch = patch ?: ''
+
+                        // Construct version string
                         def version = patch ? "${major}.${minor}.${patch}" : "${major}.${minor}"
-                        return [version, imageName, installBaseName]
+
+                        // Return values
+                        return [version, imageName]
                     }
 
                     // Read version details from the file
-                    def (VERSION, IMAGE_NAME, INSTALL_BASE_NAME) = getVersion("applications/apigateway/version.txt")
+                    def (VERSION, IMAGE_NAME) = getVersion("applications/apigateway/version.txt")
 
                     // Output for debugging
                     echo "Version: ${VERSION}"
                     echo "Image Name: ${IMAGE_NAME}"
-                    echo "Install Base Name: ${INSTALL_BASE_NAME}"
 
                     // Use the Docker tool
                     docker.withTool('docker') {
                         // Build the Docker image
-                        def customImage = docker.build("${IMAGE_NAME}:${VERSION}")
+                        def customImage = docker.build("${IMAGE_NAME}")
                     }
                 }
             }
