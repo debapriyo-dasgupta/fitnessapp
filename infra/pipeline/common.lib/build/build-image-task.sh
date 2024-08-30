@@ -21,7 +21,7 @@ docker logout
 # End apigw image creation
 
 # Update this section
-docker login -u kplogesh -p Dexter@123
+# docker login -u kplogesh -p Dexter@123
 
 # Fitness-Assessments
 echo "Image build process -> Fitness Assessments"
@@ -61,5 +61,5 @@ docker build -t fitness-rewards:${VERSION} -f rewards/Dockerfile .
 echo "Listing the images post the build process"
 docker image ls
 
-echo "Logout -> Docker Repository"
-docker logout
+#echo "Logout -> Docker Repository"
+#docker logout

@@ -4,6 +4,7 @@ pipeline
     environment 
     {
         git_dev_branch_name = 'master'
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')  // Jenkins credentials ID for Docker Hub
     }    
     stages 
     {
@@ -15,6 +16,18 @@ pipeline
 
                     // Update the PATH environment variable to include the Docker binary directory
                     env.PATH = "${dockerHome}/bin:${env.PATH}"
+                }
+            }
+        }
+        stage('Build APIGW Image') {
+            steps {
+                script {
+                    // Use the Docker tool
+                    docker.withTool('docker') {
+                        // Build the Docker image
+                        read VERSION IMAGE_NAME < <(get-version "applications/apigateway/version.txt")
+                        def customImage = docker.build("${IMAGE_NAME}:${VERSION}")
+                    }
                 }
             }
         }

@@ -56,8 +56,6 @@ spec:
             - name: dockersock
               mountPath: /var/run/docker.sock
               subPath: docker.sock
-            - name: dockerusr
-              mountPath: /usr/bin/docker
       volumes:
         - name: jenkins-data
           persistentVolumeClaim:
@@ -65,3 +63,6 @@ spec:
         - name: github
           persistentVolumeClaim:
               claimName: jenkins-pv-github-claim
+        - name: dockersock
+          persistentVolumeClaim:
+              claimName: jenkins-pv-dockersock-claim
