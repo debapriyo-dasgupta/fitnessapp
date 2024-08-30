@@ -30,11 +30,17 @@ pipeline
                         // Debugging: print file contents
                         echo "File Contents:\n${fileContents}"
 
-                        // Extract values using regular expressions
+                        // Extract values using a more precise approach
                         def major = fileContents.find(/(?m)^MAJOR=(.*)$/) { match, group -> group?.trim() }
                         def minor = fileContents.find(/(?m)^MINOR=(.*)$/) { match, group -> group?.trim() }
                         def patch = fileContents.find(/(?m)^PATCH=(.*)$/) { match, group -> group?.trim() }
                         def imageName = fileContents.find(/(?m)^IMAGE_NAME=(.*)$/) { match, group -> group?.trim() }
+
+                        // Print extracted values for debugging
+                        echo "Extracted Major: ${major}"
+                        echo "Extracted Minor: ${minor}"
+                        echo "Extracted Patch: ${patch}"
+                        echo "Extracted Image Name: ${imageName}"
 
                         // Default to empty string if values are null
                         major = major ?: ''
