@@ -23,9 +23,9 @@ pipeline
             steps {
                 script {
                     // Use the Docker tool
+                    read VERSION IMAGE_NAME < <(get-version "applications/apigateway/version.txt")
                     docker.withTool('docker') {
                         // Build the Docker image
-                        read VERSION IMAGE_NAME < <(get-version "applications/apigateway/version.txt")
                         def customImage = docker.build("${IMAGE_NAME}:${VERSION}")
                     }
                 }
