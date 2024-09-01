@@ -21,6 +21,11 @@ pipeline
                     sh 'echo ${dockerHome}'
                     env.PATH = "${dockerHome}/bin:${env.PATH}"
                     sh 'docker --version'
+                    // Login to Docker registry using credentials
+                    docker.withRegistry("https://${env.IBM_DOCKER_REGISTRY}", 'ibmhub-credentials') {
+                        // This step logs in to the Docker registry
+                        echo 'Logged in to Docker registry'
+                    }
                 }
             }
         }
