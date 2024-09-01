@@ -17,7 +17,7 @@ pipeline
                 withCredentials([usernamePassword(credentialsId: "${IBMHUB_CREDENTIALS}", usernameVariable: 'username', passwordVariable: 'password')]) {
                     script {
                         // Login to Docker registry using credentials
-                        docker.withRegistry("${env.IBM_DOCKER_REGISTRY}") {
+                        docker.withRegistry("${env.IBM_DOCKER_REGISTRY}", "${IBMHUB_CREDENTIALS}") {
                             // This step logs in to the Docker registry
                             echo "Logged in to Docker registry - ${env.IBM_DOCKER_REGISTRY}"
                         }
