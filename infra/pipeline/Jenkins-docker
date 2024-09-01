@@ -80,7 +80,7 @@ pipeline
                 script {
                     // Define the Dockerfile context directory
                     def dockerfileContext = 'applications' // Adjust this path as needed
-                    docker.build("${IMAGE_NAME}", "-f ${dockerfileContext}/apigateway/Dockerfile ${dockerfileContext}")           
+                    docker.build("${IMAGE_NAME}:${env.IMAGE_VERSION}", "-f ${dockerfileContext}/apigateway/Dockerfile ${dockerfileContext}")           
                 }
             }
         }      
