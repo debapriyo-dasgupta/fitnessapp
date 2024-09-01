@@ -20,6 +20,9 @@ spec:
       containers:
         - name: jenkins
           image: jenkins/jenkins:lts
+          env:
+            - name: JAVA_OPTS
+              value: "-Dhudson.plugins.git.GitSCM.ALLOW_LOCAL_CHECKOUT=true"
           resources:
             limits:
               memory: "2Gi"
