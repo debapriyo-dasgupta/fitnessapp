@@ -6,7 +6,7 @@ pipeline
     {
         git_dev_branch_name = 'master'
         IBM_DOCKER_REGISTRY = 'sagcr.azurecr.io'
-        DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')  // Jenkins credentials ID for Docker Hub
+        DOCKERHUB_CREDENTIALS = 'dockerhub-credentials'  // Jenkins credentials ID for Docker Hub
         IBMHUB_CREDENTIALS = 'ibmhub-credentials' // Jenkins credentials ID for Docker Hub
     }    
     stages 
@@ -26,7 +26,7 @@ pipeline
         }
         stage('Login to Docker Registry') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'ibmhub-credentials', toolName: 'docker', usernameVariable: 'username', passwordVariable: 'password')]) {
+                withCredentials([usernamePassword(credentialsId: 'ibmhub-credentials', usernameVariable: 'username', passwordVariable: 'password')]) {
                     script {
                         // Login to Docker registry using credentials
                         docker.withRegistry("https://${env.IBM_DOCKER_REGISTRY}") {
@@ -92,7 +92,7 @@ pipeline
             steps {
                 script {
                     // Define the Dockerfile context directory
-                    def dockerfileContext = 'applications/' // Adjust this path as needed
+                    def dockerfileContext = 'applications' // Adjust this path as needed
 
                     // Use the Docker tool
                     docker.withTool('docker') {
