@@ -80,11 +80,11 @@ pipeline
             steps {
                 script {
                     docker.withTool('docker') {
-                        docker.withRegistry("${env.DOCKER_REGISTRY}","${DOCKERHUB_CREDENTIALS}") {
+                        docker.withRegistry("${env.DOCKERHUB_REGISTRY}","${DOCKERHUB_CREDENTIALS}") {
                             // Pull the base image from the registry
                             def customImage = docker.image("${env.IMAGE_NAME}:${env.IMAGE_TAG}")
                             customImage.push() // Push the image with the specified tag
-                            echo "Image pushed to registry: ${env.DOCKER_REGISTRY}/${env.IMAGE_NAME}:${env.IMAGE_TAG}"
+                            echo "Image pushed to registry: ${env.DOCKERHUB_REGISTRY}/${env.IMAGE_NAME}:${env.IMAGE_TAG}"
                         }
                     }
                 }
