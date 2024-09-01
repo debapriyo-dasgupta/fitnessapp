@@ -8,6 +8,43 @@ pipeline
     }    
     stages 
     {
+        stage('Read Version File') {
+            steps {
+                script {
+                    // Path to the file
+                    def filePath = 'applications/apigateway/version.txt'
+                    
+                    // Read file contents
+                    def fileContents = readFile(filePath)
+                    
+                    // Define a map to hold the values
+                    def versionMap = [:]
+                    
+                    // Process each line
+                    fileContents.eachLine { line ->
+                        def (key, value) = line.split('=')
+                        versionMap[key] = value.trim()
+                    }
+                    
+                    // Extract values
+                    def major = versionMap['MAJOR']
+                    def minor = versionMap['MINOR']
+                    def patch = versionMap['PATCH']
+                    def imageName = versionMap['IMAGE_NAME']
+                    
+                    // Format the version and image name
+                    def imageVersion = "${major}.${minor}.${patch}"
+                    
+                    // Print or use the values as needed
+                    echo "Image Version: ${imageVersion}"
+                    echo "Image Name: ${imageName}"
+                    
+                    // Example of setting environment variables (if needed for later stages)
+                    env.IMAGE_VERSION = imageVersion
+                    env.IMAGE_NAME = imageName
+                }
+            }
+        }
         stage('Initialize') {
             steps {
                 script {
