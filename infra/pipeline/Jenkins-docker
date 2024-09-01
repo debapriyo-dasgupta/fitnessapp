@@ -5,7 +5,8 @@ pipeline
     environment 
     {
         git_dev_branch_name = 'master'
-        IBM_DOCKER_REGISTRY = 'sagcr.azurecr.io'
+        IBM_DOCKER_REGISTRY = 'https://sagcr.azurecr.io'
+        DOCKERHUB_REGISTRY = 'https://index.docker.io/v1/'
         DOCKERHUB_CREDENTIALS = 'dockerhub-credentials'  // Jenkins credentials ID for Docker Hub
         IBMHUB_CREDENTIALS = 'ibmhub-credentials' // Jenkins credentials ID for Docker Hub
     }    
@@ -16,7 +17,7 @@ pipeline
                 withCredentials([usernamePassword(credentialsId: "${IBMHUB_CREDENTIALS}", usernameVariable: 'username', passwordVariable: 'password')]) {
                     script {
                         // Login to Docker registry using credentials
-                        docker.withRegistry("https://${env.IBM_DOCKER_REGISTRY}") {
+                        docker.withRegistry("${env.IBM_DOCKER_REGISTRY}") {
                             // This step logs in to the Docker registry
                             echo 'Logged in to Docker registry'
                         }
@@ -75,7 +76,7 @@ pipeline
                 }
             }
         }
-        stage('Build APIGW Image') {
+        stage('Build Solution APIGW Image') {
             steps {
                 script {
                     // Define the Dockerfile context directory
@@ -83,6 +84,22 @@ pipeline
                     docker.build("${IMAGE_NAME}:${env.IMAGE_VERSION}", "-f ${dockerfileContext}/apigateway/Dockerfile ${dockerfileContext}")           
                 }
             }
-        }      
-    }                                        
+        }  
+        stage('Logout IBMHUB Docker Registry') {
+            steps {
+                script {
+                sh "docker logout ${env.IBM_DOCKER_REGISTRY}"
+                echo "Logged out from Docker registry: ${env.IBM_DOCKER_REGISTRY}"
+                }
+            }
+        }
+    }         
+    post {
+        always {
+            script {
+                cleanWs()
+                echo "Workspace cleaned up"
+            }
+        }
+    }                               
 }
