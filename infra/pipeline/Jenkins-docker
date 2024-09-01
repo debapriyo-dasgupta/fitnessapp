@@ -1,6 +1,7 @@
 pipeline 
 {
     agent any
+    tools {dockerTool  "docker" } 
     environment 
     {
         git_dev_branch_name = 'master'
