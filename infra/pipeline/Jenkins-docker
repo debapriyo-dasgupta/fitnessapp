@@ -12,19 +12,6 @@ pipeline
     }    
     stages 
     {
-        stage('Login to IBM Docker Registry') {
-            steps {
-                    script {
-                        // Login to Docker registry using credentials
-                        docker.withTool('docker') {
-                            docker.withRegistry("${env.IBM_DOCKER_REGISTRY}",'ibmhub-credentials') {
-                                // This step logs in to the Docker registry
-                                echo "Logged in to Docker registry - ${env.IBM_DOCKER_REGISTRY}"
-                            }
-                        }
-                    }
-            }
-        }
         stage('Read Version File') {
             steps {
                 script {
@@ -61,7 +48,7 @@ pipeline
                     echo "Image Name: ${imageName}"
                     
                     // Example of setting environment variables (if needed for later stages)
-                    env.IMAGE_VERSION = imageVersion
+                    env.IMAGE_TAG = imageVersion
                     env.IMAGE_NAME = imageName
                     env.BASE_IMAGE_NAME = baseImageName
                 }
@@ -71,12 +58,12 @@ pipeline
             steps {
                 script {
                     docker.withTool('docker') {
-                        docker.withRegistry("${env.IBM_DOCKER_REGISTRY}",'ibmhub-credentials') {
+                        docker.withRegistry("${env.IBM_DOCKER_REGISTRY}","${IBMHUB_CREDENTIALS}") {
                         // Pull the base image from the registry
                         docker.image("${env.BASE_IMAGE_NAME}").pull()
+                        echo "Base image pulled: ${env.BASE_IMAGE_NAME}"
                         }
                     }
-                    echo "Base image pulled: ${env.BASE_IMAGE_NAME}"
                 }
             }
         }
@@ -85,31 +72,24 @@ pipeline
                 script {
                     // Define the Dockerfile context directory
                     def dockerfileContext = 'applications' // Adjust this path as needed
-                    docker.build("${IMAGE_NAME}:${env.IMAGE_VERSION}", "-f ${dockerfileContext}/apigateway/Dockerfile ${dockerfileContext}")           
-                }
-            }
-        }  
-        stage('Logout IBM Docker Registry') {
-            steps {
-                script {
-                sh "docker logout ${env.IBM_DOCKER_REGISTRY}"
-                echo "Logged out from Docker registry: ${env.IBM_DOCKER_REGISTRY}"
+                    docker.build("${IMAGE_NAME}:${env.IMAGE_TAG}", "-f ${dockerfileContext}/apigateway/Dockerfile ${dockerfileContext}")           
                 }
             }
         }
-        stage('Login to DockerHub Registry') {
+        stage('Push Solution APIGW Image To DockerHub') {
             steps {
-                withCredentials([usernamePassword(credentialsId: "${DOCKERHUB_CREDENTIALS}", usernameVariable: 'username', passwordVariable: 'password')]) {
-                    script {
-                        // Login to Docker registry using credentials
-                        docker.withRegistry("${env.DOCKERHUB_REGISTRY}") {
-                            // This step logs in to the Docker registry
-                            echo "Logged in to Docker registry - ${env.DOCKERHUB_REGISTRY}"
+                script {
+                    docker.withTool('docker') {
+                        docker.withRegistry("${env.DOCKER_REGISTRY}","${DOCKERHUB_CREDENTIALS}") {
+                            // Pull the base image from the registry
+                            def customImage = docker.image("${env.IMAGE_NAME}:${env.IMAGE_TAG}")
+                            customImage.push() // Push the image with the specified tag
+                            echo "Image pushed to registry: ${env.DOCKER_REGISTRY}/${env.IMAGE_NAME}:${env.IMAGE_TAG}"
                         }
                     }
                 }
             }
-        }
+        }  
     }         
     post {
         always {
