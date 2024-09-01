@@ -12,6 +12,19 @@ pipeline
     }    
     stages 
     {
+        stage('Login to IBM Docker Registry') {
+            steps {
+                    script {
+                        // Login to Docker registry using credentials
+                        docker.withTool('docker') {
+                            docker.withRegistry("${env.IBM_DOCKER_REGISTRY}",'ibmhub-credentials') {
+                                // This step logs in to the Docker registry
+                                echo "Logged in to Docker registry - ${env.IBM_DOCKER_REGISTRY}"
+                            }
+                        }
+                    }
+            }
+        }
         stage('Read Version File') {
             steps {
                 script {
@@ -51,20 +64,6 @@ pipeline
                     env.IMAGE_VERSION = imageVersion
                     env.IMAGE_NAME = imageName
                     env.BASE_IMAGE_NAME = baseImageName
-                }
-            }
-        }
-        stage('Login to IBM Docker Registry') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: "${IBMHUB_CREDENTIALS}", usernameVariable: 'username', passwordVariable: 'password')]) {
-                    script {
-                        // Login to Docker registry using credentials
-                        docker.withRegistry("${env.IBM_DOCKER_REGISTRY}",'ibmhub-credentials') {
-                            // This step logs in to the Docker registry
-                            echo "Logged in to Docker registry - ${env.IBM_DOCKER_REGISTRY}"
-                            docker.image("${env.BASE_IMAGE_NAME}").pull()
-                        }
-                    }
                 }
             }
         }
