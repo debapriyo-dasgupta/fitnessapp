@@ -12,12 +12,23 @@ pipeline
     }    
     stages 
     {
+        stage('Initialize') {
+            steps {
+                script {
+                    // Define the Docker tool's home directory
+                    def dockerHome = tool name: 'docker'
+
+                    // Update the PATH environment variable to include the Docker binary directory
+                    env.PATH = "${dockerHome}/bin:${env.PATH}"
+                }
+            }
+        }
         stage('Login to IBM Docker Registry') {
             steps {
                 withCredentials([usernamePassword(credentialsId: "${IBMHUB_CREDENTIALS}", usernameVariable: 'username', passwordVariable: 'password')]) {
                     script {
                         // Login to Docker registry using credentials
-                        docker.withRegistry("${env.IBM_DOCKER_REGISTRY}", "${IBMHUB_CREDENTIALS}") {
+                        docker.withRegistry("${env.IBM_DOCKER_REGISTRY}") {
                             // This step logs in to the Docker registry
                             echo "Logged in to Docker registry - ${env.IBM_DOCKER_REGISTRY}"
                         }
