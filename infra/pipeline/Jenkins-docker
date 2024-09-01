@@ -21,21 +21,18 @@ pipeline
                     sh 'echo ${dockerHome}'
                     env.PATH = "${dockerHome}/bin:${env.PATH}"
                     sh 'docker --version'
-                    // Login to Docker registry using credentials
-                    docker.withRegistry("https://${env.IBM_DOCKER_REGISTRY}", 'ibmhub-credentials') {
-                        // This step logs in to the Docker registry
-                        echo 'Logged in to Docker registry'
-                    }
                 }
             }
         }
         stage('Login to Docker Registry') {
             steps {
-                script {
-                    // Login to Docker registry using credentials
-                    docker.withRegistry("https://${env.IBM_DOCKER_REGISTRY}", 'ibmhub-credentials') {
-                        // This step logs in to the Docker registry
-                        echo 'Logged in to Docker registry'
+                withCredentials([usernamePassword(credentialsId: '${IBMHUB_CREDENTIALS}', toolName: 'docker', usernameVariable: 'username', passwordVariable: 'password')]) {
+                    script {
+                        // Login to Docker registry using credentials
+                        docker.withRegistry("https://${env.IBM_DOCKER_REGISTRY}") {
+                            // This step logs in to the Docker registry
+                            echo 'Logged in to Docker registry'
+                        }
                     }
                 }
             }
