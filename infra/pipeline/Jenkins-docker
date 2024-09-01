@@ -6,7 +6,7 @@ pipeline
         git_dev_branch_name = 'master'
         IBM_DOCKER_REGISTRY = 'sagcr.azurecr.io'
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')  // Jenkins credentials ID for Docker Hub
-        IBMHUB_CREDENTIALS = credentials('ibmhub-credentials')  // Jenkins credentials ID for Docker Hub
+        IBMHUB_CREDENTIALS = 'ibmhub-credentials' // Jenkins credentials ID for Docker Hub
     }    
     stages 
     {
