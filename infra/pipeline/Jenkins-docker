@@ -21,16 +21,18 @@ pipeline
                     def versionMap = [:]
                     
                     // Process each line
-                    fileContents.eachLine { line ->
+                    fileContents.split('\n').each { line ->
                         def (key, value) = line.split('=')
-                        versionMap[key] = value.trim()
+                        if (key && value) {
+                            versionMap[key.trim()] = value.trim()
+                        }
                     }
                     
                     // Extract values
-                    def major = versionMap['MAJOR']
-                    def minor = versionMap['MINOR']
-                    def patch = versionMap['PATCH']
-                    def imageName = versionMap['IMAGE_NAME']
+                    def major = versionMap.get('MAJOR', '0')
+                    def minor = versionMap.get('MINOR', '0')
+                    def patch = versionMap.get('PATCH', '0')
+                    def imageName = versionMap.get('IMAGE_NAME', 'unknown')
                     
                     // Format the version and image name
                     def imageVersion = "${major}.${minor}.${patch}"
