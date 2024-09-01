@@ -1,6 +1,9 @@
 pipeline 
 {
     agent any
+    tools {
+        dockerTool 'docker' // Name of the Docker tool configured in Jenkins
+    }
     environment 
     {
         git_dev_branch_name = 'master'
