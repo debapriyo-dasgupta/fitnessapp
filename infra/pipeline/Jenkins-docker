@@ -59,13 +59,11 @@ pipeline
         stage('Pull Base Image') {
             steps {
                 script {
-                    docker.withTool('docker') {
                         docker.withRegistry("${env.IBM_DOCKER_REGISTRY}","${IBMHUB_CREDENTIALS}") {
                         // Pull the base image from the registry
                         docker.image("${env.BASE_IMAGE_NAME}").pull()
                         echo "Base image pulled: ${env.BASE_IMAGE_NAME}"
                         }
-                    }
                 }
             }
         }
