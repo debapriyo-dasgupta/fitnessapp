@@ -11,19 +11,6 @@ pipeline
     }    
     stages 
     {
-        stage('Initialize') {
-            steps {
-                script {
-                    // Define the Docker tool's home directory
-                    def dockerHome = tool name: 'docker'
-
-                    // Update the PATH environment variable to include the Docker binary directory
-                    sh 'echo ${dockerHome}'
-                    env.PATH = "${dockerHome}/bin:${env.PATH}"
-                    sh 'docker --version'
-                }
-            }
-        }
         stage('Login to Docker Registry') {
             steps {
                 withCredentials([usernamePassword(credentialsId: "${IBMHUB_CREDENTIALS}", usernameVariable: 'username', passwordVariable: 'password')]) {
