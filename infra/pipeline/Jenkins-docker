@@ -19,7 +19,6 @@ pipeline
                     // Update the PATH environment variable to include the Docker binary directory
                     env.PATH = "${dockerHome}/bin:${env.PATH}"
                     sh 'docker --version'
-                    sh 'docker login -u Logeshwaran-KannanPonnurangam-softwareag-com -p 7c+bAyjLvT+rY6pHSsZZvkH1opNMBGWKw6+RoLUx1X+ACRAyhh5s sagcr.azurecr.io'
                 }
             }
         }
@@ -27,7 +26,7 @@ pipeline
             steps {
                 script {
                     // Login to Docker registry using credentials
-                    docker.withRegistry("https://${env.IBM_DOCKER_REGISTRY}", "${env.IBMHUB_CREDENTIALS}") {
+                    docker.withRegistry("https://${env.IBM_DOCKER_REGISTRY}", "credentials('${env.IBMHUB_CREDENTIALS}')") {
                         // This step logs in to the Docker registry
                         echo 'Logged in to Docker registry'
                     }
