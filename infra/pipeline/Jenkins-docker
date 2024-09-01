@@ -80,12 +80,7 @@ pipeline
                 script {
                     // Define the Dockerfile context directory
                     def dockerfileContext = 'applications' // Adjust this path as needed
-
-                    // Use the Docker tool
-                    docker.withTool('docker') {
-                        // Build the Docker image with context
-                        def customImage = docker.build("${IMAGE_NAME}", "-f ${dockerfileContext}/apigateway/Dockerfile ${dockerfileContext}")
-                    }
+                    docker.build("${IMAGE_NAME}", "-f ${dockerfileContext}/apigateway/Dockerfile ${dockerfileContext}")           
                 }
             }
         }      
