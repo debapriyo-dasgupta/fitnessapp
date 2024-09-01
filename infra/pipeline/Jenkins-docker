@@ -18,8 +18,8 @@ pipeline
                     def dockerHome = tool name: 'docker'
 
                     // Update the PATH environment variable to include the Docker binary directory
+                    sh 'echo ${dockerHome}'
                     env.PATH = "${dockerHome}/bin:${env.PATH}"
-                    env.PATH = "${dockerHome}:${env.PATH}"
                     sh 'docker --version'
                 }
             }
