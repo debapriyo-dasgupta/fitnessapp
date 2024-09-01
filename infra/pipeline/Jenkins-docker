@@ -25,7 +25,7 @@ pipeline
             steps {
                 script {
                     // Login to Docker registry using credentials
-                    docker.withRegistry("${env.IBM_DOCKER_REGISTRY}", "${env.IBMHUB_CREDENTIALS}") {
+                    docker.withRegistry("https://${env.IBM_DOCKER_REGISTRY}", "${env.IBMHUB_CREDENTIALS}") {
                         // This step logs in to the Docker registry
                         echo 'Logged in to Docker registry'
                     }
