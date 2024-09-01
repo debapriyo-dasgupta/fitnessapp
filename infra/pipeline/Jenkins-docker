@@ -1,7 +1,6 @@
 pipeline 
 {
     agent any
-    tools {dockerTool  "docker" } 
     environment 
     {
         git_dev_branch_name = 'master'
@@ -76,15 +75,15 @@ pipeline
                 }
             }
         }
-        stage('Push Solution APIGW Image To DockerHub') {
+        stage('Push To DockerHub') {
             steps {
                 script {
                     docker.withTool('docker') {
-                        docker.withRegistry("${env.DOCKERHUB_REGISTRY}","${DOCKERHUB_CREDENTIALS}") {
+                        docker.withRegistry("${DOCKERHUB_REGISTRY}","${DOCKERHUB_CREDENTIALS}") {
                             // Pull the base image from the registry
                             def customImage = docker.image("${env.IMAGE_NAME}:${env.IMAGE_TAG}")
                             customImage.push() // Push the image with the specified tag
-                            echo "Image pushed to registry: ${env.DOCKERHUB_REGISTRY}/${env.IMAGE_NAME}:${env.IMAGE_TAG}"
+                            echo "Image pushed to registry: ${DOCKERHUB_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}"
                         }
                     }
                 }
