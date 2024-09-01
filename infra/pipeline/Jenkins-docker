@@ -4,10 +4,23 @@ pipeline
     environment 
     {
         git_dev_branch_name = 'master'
+        IBM_DOCKER_REGISTRY = 'sagcr.azurecr.io'
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')  // Jenkins credentials ID for Docker Hub
+        IBMHUB_CREDENTIALS = credentials('ibmhub-credentials')  // Jenkins credentials ID for Docker Hub
     }    
     stages 
     {
+        stage('Login to Docker Registry') {
+            steps {
+                script {
+                    // Login to Docker registry using credentials
+                    docker.withRegistry("https://${env.IBM_DOCKER_REGISTRY}", "${env.IBMHUB_CREDENTIALS}") {
+                        // This step logs in to the Docker registry
+                        echo 'Logged in to Docker registry'
+                    }
+                }
+            }
+        }
         stage('Read Version File') {
             steps {
                 script {
@@ -33,17 +46,29 @@ pipeline
                     def minor = versionMap.get('MINOR', '0')
                     def patch = versionMap.get('PATCH', '0')
                     def imageName = versionMap.get('IMAGE_NAME', 'unknown')
+                    def baseImageName = versionMap.get('BASE_IMAGE_NAME', 'unknown')
                     
                     // Format the version and image name
                     def imageVersion = "${major}.${minor}.${patch}"
                     
                     // Print or use the values as needed
                     echo "Image Version: ${imageVersion}"
+                    echo "Base Image Version: ${baseImageName}"
                     echo "Image Name: ${imageName}"
                     
                     // Example of setting environment variables (if needed for later stages)
                     env.IMAGE_VERSION = imageVersion
                     env.IMAGE_NAME = imageName
+                    env.BASE_IMAGE_NAME = baseImageName
+                }
+            }
+        }
+        stage('Pull Base Image') {
+            steps {
+                script {
+                    // Pull the base image from the registry
+                    docker.image("${env.BASE_IMAGE_NAME}").pull()
+                    echo "Base image pulled: ${env.BASE_IMAGE_NAME}"
                 }
             }
         }
