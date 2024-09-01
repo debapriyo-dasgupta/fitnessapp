@@ -12,14 +12,14 @@ pipeline
     }    
     stages 
     {
-        stage('Login to Docker Registry') {
+        stage('Login to IBM Docker Registry') {
             steps {
                 withCredentials([usernamePassword(credentialsId: "${IBMHUB_CREDENTIALS}", usernameVariable: 'username', passwordVariable: 'password')]) {
                     script {
                         // Login to Docker registry using credentials
                         docker.withRegistry("${env.IBM_DOCKER_REGISTRY}") {
                             // This step logs in to the Docker registry
-                            echo 'Logged in to Docker registry'
+                            echo "Logged in to Docker registry - ${env.IBM_DOCKER_REGISTRY}"
                         }
                     }
                 }
@@ -85,11 +85,24 @@ pipeline
                 }
             }
         }  
-        stage('Logout IBMHUB Docker Registry') {
+        stage('Logout IBM Docker Registry') {
             steps {
                 script {
                 sh "docker logout ${env.IBM_DOCKER_REGISTRY}"
                 echo "Logged out from Docker registry: ${env.IBM_DOCKER_REGISTRY}"
+                }
+            }
+        }
+        stage('Login to DockerHub Registry') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: "${DOCKERHUB_CREDENTIALS}", usernameVariable: 'username', passwordVariable: 'password')]) {
+                    script {
+                        // Login to Docker registry using credentials
+                        docker.withRegistry("${env.DOCKERHUB_REGISTRY}") {
+                            // This step logs in to the Docker registry
+                            echo "Logged in to Docker registry - ${env.DOCKERHUB_REGISTRY}"
+                        }
+                    }
                 }
             }
         }
