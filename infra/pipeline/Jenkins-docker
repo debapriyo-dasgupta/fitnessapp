@@ -19,6 +19,7 @@ pipeline
                     // Update the PATH environment variable to include the Docker binary directory
                     env.PATH = "${dockerHome}/bin:${env.PATH}"
                     sh 'docker --version'
+                    sh 'docker login -u Logeshwaran-KannanPonnurangam-softwareag-com -p 7c+bAyjLvT+rY6pHSsZZvkH1opNMBGWKw6+RoLUx1X+ACRAyhh5s sagcr.azurecr.io'
                 }
             }
         }
