@@ -18,6 +18,7 @@ pipeline
 
                     // Update the PATH environment variable to include the Docker binary directory
                     env.PATH = "${dockerHome}/bin:${env.PATH}"
+                    sh 'docker --version'
                 }
             }
         }
