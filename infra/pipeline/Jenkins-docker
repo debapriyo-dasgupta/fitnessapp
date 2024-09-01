@@ -10,6 +10,17 @@ pipeline
     }    
     stages 
     {
+        stage('Initialize') {
+            steps {
+                script {
+                    // Define the Docker tool's home directory
+                    def dockerHome = tool name: 'docker'
+
+                    // Update the PATH environment variable to include the Docker binary directory
+                    env.PATH = "${dockerHome}/bin:${env.PATH}"
+                }
+            }
+        }
         stage('Login to Docker Registry') {
             steps {
                 script {
@@ -69,17 +80,6 @@ pipeline
                     // Pull the base image from the registry
                     docker.image("${env.BASE_IMAGE_NAME}").pull()
                     echo "Base image pulled: ${env.BASE_IMAGE_NAME}"
-                }
-            }
-        }
-        stage('Initialize') {
-            steps {
-                script {
-                    // Define the Docker tool's home directory
-                    def dockerHome = tool name: 'docker'
-
-                    // Update the PATH environment variable to include the Docker binary directory
-                    env.PATH = "${dockerHome}/bin:${env.PATH}"
                 }
             }
         }
