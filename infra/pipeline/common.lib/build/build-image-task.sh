@@ -11,7 +11,7 @@ docker image ls
 echo "Login to docker repository -> Docker Inc."
 
 # Create APIGW image
-docker login -u Logeshwaran-KannanPonnurangam-softwareag-com -p 7c+bAyjLvT+rY6pHSsZZvkH1opNMBGWKw6+RoLUx1X+ACRAyhh5s sagcr.azurecr.io
+docker login -u Debapriyo-Dasgupta-softwareag-com -p ZWCBvj5MFyaZN6TaLscXUdLNR+mKm9pVr/VpTW5zPv+ACRC0JBkB sagcr.azurecr.io
 # Fitness-Apigateway
 echo "Image build process -> APIGateway"
 read VERSION IMAGE_NAME < <(get-version "apigateway/version.txt")
